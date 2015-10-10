@@ -12,15 +12,22 @@ module.exports = function (config) {
     customLaunchers: {
       mobile: {
         base: 'Chrome',
-        flags: ['--window-size=320,640']
+        flags: [ '--window-size=320,640' ]
       },
       tablet: {
         base: 'Chrome',
-        flags: ['--window-size=640,480']
+        flags: [ '--window-size=640,480' ]
       },
       desktop: {
         base: 'Chrome',
-        flags: ['--window-size=1280,960']
+        flags: [ '--window-size=1280,960' ]
+      },
+      travisChrome: {
+        base: 'Chrome',
+        flags: [
+          '--window-size=1280,960',
+          '--no-sandbox'
+        ]
       }
     },
 
