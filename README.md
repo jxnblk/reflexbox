@@ -18,7 +18,7 @@ class Component extends React.Component {
   render() {
     return (
       <Box p={2}>
-        <Flex center>
+        <Flex align='center'>
           <Box px={2}>Box A</Box>
           <Box px={2} fill>Box B</Box>
         </Flex>

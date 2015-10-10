@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Header, Footer } from 'blk'
-import { Flex, Box } from '..'
+import { Flex, Box } from '../src'
 
 class App extends React.Component {
 
@@ -24,8 +24,8 @@ class App extends React.Component {
           ]}
           />
         <Box py={4}>
-          <Flex center>
-            <h2>Demos</h2>
+          <Flex sm align='center'>
+            <h2 className='m0'>Demos</h2>
             <Box>Box</Box>
           </Flex>
         </Box>

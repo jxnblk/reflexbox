@@ -1,0 +1,18 @@
+
+body,
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: -apple-system, Roboto, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+
+/* Outlines for demo page */
+
+.Flex {
+  outline: 1px solid rgba(255, 63, 0, .25);
+}
+
+.Box {
+  outline: 1px solid rgba(0, 127, 255, .25);
+}
+

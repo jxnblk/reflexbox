@@ -5,6 +5,12 @@ import styleNormalizer from 'react-style-normalizer'
 
 const { bool, oneOf } = React.PropTypes
 
+const breakpoints = {
+  sm: '(min-width: 32em)',
+  md: '(min-width: 48em)',
+  lg: '(min-width: 64em)'
+}
+
 const Flex = ({
   wrap,
   column,
@@ -16,8 +22,26 @@ const Flex = ({
   ...props
 }) => {
 
+  let display
+
+  if (typeof window != undefined) {
+    if (sm && window.matchMedia(breakpoints.sm).matches) {
+      display = 'flex'
+    } else if (md && window.matchMedia(breakpoints.md).matches) {
+      display = 'flex'
+    } else if (lg && window.matchMedia(breakpoints.lg).matches) {
+      display = 'flex'
+    } else if (sm || md || lg) {
+      display = null
+    } else {
+      display = 'flex'
+    }
+  } else {
+    display = 'flex'
+  }
+
   const style = styleNormalizer({
-    display: 'flex',
+    display,
     flexWrap: wrap ? 'wrap' : null,
     flexDirection: column ? 'column' : null,
     alignItems: align || null,
@@ -53,3 +77,4 @@ Flex.propTypes = {
 }
 
 export default Flex
+
