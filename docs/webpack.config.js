@@ -16,7 +16,7 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/docs',
+    path: __dirname,
     publicPath: 'docs',
     filename: '[name].js',
     libraryTarget: 'umd'
