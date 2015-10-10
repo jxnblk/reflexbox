@@ -1,7 +1,9 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Docs from './Docs'
+import App from './App'
 
-ReactDOM.render(<Docs />, document.getElementById('app'))
+import 'basscss/css/basscss.css'
+
+ReactDOM.render(<App />, document.getElementById('app'))
 
