@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - 0.11
   - 0.12
   - 4.0
 addons:
@@ -11,4 +10,4 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 script:
   - npm test
-  - npm run karma:travis
+  - npm run karma
