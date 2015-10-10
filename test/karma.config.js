@@ -24,7 +24,7 @@ var configuration = {
     travisChrome: {
       base: 'Chrome',
       flags: [
-        '--window-size=1280,960',
+        // '--window-size=1280,960',
         '--no-sandbox'
       ]
     }
