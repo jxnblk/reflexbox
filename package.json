@@ -7,7 +7,7 @@
     "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
     "prepublish": "babel src --out-dir dist",
     "karma": "karma start test/karma.config.js",
-    "karma:travis": "karma start test/karma.config.js --browsers Firefox --singleRun",
+    "karma:travis": "karma start test/karma.config.js --browsers Firefox mobile tablet --singleRun",
     "test:watch": "mocha --watch --watch-extensions jsx --compilers js:babel/register",
     "test": "mocha --compilers js:babel/register"
   },
