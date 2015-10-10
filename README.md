@@ -77,4 +77,12 @@ Sets padding-left based on a scale from 0 – 4.
 #### `pr` (number, default null)
 Sets padding-right based on a scale from 0 – 4.
 
+## Tests
+
+Runs React shallowRender and browser tests with Karma for four different breakpoints.
+
+```
+npm test
+```
+
 MIT License

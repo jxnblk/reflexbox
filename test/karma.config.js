@@ -2,30 +2,28 @@
 var configuration = {
   browsers: [
     'Firefox',
-    'mobile',
-    'tablet',
-    'desktop',
+    'Chrome_xs',
+    'Chrome_sm',
+    'Chrome_md',
+    'Chrome_lg',
   ],
 
   customLaunchers: {
-    mobile: {
+    Chrome_xs: {
       base: 'Chrome',
       flags: [ '--window-size=320,640' ]
     },
-    tablet: {
+    Chrome_sm: {
       base: 'Chrome',
       flags: [ '--window-size=640,480' ]
     },
-    desktop: {
+    Chrome_md: {
+      base: 'Chrome',
+      flags: [ '--window-size=896,672' ]
+    },
+    Chrome_lg: {
       base: 'Chrome',
       flags: [ '--window-size=1280,960' ]
-    },
-    travisChrome: {
-      base: 'Chrome',
-      flags: [
-        '--window-size=1280,960',
-        '--no-sandbox'
-      ]
     }
   },
 
@@ -88,7 +86,6 @@ var configuration = {
 }
 
 if (process.env.TRAVIS) {
-  configuration.singleRun = true
   configuration.browsers = [
     'Firefox'
   ]

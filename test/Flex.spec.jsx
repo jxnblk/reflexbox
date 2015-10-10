@@ -259,6 +259,22 @@ describe('Flex', () => {
           expect(computed.display).to.equal('block')
         })
       })
+
+      context('with lg set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex lg />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
     })
 
     context('when between sm and md size', () => {
