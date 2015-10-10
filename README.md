@@ -2,6 +2,8 @@
 
 React flexbox layout and grid system
 
+[![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg)](https://travis-ci.org/jxnblk/reflexbox)
+
 ## Getting Started
 
 ```
