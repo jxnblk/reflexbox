@@ -5,7 +5,6 @@ var configuration = {
     'mobile',
     'tablet',
     'desktop',
-    'Safari'
   ],
 
   customLaunchers: {
@@ -30,8 +29,7 @@ var configuration = {
     }
   },
 
-  autoWatch: true,
-  // singleRun: true,
+  singleRun: true,
 
   files: [
     'index.js',
@@ -45,7 +43,6 @@ var configuration = {
   plugins: [
     'karma-chrome-launcher',
     'karma-firefox-launcher',
-    'karma-safari-launcher',
     'karma-chai',
     'karma-mocha',
     'karma-mocha-reporter',
@@ -93,7 +90,6 @@ var configuration = {
 if (process.env.TRAVIS) {
   configuration.singleRun = true
   configuration.browsers = [
-    // 'travisChrome',
     'Firefox'
   ]
 }
