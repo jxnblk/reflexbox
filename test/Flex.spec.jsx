@@ -5,18 +5,19 @@ import { expect } from 'chai'
 import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Flex } from '../src'
+import normalize from 'react-style-normalizer'
 
 describe('Flex', () => {
 
   let dom, instance, style, computed
 
-  const initial = {
+  const initial = normalize({
     display: 'flex',
     flexWrap: null,
     flexDirection: null,
     alignItems: null,
     justifyContent: null,
-  }
+  })
 
   beforeEach(() => {
     const tree = sd.shallowRender(<Flex />)
