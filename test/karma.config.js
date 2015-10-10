@@ -24,7 +24,7 @@ var configuration = {
     travisChrome: {
       base: 'Chrome',
       flags: [
-        // '--window-size=1280,960',
+        '--window-size=1280,960',
         '--no-sandbox'
       ]
     }
@@ -92,7 +92,10 @@ var configuration = {
 
 if (process.env.TRAVIS) {
   configuration.singleRun = true
-  configuration.browsers = ['travisChrome', 'Firefox'];
+  configuration.browsers = [
+    // 'travisChrome',
+    'Firefox'
+  ]
 }
 
 
