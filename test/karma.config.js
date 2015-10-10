@@ -3,11 +3,29 @@ module.exports = function (config) {
   config.set({
     browsers: [
       'Firefox',
-      'Chrome',
-      // 'Safari'
+      'mobile',
+      'tablet',
+      'desktop',
+      'Safari'
     ],
 
+    customLaunchers: {
+      mobile: {
+        base: 'Chrome',
+        flags: ['--window-size=320,640']
+      },
+      tablet: {
+        base: 'Chrome',
+        flags: ['--window-size=640,480']
+      },
+      desktop: {
+        base: 'Chrome',
+        flags: ['--window-size=1280,960']
+      }
+    },
+
     autoWatch: true,
+    // singleRun: true,
 
     files: [
       'index.js',
@@ -21,7 +39,7 @@ module.exports = function (config) {
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      // 'karma-safari-launcher',
+      'karma-safari-launcher',
       'karma-chai',
       'karma-mocha',
       'karma-mocha-reporter',

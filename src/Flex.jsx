@@ -32,7 +32,7 @@ const Flex = ({
     } else if (lg && window.matchMedia(breakpoints.lg).matches) {
       display = 'flex'
     } else if (sm || md || lg) {
-      display = null
+      display = 'block'
     } else {
       display = 'flex'
     }

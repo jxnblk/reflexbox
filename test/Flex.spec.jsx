@@ -190,5 +190,303 @@ describe('Flex', () => {
     })
   })
 
+  context('media queries', () => {
+
+    if (typeof window === 'undefined') {
+      return false
+    }
+
+    class Root extends React.Component {
+      render() { return <div {...this.props} /> }
+    }
+
+    it('should be in a windowed environment', () => {
+      expect(window).to.exist
+    })
+
+    context('when below sm size', () => {
+      let root, flex
+
+      if (window.matchMedia('(min-width: 32em)').matches) {
+        return false
+      }
+
+      context('with no props', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with sm set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex sm />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
+
+      context('with md set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex md />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
+    })
+
+    context('when between sm and md size', () => {
+      let root, flex
+
+      if (!window.matchMedia('(min-width: 32em) and (max-width: 48em)').matches) {
+        return false
+      }
+
+      context('with no props', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with sm set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex sm />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with md set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex md />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
+
+      context('with lg set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex lg />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
+    })
+
+    context('when between md and lg size', () => {
+      let root, flex
+
+      if (!window.matchMedia('(min-width: 48em) and (max-width: 64em)').matches) {
+        return false
+      }
+
+      context('with no props', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with sm set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex sm />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with md set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex md />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with lg set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex lg />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display block', () => {
+          expect(computed.display).to.equal('block')
+        })
+      })
+    })
+
+    context('when above lg size', () => {
+      let root, flex
+
+      if (!window.matchMedia('(min-width: 64em)').matches) {
+        return false
+      }
+
+      context('with no props', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with sm set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex sm />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with md set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex md />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+
+      context('with lg set', () => {
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex lg />
+            </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          const value = normalize({ display: 'flex' }).display
+          expect(computed.display).to.equal(value)
+        })
+      })
+    })
+
+  })
+
 
 })
