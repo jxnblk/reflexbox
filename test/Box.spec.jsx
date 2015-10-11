@@ -336,12 +336,9 @@ describe('Box', () => {
       render() { return <div {...this.props} /> }
     }
 
-    function setProps(prop, val) {
-      const comp = React.createElement(Box, {
-        [prop]: val
-      })
+    function setProps(props) {
       root = TestUtils.renderIntoDocument(
-        <Root>{comp}</Root>
+        <Root><Box {...props} /></Root>
       )
       computed = TestUtils.findRenderedDOMComponentWithClass(root, 'Box').style
     }
@@ -362,7 +359,7 @@ describe('Box', () => {
         sizes.forEach((size) => {
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('sm', size)
+              setProps({ sm: size })
               width = computed.width
               flexBasis = computed.flexBasis
             })
@@ -383,7 +380,7 @@ describe('Box', () => {
         sizes.forEach((size) => {
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('md', size)
+              setProps({ md: size })
               width = computed.width
               flexBasis = computed.flexBasis
             })
@@ -404,7 +401,7 @@ describe('Box', () => {
         sizes.forEach((size) => {
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('lg', size)
+              setProps({ lg: size })
               width = computed.width
               flexBasis = computed.flexBasis
             })
@@ -433,7 +430,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('sm', size)
+              setProps({ sm: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -455,7 +452,7 @@ describe('Box', () => {
           let expected
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('md', size)
+              setProps({ md: size })
               expected = ''
               width = computed.width
               flexBasis = computed.flexBasis
@@ -477,7 +474,7 @@ describe('Box', () => {
           let expected
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('lg', size)
+              setProps({ lg: size })
               expected = ''
               width = computed.width
               flexBasis = computed.flexBasis
@@ -494,6 +491,24 @@ describe('Box', () => {
         })
       })
 
+      describe('sm, md, and lg props', () => {
+        let expected
+        expected = round(6 / 12 * 100, 2)
+
+        beforeEach(() => {
+          setProps({ sm: 6, md: 4, lg: 3 })
+          width = round(parseFloat(computed.width), 2)
+          flexBasis = round(parseFloat(computed.flexBasis), 2)
+        })
+
+        it(`should have width set to ${expected}%`, () => {
+          expect(width).to.equal(expected)
+        })
+
+        it(`should have flex-basis set to ${expected}%`, () => {
+          expect(flexBasis).to.equal(expected)
+        })
+      })
     })
 
     context('when between md and lg breakpoints', () => {
@@ -507,7 +522,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('sm', size)
+              setProps({ sm: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -530,7 +545,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('md', size)
+              setProps({ md: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -552,7 +567,7 @@ describe('Box', () => {
           let expected
           context(`when set to ${size}`, () => {
             beforeEach(() => {
-              setProps('lg', size)
+              setProps({ lg: size })
               expected = ''
               width = computed.width
               flexBasis = computed.flexBasis
@@ -566,6 +581,25 @@ describe('Box', () => {
               expect(flexBasis).to.equal(expected)
             })
           })
+        })
+      })
+
+      describe('sm, md, and lg props', () => {
+        let expected
+        expected = round(4 / 12 * 100, 2)
+
+        beforeEach(() => {
+          setProps({ sm: 6, md: 4, lg: 3 })
+          width = round(parseFloat(computed.width), 2)
+          flexBasis = round(parseFloat(computed.flexBasis), 2)
+        })
+
+        it(`should have width set to ${expected}%`, () => {
+          expect(width).to.equal(expected)
+        })
+
+        it(`should have flex-basis set to ${expected}%`, () => {
+          expect(flexBasis).to.equal(expected)
         })
       })
     })
@@ -581,7 +615,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('sm', size)
+              setProps({ sm: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -604,7 +638,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('md', size)
+              setProps({ md: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -627,7 +661,7 @@ describe('Box', () => {
           context(`when set to ${size}`, () => {
             expected = round(size / 12 * 100, 2)
             beforeEach(() => {
-              setProps('lg', size)
+              setProps({ lg: size })
               expected = round(size / 12 * 100, 2)
               width = round(parseFloat(computed.width), 2)
               flexBasis = round(parseFloat(computed.flexBasis), 2)
@@ -641,6 +675,25 @@ describe('Box', () => {
               expect(flexBasis).to.equal(expected)
             })
           })
+        })
+      })
+
+      describe('sm, md, and lg props', () => {
+        let expected
+        expected = round(3 / 12 * 100, 2)
+
+        beforeEach(() => {
+          setProps({ sm: 6, md: 4, lg: 3 })
+          width = round(parseFloat(computed.width), 2)
+          flexBasis = round(parseFloat(computed.flexBasis), 2)
+        })
+
+        it(`should have width set to ${expected}%`, () => {
+          expect(width).to.equal(expected)
+        })
+
+        it(`should have flex-basis set to ${expected}%`, () => {
+          expect(flexBasis).to.equal(expected)
         })
       })
     })

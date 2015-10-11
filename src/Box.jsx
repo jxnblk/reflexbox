@@ -21,21 +21,23 @@ const Box = ({
 
   let width
 
+  function w(n) {
+    return n ? (n / 12 * 100) + '%' : null
+  }
+
   if (typeof window != undefined) {
-    if (sm && window.matchMedia(breakpoints.sm).matches) {
-      width = (sm / 12 * 100) + '%'
-    } else if (md && window.matchMedia(breakpoints.md).matches) {
-      width = (md / 12 * 100) + '%'
-    } else if (lg && window.matchMedia(breakpoints.lg).matches) {
-      width = (lg / 12 * 100) + '%'
-    } else if (sm || md || lg) {
-      // Should this be 100%?
-      width = null
-    } else {
-      width = col ? (col / 12 * 100) + '%' : null
+    width = w(col)
+    if (window.matchMedia(breakpoints.sm).matches) {
+      width = w(sm) || width
+    }
+    if (window.matchMedia(breakpoints.md).matches) {
+      width = w(md) || width
+    }
+    if (window.matchMedia(breakpoints.lg).matches) {
+      width = w(lg) || width
     }
   } else {
-    width = col ? (col / 12 * 100) + '%' : null
+    width = w(col)
   }
 
   const style = {
@@ -49,6 +51,8 @@ const Box = ({
     width: width,
     flexBasis: width
   }
+
+  console.log('Box width', width)
 
   return <div
     {...props}
