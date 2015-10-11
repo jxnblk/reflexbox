@@ -6,6 +6,9 @@ import { Flex, Box } from '../src'
 class App extends React.Component {
 
   render() {
+
+    console.log(this.props)
+
     return (
       <Box p={3}>
         <Header

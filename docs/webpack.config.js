@@ -49,6 +49,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
+  },
+
+  node: {
+    fs: 'empty'
   }
 
 }
