@@ -7,8 +7,6 @@ class App extends React.Component {
 
   render() {
 
-    console.log(this.props)
-
     return (
       <Box p={3}>
         <Header
@@ -174,6 +172,10 @@ class App extends React.Component {
             <Box px={2}>Box</Box>
           </Flex>
         </Box>
+        <Box py={4}>
+          <pre>{JSON.stringify(this.props.components.Flex.data, null, 2)}</pre>
+          <pre>{JSON.stringify(this.props.components.Box.data, null, 2)}</pre>
+        </Box>
         <Footer
           title='reflexbox'
           href='http://jxnblk.com/reflexbox'
@@ -191,6 +193,10 @@ class App extends React.Component {
     )
   }
 
+}
+
+App.propTypes = {
+  derp: React.PropTypes.string
 }
 
 export default App

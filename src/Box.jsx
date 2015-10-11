@@ -2,9 +2,6 @@
 import React from 'react'
 import scale from './scale'
 
-const { oneOf } = React.PropTypes
-const values = Array.from({ length: scale.length }, (a, b) => b)
-
 const Box = ({
   p,
   px,
@@ -32,14 +29,17 @@ const Box = ({
     className='Box' />
 }
 
+const { bool, oneOf } = React.PropTypes
+// const values = Array.from({ length: scale.length }, (a, b) => b)
 Box.propTypes = {
-  p: oneOf(values),
-  px: oneOf(values),
-  py: oneOf(values),
-  pt: oneOf(values),
-  pb: oneOf(values),
-  pl: oneOf(values),
-  pr: oneOf(values)
+  fill: bool,
+  p: oneOf([0, 1, 2, 3, 4]),
+  px: oneOf([0, 1, 2, 3, 4]),
+  py: oneOf([0, 1, 2, 3, 4]),
+  pt: oneOf([0, 1, 2, 3, 4]),
+  pb: oneOf([0, 1, 2, 3, 4]),
+  pl: oneOf([0, 1, 2, 3, 4]),
+  pr: oneOf([0, 1, 2, 3, 4]),
 }
 
 export default Box
