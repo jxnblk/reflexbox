@@ -28,7 +28,7 @@ class Component extends React.Component {
 }
 ```
 
-## <Flex />
+## `<Flex />`
 
 Creates a flexbox context to control layout of children.
 
@@ -47,7 +47,7 @@ Sets `align-item`. Accepted values: `stretch`, `center`, `baseline`, `flex-start
 Sets `justify-content`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
 
 
-## <Box />
+## `<Box />`
 
 Sets padding and acts as a child component for <Flex />.
 
