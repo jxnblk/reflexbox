@@ -16,7 +16,9 @@ describe('Box', () => {
     paddingTop: null,
     paddingBottom: null,
     paddingLeft: null,
-    paddingRight: null
+    paddingRight: null,
+    width: null,
+    flexBasis: null
   }
 
   beforeEach(() => {
@@ -152,5 +154,174 @@ describe('Box', () => {
     })
   })
 
+  describe('col prop', () => {
+    context('when set to 1', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={1} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 8.3%', () => {
+        computed = assign({}, style, {
+          width: (1/12 * 100) + '%',
+          flexBasis: (1/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 2', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={2} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 16.6%', () => {
+        computed = assign({}, style, {
+          width: (2/12 * 100) + '%',
+          flexBasis: (2/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 3', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={3} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 25%', () => {
+        computed = assign({}, style, {
+          width: (3/12 * 100) + '%',
+          flexBasis: (3/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 4', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={4} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 33.3%', () => {
+        computed = assign({}, style, {
+          width: (4/12 * 100) + '%',
+          flexBasis: (4/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 5', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={5} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 41.6%', () => {
+        computed = assign({}, style, {
+          width: (5/12 * 100) + '%',
+          flexBasis: (5/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 6', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={6} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 50%', () => {
+        computed = assign({}, style, {
+          width: (6/12 * 100) + '%',
+          flexBasis: (6/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 7', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={7} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 58.3%', () => {
+        computed = assign({}, style, {
+          width: (7/12 * 100) + '%',
+          flexBasis: (7/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 8', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={8} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 66.6%', () => {
+        computed = assign({}, style, {
+          width: (8/12 * 100) + '%',
+          flexBasis: (8/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 9', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={9} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 75%', () => {
+        computed = assign({}, style, {
+          width: (9/12 * 100) + '%',
+          flexBasis: (9/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 10', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={10} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 83.3%', () => {
+        computed = assign({}, style, {
+          width: (10/12 * 100) + '%',
+          flexBasis: (10/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 11', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={11} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 91.6%', () => {
+        computed = assign({}, style, {
+          width: (11/12 * 100) + '%',
+          flexBasis: (11/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+
+    context('when set to 12', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Box col={12} />)
+        style = tree.getRenderOutput().props.style
+      })
+      it('should set width and flex-basis to 100%', () => {
+        computed = assign({}, style, {
+          width: (12/12 * 100) + '%',
+          flexBasis: (12/12 * 100) + '%'
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+  })
 
 })

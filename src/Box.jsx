@@ -11,6 +11,7 @@ const Box = ({
   pl,
   pr,
   fill,
+  col,
   ...props
 }) => {
 
@@ -21,6 +22,8 @@ const Box = ({
     paddingBottom: py ? scale[py] : (pb ? scale[pb] : null),
     paddingLeft:   px ? scale[px] : (pl ? scale[pl] : null),
     paddingRight:  px ? scale[px] : (pr ? scale[pr] : null),
+    width: col ? (col / 12 * 100) + '%' : null,
+    flexBasis: col ? (col / 12 * 100) + '%' : null
   }
 
   return <div
@@ -37,6 +40,7 @@ const { bool, oneOf } = React.PropTypes
 // const values = Array.from({ length: scale.length }, (a, b) => b)
 Box.propTypes = {
   fill: bool,
+  col: oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   p: oneOf([0, 1, 2, 3, 4]),
   px: oneOf([0, 1, 2, 3, 4]),
   py: oneOf([0, 1, 2, 3, 4]),
