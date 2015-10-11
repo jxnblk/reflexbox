@@ -1,15 +1,9 @@
 
 import React from 'react'
-import scale from './scale'
 import styleNormalizer from 'react-style-normalizer'
+import scale from './scale'
+import breakpoints from './breakpoints'
 
-const { bool, oneOf } = React.PropTypes
-
-const breakpoints = {
-  sm: '(min-width: 32em)',
-  md: '(min-width: 48em)',
-  lg: '(min-width: 64em)'
-}
 
 const Flex = ({
   wrap,
@@ -53,6 +47,8 @@ const Flex = ({
     style={style}
     className='Flex' />
 }
+
+const { bool, oneOf } = React.PropTypes
 
 Flex.propTypes = {
   wrap: bool,

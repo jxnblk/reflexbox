@@ -1,5 +1,5 @@
 
-import { assign } from 'lodash'
+import { assign, round } from 'lodash'
 import React from 'react'
 import { expect } from 'chai'
 import sd from 'skin-deep'
@@ -320,6 +320,327 @@ describe('Box', () => {
           flexBasis: (12/12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
+      })
+    })
+  })
+
+  describe('media queries', () => {
+    let root, box, width, flexBasis
+
+    if (typeof window === 'undefined') {
+      return false
+    }
+
+    class Root extends React.Component {
+      render() { return <div {...this.props} /> }
+    }
+
+    function setProps(prop, val) {
+      const comp = React.createElement(Box, {
+        [prop]: val
+      })
+      root = TestUtils.renderIntoDocument(
+        <Root>{comp}</Root>
+      )
+      computed = TestUtils.findRenderedDOMComponentWithClass(root, 'Box').style
+    }
+
+    const sizes = Array.from({ length: 12 }, (a, b) => b + 1)
+
+
+    it('should be in a windowed environment', () => {
+      expect(window).to.exist
+    })
+
+    context('when below sm breakpoint', () => {
+      if (window.matchMedia('(min-width: 32em)').matches) {
+        return false
+      }
+
+      describe('sm prop', () => {
+        sizes.forEach((size) => {
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('sm', size)
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal('')
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal('')
+            })
+
+          })
+        })
+      })
+
+      describe('md prop', () => {
+        sizes.forEach((size) => {
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('md', size)
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal('')
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal('')
+            })
+
+          })
+        })
+      })
+
+      describe('lg prop', () => {
+        sizes.forEach((size) => {
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('lg', size)
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal('')
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal('')
+            })
+
+          })
+        })
+      })
+    })
+
+    context('when between sm and md breakpoints', () => {
+      if (!window.matchMedia('(min-width: 32em) and (max-width: 48em)').matches) {
+        return false
+      }
+
+      describe('sm prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('sm', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('md prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('md', size)
+              expected = ''
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('lg prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('lg', size)
+              expected = ''
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+    })
+
+    context('when between md and lg breakpoints', () => {
+      if (!window.matchMedia('(min-width: 48em) and (max-width: 64em)').matches) {
+        return false
+      }
+
+      describe('sm prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('sm', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('md prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('md', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('lg prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            beforeEach(() => {
+              setProps('lg', size)
+              expected = ''
+              width = computed.width
+              flexBasis = computed.flexBasis
+            })
+
+            it(`should not have width set`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should not have flex-basis set`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+    })
+
+    context('when above the lg breakpoints', () => {
+      if (!window.matchMedia('(min-width: 64em)').matches) {
+        return false
+      }
+
+      describe('sm prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('sm', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('md prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('md', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
+      })
+
+      describe('lg prop', () => {
+        sizes.forEach((size) => {
+          let expected
+          context(`when set to ${size}`, () => {
+            expected = round(size / 12 * 100, 2)
+            beforeEach(() => {
+              setProps('lg', size)
+              expected = round(size / 12 * 100, 2)
+              width = round(parseFloat(computed.width), 2)
+              flexBasis = round(parseFloat(computed.flexBasis), 2)
+            })
+
+            it(`should have width set to ${expected}%`, () => {
+              expect(width).to.equal(expected)
+            })
+
+            it(`should have flex-basis set to ${expected}%`, () => {
+              expect(flexBasis).to.equal(expected)
+            })
+          })
+        })
       })
     })
   })
