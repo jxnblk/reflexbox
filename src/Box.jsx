@@ -52,8 +52,6 @@ const Box = ({
     flexBasis: width
   }
 
-  console.log('Box width', width)
-
   return <div
     {...props}
     style={style}

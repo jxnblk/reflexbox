@@ -70,18 +70,18 @@ const FlexDemos = ({ ...props }) => (
       <p>The wrap prop sets flex-wrap wrap</p>
       <Flex wrap>
         <h1 className='m2'>Flex wrap</h1>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
-        <Box px={4}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
+        <Box px={4} py={2}>Box</Box>
       </Flex>
     </Box>
     <Box py={3}>
