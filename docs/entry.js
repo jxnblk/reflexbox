@@ -20,13 +20,26 @@ function getRenderOutput(comp) {
 }
 
 const props = {
+  title: 'reflexbox',
+  href: 'http://jxnblk.com/reflexbox',
+  description: 'React flexbox layout and grid system',
+  links: [
+    {
+      href: 'https://npmjs.com/package/reflexbox',
+      text: 'npm'
+    },
+    {
+      href: 'https://github.com/jxnblk/reflexbox',
+      text: 'GitHub'
+    }
+  ],
   components: {
-    Flex: {
+    flex: {
       name: 'Flex',
       output: getRenderOutput(Flex),
       data: docgen.parse(rawFlex)
     },
-    Box: {
+    box: {
       name: 'Box',
       output: getRenderOutput(Box),
       data: docgen.parse(rawBox)

@@ -29,6 +29,10 @@ const Box = ({
     className='Box' />
 }
 
+Box.defaultProps = {
+  fill: false
+}
+
 const { bool, oneOf } = React.PropTypes
 // const values = Array.from({ length: scale.length }, (a, b) => b)
 Box.propTypes = {
