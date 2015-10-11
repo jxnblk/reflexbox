@@ -11,6 +11,7 @@ describe('Box', () => {
   let dom, instance, style, computed
 
   const initial = {
+    boxSizing: 'border-box',
     flex: null,
     padding: null,
     paddingTop: null,

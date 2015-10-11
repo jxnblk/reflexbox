@@ -56,6 +56,66 @@ const BoxDemos = ({ data, ...props }) => (
         <Box p={2}>Box p=2</Box>
       </Flex>
     </Box>
+    <Box py={3}>
+      <h3>Column Box</h3>
+      <p>Use the col prop to set a width</p>
+      {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
+        if (12 % n) { return false }
+        const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
+        return (
+          <Flex key={i} align='center' justify='center'>
+            {boxes.map((box, j) => (
+              <Box col={n} key={j} p={2}>Box col={n}</Box>
+            ))}
+          </Flex>
+        )
+      }).reverse()}
+    </Box>
+    <Box py={3}>
+      <h3>Small Breakpoint Column Box</h3>
+      <p>Use the sm prop to set a width above the small breakpoint</p>
+      {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
+        if (12 % n) { return false }
+        const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
+        return (
+          <Flex key={i} sm align='center' justify='center'>
+            {boxes.map((box, j) => (
+              <Box sm={n} key={j} p={2}>Box sm={n}</Box>
+            ))}
+          </Flex>
+        )
+      }).reverse()}
+    </Box>
+    <Box py={3}>
+      <h3>Medium Breakpoint Column Box</h3>
+      <p>Use the md prop to set a width above the medium breakpoint</p>
+      {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
+        if (12 % n) { return false }
+        const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
+        return (
+          <Flex key={i} md align='center' justify='center'>
+            {boxes.map((box, j) => (
+              <Box md={n} key={j} p={2}>Box md={n}</Box>
+            ))}
+          </Flex>
+        )
+      }).reverse()}
+    </Box>
+    <Box py={3}>
+      <h3>Large Breakpoint Column Box</h3>
+      <p>Use the lg prop to set a width above the large breakpoint</p>
+      {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
+        if (12 % n) { return false }
+        const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
+        return (
+          <Flex key={i} lg align='center' justify='center'>
+            {boxes.map((box, j) => (
+              <Box lg={n} key={j} p={2}>Box lg={n}</Box>
+            ))}
+          </Flex>
+        )
+      }).reverse()}
+    </Box>
   </Box>
 )
 

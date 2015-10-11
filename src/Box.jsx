@@ -39,6 +39,7 @@ const Box = ({
   }
 
   const style = {
+    boxSizing: 'border-box',
     flex: fill ? '1 1 auto' : null,
     padding: p ? scale[p] : null,
     paddingTop:    py ? scale[py] : (pt ? scale[pt] : null),
