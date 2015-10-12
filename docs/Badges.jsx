@@ -6,7 +6,7 @@ import CodeClimate from './CodeClimate'
 import Npm from './Npm'
 
 const Badges = () => (
-  <Flex align='center'>
+  <Flex align='center' gutter={2}>
     <Box p={2}>
       <Travis />
     </Box>
