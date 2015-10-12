@@ -1,12 +1,14 @@
 
 import React from 'react'
 import { Flex, Box } from '../src'
-import Data from './Data'
+// import Data from './Data'
 
 const FlexDemos = ({ data, ...props }) => (
   <Box>
     <h2>Flex component</h2>
+    {/*
     <Data {...data} />
+    */}
     <Box py={3}>
       <h3>Flex component</h3>
       <p>The Flex component creates a flexbox context for all children.</p>

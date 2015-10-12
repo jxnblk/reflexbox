@@ -2,24 +2,17 @@
 require('babel/register')()
 
 var webpack = require('webpack')
-// var StaticRenderPlugin = require('static-render-webpack-plugin')
 
 module.exports = {
 
-  entry: {
-    // static: ['./static'],
-    bundle: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      'webpack/hot/only-dev-server',
-      './docs/entry'
-    ]
-  },
+  entry: [
+    './docs/entry'
+  ],
 
   output: {
     path: __dirname,
     publicPath: 'docs',
-    filename: '[name].js',
-    libraryTarget: 'umd'
+    filename: 'bundle.js',
   },
 
   resolve: {
@@ -41,16 +34,6 @@ module.exports = {
         loaders: ['style', 'css']
       }
     ]
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-
-  devServer: {
-    historyApiFallback: true,
-    hot: true
   },
 
   node: {

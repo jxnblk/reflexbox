@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "docs": "webpack -p --progress --colors --config docs/webpack.config.js",
-    "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
+    "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.dev.config.js",
     "prepublish": "babel src --out-dir dist",
     "karma": "karma start test/karma.config.js",
     "karma:watch": "karma start test/karma.config.js --auto-watch --no-single-run",
