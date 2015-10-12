@@ -3,11 +3,9 @@ import React from 'react'
 import { Flex, Box } from '../src'
 import Data from './Data'
 
-const BoxDemos = ({ data, ...props }) => (
+const BoxDemos = ({ ...props }) => (
   <Box>
     <h2>Box component</h2>
-    {/* <Data {...data} />
-      */}
     <Box py={3}>
       <h3>Padded Box</h3>
       <p>The Box component adds padding with the p, px, py, pt, pr, pb, and pl props.</p>

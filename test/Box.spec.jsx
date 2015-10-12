@@ -7,7 +7,6 @@ import TestUtils from 'react-addons-test-utils'
 import { Box } from '../src'
 
 describe('Box', () => {
-
   let dom, instance, style, computed
 
   const initial = {
@@ -163,8 +162,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 8.3%', () => {
         computed = assign({}, style, {
-          width: (1/12 * 100) + '%',
-          flexBasis: (1/12 * 100) + '%'
+          width: (1 / 12 * 100) + '%',
+          flexBasis: (1 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -177,8 +176,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 16.6%', () => {
         computed = assign({}, style, {
-          width: (2/12 * 100) + '%',
-          flexBasis: (2/12 * 100) + '%'
+          width: (2 / 12 * 100) + '%',
+          flexBasis: (2 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -191,8 +190,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 25%', () => {
         computed = assign({}, style, {
-          width: (3/12 * 100) + '%',
-          flexBasis: (3/12 * 100) + '%'
+          width: (3 / 12 * 100) + '%',
+          flexBasis: (3 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -205,8 +204,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 33.3%', () => {
         computed = assign({}, style, {
-          width: (4/12 * 100) + '%',
-          flexBasis: (4/12 * 100) + '%'
+          width: (4 / 12 * 100) + '%',
+          flexBasis: (4 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -219,8 +218,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 41.6%', () => {
         computed = assign({}, style, {
-          width: (5/12 * 100) + '%',
-          flexBasis: (5/12 * 100) + '%'
+          width: (5 / 12 * 100) + '%',
+          flexBasis: (5 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -233,8 +232,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 50%', () => {
         computed = assign({}, style, {
-          width: (6/12 * 100) + '%',
-          flexBasis: (6/12 * 100) + '%'
+          width: (6 / 12 * 100) + '%',
+          flexBasis: (6 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -247,8 +246,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 58.3%', () => {
         computed = assign({}, style, {
-          width: (7/12 * 100) + '%',
-          flexBasis: (7/12 * 100) + '%'
+          width: (7 / 12 * 100) + '%',
+          flexBasis: (7 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -261,8 +260,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 66.6%', () => {
         computed = assign({}, style, {
-          width: (8/12 * 100) + '%',
-          flexBasis: (8/12 * 100) + '%'
+          width: (8 / 12 * 100) + '%',
+          flexBasis: (8 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -275,8 +274,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 75%', () => {
         computed = assign({}, style, {
-          width: (9/12 * 100) + '%',
-          flexBasis: (9/12 * 100) + '%'
+          width: (9 / 12 * 100) + '%',
+          flexBasis: (9 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -289,8 +288,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 83.3%', () => {
         computed = assign({}, style, {
-          width: (10/12 * 100) + '%',
-          flexBasis: (10/12 * 100) + '%'
+          width: (10 / 12 * 100) + '%',
+          flexBasis: (10 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -303,8 +302,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 91.6%', () => {
         computed = assign({}, style, {
-          width: (11/12 * 100) + '%',
-          flexBasis: (11/12 * 100) + '%'
+          width: (11 / 12 * 100) + '%',
+          flexBasis: (11 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -317,8 +316,8 @@ describe('Box', () => {
       })
       it('should set width and flex-basis to 100%', () => {
         computed = assign({}, style, {
-          width: (12/12 * 100) + '%',
-          flexBasis: (12/12 * 100) + '%'
+          width: (12 / 12 * 100) + '%',
+          flexBasis: (12 / 12 * 100) + '%'
         })
         expect(style).to.deep.equal(computed)
       })
@@ -326,17 +325,17 @@ describe('Box', () => {
   })
 
   describe('media queries', () => {
-    let root, box, width, flexBasis
+    let root, width, flexBasis
 
     if (typeof window === 'undefined') {
       return false
     }
 
     class Root extends React.Component {
-      render() { return <div {...this.props} /> }
+      render () { return <div {...this.props} /> }
     }
 
-    function setProps(props) {
+    function setProps (props) {
       root = TestUtils.renderIntoDocument(
         <Root><Box {...props} /></Root>
       )
@@ -344,7 +343,6 @@ describe('Box', () => {
     }
 
     const sizes = Array.from({ length: 12 }, (a, b) => b + 1)
-
 
     it('should be in a windowed environment', () => {
       expect(window).to.exist
@@ -371,7 +369,6 @@ describe('Box', () => {
             it(`should not have flex-basis set`, () => {
               expect(flexBasis).to.equal('')
             })
-
           })
         })
       })
@@ -392,7 +389,6 @@ describe('Box', () => {
             it(`should not have flex-basis set`, () => {
               expect(flexBasis).to.equal('')
             })
-
           })
         })
       })
@@ -413,7 +409,6 @@ describe('Box', () => {
             it(`should not have flex-basis set`, () => {
               expect(flexBasis).to.equal('')
             })
-
           })
         })
       })
@@ -698,5 +693,5 @@ describe('Box', () => {
       })
     })
   })
-
 })
+

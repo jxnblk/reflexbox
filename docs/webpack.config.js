@@ -45,13 +45,12 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    // new StaticRenderPlugin('static.js', routes)
+    new webpack.NoErrorsPlugin()
   ],
 
   devServer: {
     historyApiFallback: true,
-    hot: true,
+    hot: true
   },
 
   node: {

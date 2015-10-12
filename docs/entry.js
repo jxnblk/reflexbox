@@ -14,7 +14,7 @@ import rawBox from '!!raw!../src/Box'
 
 var renderer = TestUtils.createRenderer()
 
-function getRenderOutput(comp) {
+function getRenderOutput (comp) {
   renderer.render(React.createElement(comp))
   return renderer.getRenderOutput()
 }

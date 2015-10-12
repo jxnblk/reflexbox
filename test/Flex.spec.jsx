@@ -8,7 +8,6 @@ import { Flex } from '../src'
 import normalize from 'react-style-normalizer'
 
 describe('Flex', () => {
-
   let dom, instance, style, computed
 
   const initial = normalize({
@@ -16,7 +15,7 @@ describe('Flex', () => {
     flexWrap: null,
     flexDirection: null,
     alignItems: null,
-    justifyContent: null,
+    justifyContent: null
   })
 
   beforeEach(() => {
@@ -191,13 +190,12 @@ describe('Flex', () => {
   })
 
   describe('media queries', () => {
-
     if (typeof window === 'undefined') {
       return false
     }
 
     class Root extends React.Component {
-      render() { return <div {...this.props} /> }
+      render () { return <div {...this.props} /> }
     }
 
     it('should be in a windowed environment', () => {
@@ -501,8 +499,5 @@ describe('Flex', () => {
         })
       })
     })
-
   })
-
-
 })

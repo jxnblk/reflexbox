@@ -1,13 +1,13 @@
 
 import React from 'react'
 import { Header, Footer } from 'blk'
-import { Flex, Box } from '../src'
+import { Box } from '../src'
 import FlexDemos from './FlexDemos'
 import BoxDemos from './BoxDemos'
 
 class App extends React.Component {
 
-  render() {
+  render () {
     const { components } = this.props
 
     return (
@@ -23,7 +23,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  derp: React.PropTypes.string
+  components: React.PropTypes.object
 }
 
 export default App

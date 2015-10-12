@@ -5,7 +5,7 @@ var configuration = {
     'Chrome_xs',
     'Chrome_sm',
     'Chrome_md',
-    'Chrome_lg',
+    'Chrome_lg'
   ],
 
   customLaunchers: {
@@ -30,7 +30,7 @@ var configuration = {
   singleRun: true,
 
   files: [
-    'index.js',
+    'index.js'
   ],
 
   frameworks: [
@@ -91,7 +91,7 @@ if (process.env.TRAVIS) {
   ]
 }
 
-
 module.exports = function (config) {
   config.set(configuration)
 }
+
