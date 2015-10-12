@@ -18,20 +18,33 @@ const Data = ({ props, ...other }) => {
 
   return (
     <Box>
-      <h4>Props</h4>
+      <Flex>
+        <Box col={3}>
+          <b>Prop</b>
+        </Box>
+        <Box col={2}>
+          <b>Type</b>
+        </Box>
+        <Box col={2}>
+          <b>Default</b>
+        </Box>
+        <Box col={5}>
+          <b>Values</b>
+        </Box>
+      </Flex>
       {p.map((prop, i) => (
         <Flex key={i}>
-          <Box px={2} children={prop.name + (prop.required ? '*' : '')} />
-          <Box px={2} children={prop.type} />
-          <Box px={2} children={prop.default} />
-          <Box px={2}>
+          <Box col={3} children={prop.name + (prop.required ? '*' : '')} />
+          <Box col={2} children={prop.type === 'enum' ? 'One of' : prop.type} />
+          <Box col={2} children={prop.default} />
+          <Box col={5}>
             <code>
               {prop.value && prop.value.map((val) => val.value).join()}
             </code>
           </Box>
         </Flex>
-      ))}
-    </Box>
+        ))}
+      </Box>
   )
 }
 

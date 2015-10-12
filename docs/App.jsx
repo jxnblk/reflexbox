@@ -2,6 +2,7 @@
 import React from 'react'
 import { Header, Footer } from 'blk'
 import { Box } from '../src'
+import Badges from './Badges'
 import FlexDemos from './FlexDemos'
 import BoxDemos from './BoxDemos'
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     return (
       <Box p={3}>
         <Header {...this.props} />
+        <Badges />
         <BoxDemos data={components.box.data} />
         <FlexDemos data={components.flex.data} />
         <Footer {...this.props} />

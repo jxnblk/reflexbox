@@ -15,7 +15,9 @@ describe('Flex', () => {
     flexWrap: null,
     flexDirection: null,
     alignItems: null,
-    justifyContent: null
+    justifyContent: null,
+    marginLeft: null,
+    marginRight: null,
   })
 
   beforeEach(() => {
@@ -186,6 +188,65 @@ describe('Flex', () => {
     it('should set justify-content flex-end', () => {
       computed = assign({}, initial, { justifyContent: 'flex-end' })
       expect(style).to.deep.equal(computed)
+    })
+  })
+
+  describe('gutter prop', () => {
+    context('when set to 1', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Flex gutter={1} />)
+        style = tree.getRenderOutput().props.style
+      })
+
+      it('should set margin left and margin right -8', () => {
+        computed = assign({}, initial, {
+          marginLeft: -8,
+          marginRight: -8
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+    context('when set to 2', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Flex gutter={2} />)
+        style = tree.getRenderOutput().props.style
+      })
+
+      it('should set margin left and margin right -16', () => {
+        computed = assign({}, initial, {
+          marginLeft: -16,
+          marginRight: -16
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+    context('when set to 3', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Flex gutter={3} />)
+        style = tree.getRenderOutput().props.style
+      })
+
+      it('should set margin left and margin right -32', () => {
+        computed = assign({}, initial, {
+          marginLeft: -32,
+          marginRight: -32
+        })
+        expect(style).to.deep.equal(computed)
+      })
+    })
+    context('when set to 4', () => {
+      beforeEach(() => {
+        const tree = sd.shallowRender(<Flex gutter={4} />)
+        style = tree.getRenderOutput().props.style
+      })
+
+      it('should set margin left and margin right -64', () => {
+        computed = assign({}, initial, {
+          marginLeft: -64,
+          marginRight: -64
+        })
+        expect(style).to.deep.equal(computed)
+      })
     })
   })
 

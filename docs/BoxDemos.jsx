@@ -3,9 +3,10 @@ import React from 'react'
 import { Flex, Box } from '../src'
 import Data from './Data'
 
-const BoxDemos = ({ ...props }) => (
+const BoxDemos = ({ data, ...props }) => (
   <Box>
     <h2>Box component</h2>
+    <Data {...data} />
     <Box py={3}>
       <h3>Padded Box</h3>
       <p>The Box component adds padding with the p, px, py, pt, pr, pb, and pl props.</p>
@@ -56,7 +57,7 @@ const BoxDemos = ({ ...props }) => (
     </Box>
     <Box py={3}>
       <h3>Column Box</h3>
-      <p>Use the col prop to set a width</p>
+      <p>Use the col prop to set a width based on a 12 column grid.</p>
       {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
         if (12 % n) { return false }
         const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
@@ -71,7 +72,7 @@ const BoxDemos = ({ ...props }) => (
     </Box>
     <Box py={3}>
       <h3>Small Breakpoint Column Box</h3>
-      <p>Use the sm prop to set a width above the small breakpoint</p>
+      <p>Use the sm prop to set a width above the small breakpoint.</p>
       {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
         if (12 % n) { return false }
         const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
@@ -86,7 +87,7 @@ const BoxDemos = ({ ...props }) => (
     </Box>
     <Box py={3}>
       <h3>Medium Breakpoint Column Box</h3>
-      <p>Use the md prop to set a width above the medium breakpoint</p>
+      <p>Use the md prop to set a width above the medium breakpoint.</p>
       {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
         if (12 % n) { return false }
         const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)
@@ -101,7 +102,7 @@ const BoxDemos = ({ ...props }) => (
     </Box>
     <Box py={3}>
       <h3>Large Breakpoint Column Box</h3>
-      <p>Use the lg prop to set a width above the large breakpoint</p>
+      <p>Use the lg prop to set a width above the large breakpoint.</p>
       {Array.from({ length: 6 }, (a, b) => b + 1).map((n, i) => {
         if (12 % n) { return false }
         const boxes = Array.from({ length: Math.floor(12/n) }, (a, b) => b)

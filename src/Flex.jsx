@@ -4,12 +4,12 @@ import styleNormalizer from 'react-style-normalizer'
 import scale from './scale'
 import breakpoints from './breakpoints'
 
-
 const Flex = ({
   wrap,
   column,
   align,
   justify,
+  gutter,
   sm,
   md,
   lg,
@@ -40,6 +40,8 @@ const Flex = ({
     flexDirection: column ? 'column' : null,
     alignItems: align || null,
     justifyContent: justify || null,
+    marginLeft: gutter ? -scale[gutter] : null,
+    marginRight: gutter ? -scale[gutter] : null
   })
 
   return <div
@@ -56,6 +58,7 @@ Flex.propTypes = {
   sm: bool,
   md: bool,
   lg: bool,
+  gutter: oneOf([0, 1, 2, 3, 4]),
   align: oneOf([
     'stretch',
     'center',

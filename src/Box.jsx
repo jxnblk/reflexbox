@@ -19,11 +19,11 @@ const Box = ({
   ...props
 }) => {
 
-  let width
-
   function w(n) {
     return n ? (n / 12 * 100) + '%' : null
   }
+
+  let width = w(col)
 
   if (typeof window !== 'undefined') {
     width = w(col)
@@ -36,8 +36,6 @@ const Box = ({
     if (window.matchMedia(breakpoints.lg).matches) {
       width = w(lg) || width
     }
-  } else {
-    width = w(col)
   }
 
   const style = {
