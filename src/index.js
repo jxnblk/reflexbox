@@ -1,11 +1,5 @@
 
-import scale from './scale'
-import Flex from './Flex'
-import Box from './Box'
-
-export default {
-  scale,
-  Flex,
-  Box
-}
+export { default as scale } from './scale'
+export { default as Flex } from './Flex'
+export { default as Box } from './Box'
 

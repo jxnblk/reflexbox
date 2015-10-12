@@ -190,7 +190,7 @@ describe('Flex', () => {
     })
   })
 
-  context('media queries', () => {
+  describe('media queries', () => {
 
     if (typeof window === 'undefined') {
       return false
@@ -204,7 +204,7 @@ describe('Flex', () => {
       expect(window).to.exist
     })
 
-    context('when below sm size', () => {
+    context('when below sm breakpoint', () => {
       let root, flex
 
       if (window.matchMedia('(min-width: 32em)').matches) {
@@ -277,7 +277,7 @@ describe('Flex', () => {
       })
     })
 
-    context('when between sm and md size', () => {
+    context('when between sm and md breakpoints', () => {
       let root, flex
 
       if (!window.matchMedia('(min-width: 32em) and (max-width: 48em)').matches) {
@@ -351,7 +351,7 @@ describe('Flex', () => {
       })
     })
 
-    context('when between md and lg size', () => {
+    context('when between md and lg breakpoints', () => {
       let root, flex
 
       if (!window.matchMedia('(min-width: 48em) and (max-width: 64em)').matches) {
@@ -426,7 +426,7 @@ describe('Flex', () => {
       })
     })
 
-    context('when above lg size', () => {
+    context('when above lg breakpoints', () => {
       let root, flex
 
       if (!window.matchMedia('(min-width: 64em)').matches) {

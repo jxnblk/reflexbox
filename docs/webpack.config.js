@@ -30,8 +30,11 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        exclude: /node_modules|react\-docgen/,
+        loaders: [
+          'react-hot',
+          'babel'
+        ]
       },
       {
         test: /\.css$/,
@@ -49,6 +52,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
+  },
+
+  node: {
+    fs: 'empty'
   }
 
 }
