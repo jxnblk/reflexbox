@@ -2,6 +2,10 @@
 require('babel/register')()
 
 var webpack = require('webpack')
+var postcssImport = require('postcss-import')
+var postcssCustomMedia = require('postcss-custom-media')
+var postcssCustomProperties = require('postcss-custom-properties')
+var autoprefixer = require('autoprefixer')
 
 module.exports = {
 
@@ -31,8 +35,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: ['style', 'css', 'postcss']
       }
+    ]
+  },
+
+  postcss: function () {
+    return [
+      postcssImport({
+        onImport: function (files) {
+          files.forEach(this.addDependency);
+        }.bind(this)
+      }),
+      postcssCustomMedia,
+      postcssCustomProperties,
+      postcssCustomProperties,
+      autoprefixer
     ]
   },
 

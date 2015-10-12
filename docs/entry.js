@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 import 'basscss/css/basscss.css'
+import 'blk/src/css/blk.css'
 import './app.css'
 
 import { Flex, Box } from '../src'
@@ -22,7 +23,7 @@ import { Flex, Box } from '../src'
 const props = {
   title: 'reflexbox',
   href: 'http://jxnblk.com/reflexbox',
-  description: 'React flexbox layout and grid system',
+  description: 'React flexbox layout and grid system, built with stateless components and inline styles',
   links: [
     {
       href: 'https://npmjs.com/package/reflexbox',

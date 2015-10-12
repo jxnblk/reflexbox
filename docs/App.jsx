@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Header, Footer } from 'blk'
+import { Header, Footer, CarbonAd } from 'blk'
 import { Flex, Box } from '../src'
 import Badges from './Badges'
 import FlexDemos from './FlexDemos'
@@ -16,8 +16,8 @@ class App extends React.Component {
         <Header {...this.props} />
         <Badges />
         <Box py={3}>
-          <Flex sm gutter={2}>
-            <Box px={2} sm={6}>
+          <Flex sm wrap gutter={2}>
+            <Box px={2} md={4}>
               <p>
                 {`
                 Reflexbox is a React grid system composed of the
@@ -30,13 +30,16 @@ class App extends React.Component {
                 `}
               </p>
             </Box>
-            <Box px={2} sm={6}>
+            <Box px={2} md={4}>
               <p>
                 {`
                   These components are tested with React’s shallow rendering
                   as well as browser tests in Karma at four different breakpoints.
                 `}
               </p>
+            </Box>
+            <Box px={2} md={4}>
+              <CarbonAd />
             </Box>
           </Flex>
         </Box>
