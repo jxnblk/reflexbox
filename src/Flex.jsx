@@ -18,7 +18,7 @@ const Flex = ({
 
   let display
 
-  if (typeof window != undefined) {
+  if (typeof window !== 'undefined') {
     if (sm && window.matchMedia(breakpoints.sm).matches) {
       display = 'flex'
     } else if (md && window.matchMedia(breakpoints.md).matches) {

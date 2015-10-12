@@ -25,7 +25,7 @@ const Box = ({
     return n ? (n / 12 * 100) + '%' : null
   }
 
-  if (typeof window != undefined) {
+  if (typeof window !== 'undefined') {
     width = w(col)
     if (window.matchMedia(breakpoints.sm).matches) {
       width = w(sm) || width
