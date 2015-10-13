@@ -15,7 +15,8 @@ module.exports = _.assign({}, config, {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.IgnorePlugin(/react-addons|react-dom/)
   ],
 
   devServer: {

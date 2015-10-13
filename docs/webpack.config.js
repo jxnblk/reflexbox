@@ -40,6 +40,10 @@ module.exports = {
     ]
   },
 
+  plugins: [
+    new webpack.IgnorePlugin(/react-addons|react-dom/)
+  ],
+
   postcss: function () {
     return [
       postcssImport({

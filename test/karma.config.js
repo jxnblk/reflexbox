@@ -1,4 +1,6 @@
 
+var webpack = require('webpack')
+
 var configuration = {
   browsers: [
     'Firefox',
@@ -69,7 +71,10 @@ var configuration = {
           loader: 'json-loader'
         }
       ]
-    }
+    },
+    plugins: [
+      new webpack.IgnorePlugin(/react\/lib\/ReactContext/)
+    ]
   },
 
   webpackMiddleware: {
