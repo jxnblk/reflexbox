@@ -9,14 +9,22 @@ var autoprefixer = require('autoprefixer')
 
 module.exports = {
 
-  entry: [
-    './docs/entry'
-  ],
+  entry: {
+    dev: [
+      'webpack-dev-server/client?http://localhost:8080/',
+      'webpack/hot/only-dev-server',
+      './docs/dev.entry',
+      './docs/entry'
+    ],
+    bundle: [
+      './docs/entry'
+    ]
+  },
 
   output: {
     path: __dirname,
     publicPath: 'docs',
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
 
   resolve: {
@@ -28,21 +36,14 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules|react\-docgen/,
-        loaders: [
-          'react-hot',
-          'babel'
-        ]
+        loaders: [ 'react-hot', 'babel' ]
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css', 'postcss']
+        loaders: [ 'style', 'css', 'postcss' ]
       }
     ]
   },
-
-  plugins: [
-    new webpack.IgnorePlugin(/react-addons|react-dom/)
-  ],
 
   postcss: function () {
     return [
@@ -60,6 +61,15 @@ module.exports = {
 
   node: {
     fs: 'empty'
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+
+  devServer: {
+    // historyApiFallback: true,
+    hot: true
   }
 
 }
