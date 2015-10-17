@@ -13,7 +13,7 @@ The Flex component creates a flexbox context and
 controls direction, alignment, justification, and gutter compensation.
 The Box component controls padding, flex-basis, and width.
 With breakpoint-based responsive styles,
-these two components can handle virtually all layout styling needs.
+these two components can handle virtually any layout composition.
 `
 
 const p2 = `

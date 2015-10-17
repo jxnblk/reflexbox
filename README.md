@@ -13,6 +13,7 @@ npm install reflexbox
 ```
 
 ```js
+// Example
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 
@@ -30,9 +31,11 @@ class Component extends React.Component {
 }
 ```
 
+Reflexbox is composed of two React v0.14 stateless function components that can handle virtually any layout composition.
+
 ## `<Flex />`
 
-Creates a flexbox context to control layout of children.
+A component that creates a flexbox context to control layout of children.
 
 ### Props
 
@@ -51,7 +54,7 @@ Sets `justify-content`. Accepted values: `stretch`, `center`, `baseline`, `flex-
 
 ## `<Box />`
 
-Sets padding and acts as a child component for <Flex />.
+A component that sets padding and width that works independently or as a child component of <Flex />.
 
 ### Props
 
@@ -78,6 +81,18 @@ Sets padding-left based on a scale from 0 – 4.
 
 #### `pr` (number, default null)
 Sets padding-right based on a scale from 0 – 4.
+
+#### `col` (number, default null)
+Sets width and flex-basis based on a twelve column grid.
+
+#### `sm` (number, default null)
+Sets width and flex-basis above the small breakpoint based on a twelve column grid.
+
+#### `md` (number, default null)
+Sets width and flex-basis above the medium breakpoint based on a twelve column grid.
+
+#### `lg` (number, default null)
+Sets width and flex-basis above the large breakpoint based on a twelve column grid.
 
 ## Tests
 
