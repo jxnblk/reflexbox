@@ -1,12 +1,15 @@
 
 import React from 'react'
 import { Flex, Box } from '../../src'
-// import Data from './Data'
+import Rect from './Rect'
+import Heading from './Heading'
 
 const BoxDemos = ({ data, ...props }) => (
   <div className='BoxDemos'>
     <Box>
-      <h2>Box component</h2>
+      <Rect color='aqua'>
+        <Heading children='Box component' />
+      </Rect>
       {/*
       <Data {...data} />
       */}

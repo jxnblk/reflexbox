@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { aqua, blue } from './styles'
 
 const sx = {
   fontSize: 14,
@@ -8,7 +9,7 @@ const sx = {
   letterSpacing: '.4em',
   textDecoration: 'none',
   lineHeight: 3,
-  color: 'blue',
+  color: blue,
 }
 
 const Link = (props) => (

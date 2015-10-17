@@ -2,13 +2,14 @@
 import React from 'react'
 import { Flex, Box } from '../../src'
 import Link from './Link'
+import Heading from './Heading'
 
 const Header = ({ title, description, links, ...props }) => (
   <Box py={2}>
     <Link href='http://jxnblk.com' children='Jxnblk' />
     <Flex md align='center'>
       <Box md={6}>
-        <h1 className='caps' children={title} />
+        <Heading level={1} color='navy' children={title} />
         <p className='caps' children={description} />
       </Box>
       <Box fill />
