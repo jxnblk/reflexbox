@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 // import * as docgen from 'react-docgen'
 
 import App from './components/App'
+import Root from './components/Root'
 // import 'basscss/css/basscss.css'
 // import 'blk/src/css/blk.css'
 import './app.css'
@@ -48,5 +49,5 @@ const props = {
   }
 }
 
-ReactDOM.render(<App {...props} />, document.getElementById('app'))
+ReactDOM.render(<Root {...props} />, document.getElementById('app'))
 
