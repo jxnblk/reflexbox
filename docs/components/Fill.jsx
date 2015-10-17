@@ -7,18 +7,20 @@ import Heading from './Heading'
 import Text from './Text'
 
 const Fill = () => (
-  <Field p={4} color='red'>
-    <Flex align='center' gutter={3}>
-      <Box fill>
-        <Field color='white' p={4}>
-          <Text caps color='red' children='<Box fill/>' />
-        </Field>
-      </Box>
-      <Box px={4}>
-        <Heading color='white' children='Fill' />
-      </Box>
-    </Flex>
-  </Field>
+  <Box p={3}>
+    <Field px={3} py={4} color='navy'>
+      <Flex align='center'>
+        <Box fill>
+          <Field color='aqua' px={2} py={4}>
+            <Text small caps color='blue' children='<Box fill/>' />
+          </Field>
+        </Box>
+        <Box px={2}>
+          <Heading color='white' children='Fill' />
+        </Box>
+      </Flex>
+    </Field>
+  </Box>
 )
 
 export default Fill

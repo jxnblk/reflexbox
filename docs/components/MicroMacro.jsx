@@ -7,30 +7,32 @@ import Heading from './Heading'
 import Text from './Text'
 
 const MicroMacro = () => (
-  <Field p={4} color='yellow'>
-    <Box py={2}>
-      <Flex sm align='center' gutter={3}>
-        <Box px={3}>
-          <Field color='orange' center p={2}>
-            <Heading color='yellow' children='Micro' />
-          </Field>
-        </Box>
-        <Box px={3}>
-          <Heading center color='orange' children='+' />
-        </Box>
-        <Box px={3} fill>
-          <Field color='orange' center py={4}>
-            <Heading color='yellow' children='Macro' />
-          </Field>
-        </Box>
-      </Flex>
-    </Box>
-    <Box py={2}>
-      <Text center caps
-        color='orange'
-        children='Works well for both micro and macro layout considerations' />
-    </Box>
-  </Field>
+  <Box p={3}>
+    <Field px={3} py={4} color='yellow'>
+      <Box py={2}>
+        <Flex sm align='center' gutter={3}>
+          <Box px={3}>
+            <Field color='pink' center p={2}>
+              <Heading level={4} color='yellow' children='Micro' />
+            </Field>
+          </Box>
+          <Box px={3}>
+            <Heading center color='pink' children='+' />
+          </Box>
+          <Box px={3} fill>
+            <Field color='pink' center py={4}>
+              <Heading color='yellow' children='Macro' />
+            </Field>
+          </Box>
+        </Flex>
+      </Box>
+      <Box py={2}>
+        <Text center caps
+          color='blue'
+          children='Works well for both micro and macro layout considerations' />
+      </Box>
+    </Field>
+  </Box>
 )
 
 export default MicroMacro

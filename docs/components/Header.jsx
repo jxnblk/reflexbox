@@ -4,6 +4,7 @@ import { Flex, Box, breakpoints } from '../../src'
 import Heading from './Heading'
 import Text from './Text'
 import Link from './Link'
+import Rect from './Rect'
 
 const Header = ({ title, description, links, breakpoint, ...props }) => (
   <Box px={3} py={2}>
@@ -12,11 +13,6 @@ const Header = ({ title, description, links, breakpoint, ...props }) => (
       <Box md={6}>
         <Heading level={1} color='navy' children={title} />
         <Text caps color='navy' children={description} />
-        {/*
-        <Text small caps color='aqua'>
-          {breakpoint} - {breakpoints[breakpoint]}
-        </Text>
-        */}
       </Box>
       <Box fill />
       <Flex gutter={1}>

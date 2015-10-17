@@ -18,8 +18,9 @@ import Divide from './Divide'
 import Respond from './Respond'
 import Align from './Align'
 import Justify from './Justify'
-
+import Wrap from './Wrap'
 import Stack from './Stack'
+import GetStarted from './GetStarted'
 
 const win = typeof window === 'undefined' ? false : window
 
@@ -88,7 +89,7 @@ class App extends React.Component {
       <div style={sx.root}>
         <Header {...this.props} {...this.state} />
         <Badges />
-        {/* <Intro /> */}
+        <Intro />
         <FlexBox />
         <MicroMacro />
         <Pad />
@@ -97,15 +98,9 @@ class App extends React.Component {
         <Respond />
         <Align />
         <Justify />
+        <Wrap />
         <Stack />
-
-        {/*
-
-          <Heading children='Wrap' />
-
-          <Heading children='Get Started' />
-          <Footer {...this.props} />
-        */}
+        <GetStarted />
       </div>
     )
   }
