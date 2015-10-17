@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Flex, Box } from '../src'
+import { Flex, Box } from '../../src'
 // import Data from './Data'
 
 const FlexDemos = ({ data, ...props }) => (

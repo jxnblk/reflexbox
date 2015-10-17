@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { GithubButton, TweetButton } from 'blk'
-import { Flex, Box } from '../src'
+import { Flex, Box } from '../../src'
 import Travis from './Travis'
 import CodeClimate from './CodeClimate'
 import Npm from './Npm'

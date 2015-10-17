@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom'
 // import TestUtils from 'react-addons-test-utils'
 // import * as docgen from 'react-docgen'
 
-import App from './App'
-import 'basscss/css/basscss.css'
-import 'blk/src/css/blk.css'
+import App from './components/App'
+// import 'basscss/css/basscss.css'
+// import 'blk/src/css/blk.css'
 import './app.css'
 
 import { Flex, Box } from '../src'
@@ -27,11 +27,11 @@ const props = {
   links: [
     {
       href: 'https://npmjs.com/package/reflexbox',
-      text: 'npm'
+      children: 'npm'
     },
     {
       href: 'https://github.com/jxnblk/reflexbox',
-      text: 'GitHub'
+      children: 'GitHub'
     }
   ],
   components: {
