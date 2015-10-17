@@ -3,7 +3,7 @@ import React from 'react'
 import { aqua, blue } from './styles'
 
 const sx = {
-  fontSize: 14,
+  fontSize: 12,
   fontWeight: 'bold',
   textTransform: 'uppercase',
   letterSpacing: '.4em',

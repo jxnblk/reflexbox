@@ -12,15 +12,15 @@ const MicroMacro = () => (
       <Flex sm align='center' gutter={3}>
         <Box px={3}>
           <Field color='orange' center p={2}>
-            <Heading color='red' children='Micro' />
+            <Heading color='yellow' children='Micro' />
           </Field>
         </Box>
         <Box px={3}>
           <Heading center color='orange' children='+' />
         </Box>
         <Box px={3} fill>
-          <Field color='orange' center p={4}>
-            <Heading color='red' children='Macro' />
+          <Field color='orange' center py={4}>
+            <Heading color='yellow' children='Macro' />
           </Field>
         </Box>
       </Flex>

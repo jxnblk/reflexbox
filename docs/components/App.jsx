@@ -15,10 +15,11 @@ import MicroMacro from './MicroMacro'
 import Pad from './Pad'
 import Fill from './Fill'
 import Divide from './Divide'
-import Stack from './Stack'
+import Respond from './Respond'
+import Align from './Align'
+import Justify from './Justify'
 
-import FlexDemos from './FlexDemos'
-import BoxDemos from './BoxDemos'
+import Stack from './Stack'
 
 const win = typeof window === 'undefined' ? false : window
 
@@ -77,33 +78,35 @@ class App extends React.Component {
     const { components } = this.props
     const { breakpoint } = this.state
 
+    const sx = {
+      root: {
+        overflowX: 'hidden'
+      }
+    }
+
     return (
-      <Box>
+      <div style={sx.root}>
         <Header {...this.props} {...this.state} />
         <Badges />
-        <Intro />
+        {/* <Intro /> */}
         <FlexBox />
         <MicroMacro />
         <Pad />
         <Fill />
         <Divide />
-
+        <Respond />
+        <Align />
+        <Justify />
         <Stack />
 
-        <Heading children='Col' />
-        <Heading children='Responsive' />
-        <Heading children='Align' />
-        <Heading children='Justify' />
-        <Heading children='Wrap' />
-        <Heading children='Get Started' />
-
         {/*
-        <BoxDemos data={components.box.data} />
-        <FlexDemos data={components.flex.data} />
-        */}
 
-        <Footer {...this.props} />
-      </Box>
+          <Heading children='Wrap' />
+
+          <Heading children='Get Started' />
+          <Footer {...this.props} />
+        */}
+      </div>
     )
   }
 

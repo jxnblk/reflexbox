@@ -12,9 +12,11 @@ const Header = ({ title, description, links, breakpoint, ...props }) => (
       <Box md={6}>
         <Heading level={1} color='navy' children={title} />
         <Text caps color='navy' children={description} />
-        <Text small caps color='green'>
+        {/*
+        <Text small caps color='aqua'>
           {breakpoint} - {breakpoints[breakpoint]}
         </Text>
+        */}
       </Box>
       <Box fill />
       <Flex gutter={1}>

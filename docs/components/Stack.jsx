@@ -7,10 +7,10 @@ import Heading from './Heading'
 import Text from './Text'
 
 const Stack = () => (
-  <Field p={4} color='navy'>
+  <Field p={4} color='aqua'>
     <Flex column>
       <Box py={2}>
-        <Heading color='green' children='Stack' />
+        <Heading color='navy' children='Stack' />
       </Box>
       <Box py={2}>
         <Field color='green' p={2}>
