@@ -4,8 +4,14 @@ import { debounce, throttle } from 'lodash'
 import { Footer } from 'blk'
 import { Flex, Box, breakpoints } from '../../src'
 import Header from './Header'
+import Heading from './Heading'
+import Text from './Text'
 import Badges from './Badges'
 import Intro from './Intro'
+import FlexBox from './FlexBox'
+import MicroMacro from './MicroMacro'
+import Pad from './Pad'
+
 import FlexDemos from './FlexDemos'
 import BoxDemos from './BoxDemos'
 
@@ -68,13 +74,26 @@ class App extends React.Component {
 
     return (
       <Box p={3}>
-        <button onClick={this.update} children='Update' />
-        <pre>breakpoint: {breakpoint} - {breakpoints[breakpoint]}</pre>
-        <Header {...this.props} />
+        <Header {...this.props} {...this.state} />
         <Badges />
         <Intro />
+        <FlexBox />
+        <MicroMacro />
+        <Pad />
+
+        <Heading children='Fill' />
+        <Heading children='Col' />
+        <Heading children='Responsive' />
+        <Heading children='Align' />
+        <Heading children='Justify' />
+        <Heading children='Wrap' />
+        <Heading children='Get Started' />
+
+        {/*
         <BoxDemos data={components.box.data} />
         <FlexDemos data={components.flex.data} />
+        */}
+
         <Footer {...this.props} />
       </Box>
     )
