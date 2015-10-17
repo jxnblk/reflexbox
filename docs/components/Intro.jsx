@@ -22,14 +22,14 @@ as well as browser tests in Karma at four different breakpoints.
 `
 
 const Intro = () => (
-  <Box py={3}>
+  <Box p={3}>
     <Flex md align='center' gutter={2}>
       <Box px={2} md={4}>
-        <Text color='green' children={p1} />
+        <Text color='navy' children={p1} />
       </Box>
       <Box px={2} md={4}>
-        <Field color='green'>
-          <Text caps color='navy' children={p2} />
+        <Field p={2} color='navy'>
+          <Text caps color='aqua' children={p2} />
         </Field>
       </Box>
       <Box px={2} md={4}>

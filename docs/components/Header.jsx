@@ -6,7 +6,7 @@ import Text from './Text'
 import Link from './Link'
 
 const Header = ({ title, description, links, breakpoint, ...props }) => (
-  <Box py={2}>
+  <Box px={3} py={2}>
     <Link href='http://jxnblk.com' children='Jxnblk' />
     <Flex md align='center'>
       <Box md={6}>

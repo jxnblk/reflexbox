@@ -7,10 +7,15 @@ import Header from './Header'
 import Heading from './Heading'
 import Text from './Text'
 import Badges from './Badges'
+
+// Sections
 import Intro from './Intro'
 import FlexBox from './FlexBox'
 import MicroMacro from './MicroMacro'
 import Pad from './Pad'
+import Fill from './Fill'
+import Divide from './Divide'
+import Stack from './Stack'
 
 import FlexDemos from './FlexDemos'
 import BoxDemos from './BoxDemos'
@@ -73,15 +78,18 @@ class App extends React.Component {
     const { breakpoint } = this.state
 
     return (
-      <Box p={3}>
+      <Box>
         <Header {...this.props} {...this.state} />
         <Badges />
         <Intro />
         <FlexBox />
         <MicroMacro />
         <Pad />
+        <Fill />
+        <Divide />
 
-        <Heading children='Fill' />
+        <Stack />
+
         <Heading children='Col' />
         <Heading children='Responsive' />
         <Heading children='Align' />

@@ -1,20 +1,20 @@
 
 import React from 'react'
+import { Box } from '../../src'
 import { colors, x } from './styles'
 
-const Field = ({ color, pad, center, ...props }) => (
+const Field = ({ color, center, ...props }) => (
   <div
-    {...props}
     style={{
       textAlign: center ? 'center' : null,
-      padding: x[pad],
       backgroundColor: colors[color]
-    }} />
+    }}>
+    <Box {...props} />
+  </div>
 )
 
 Field.defaultProps = {
-  color: 'aqua',
-  pad: 2,
+  color: 'black'
 }
 
 export default Field

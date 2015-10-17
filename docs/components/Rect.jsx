@@ -1,16 +1,17 @@
 
 import React from 'react'
+import { Box } from '../../src'
 import { colors, x } from './styles'
 
 const Rect = ({ color, border, pad, ...props }) => (
   <div
-    {...props}
     style={{
       textAlign: 'center',
-      padding: x[pad],
       boxShadow: `inset 0 0 0 ${border}px`,
       color: colors[color]
-    }} />
+    }}>
+    <Box {...props} />
+  </div>
 )
 
 Rect.defaultProps = {
