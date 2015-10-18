@@ -23,7 +23,7 @@ const GetStarted = () => (
       </Field>
     </Flex>
     <Box py={4}>
-      <Link href='http://jxnblk.com' children='Made by Jxnblk' />
+      <Link href='http://jxnblk.com' color='black' children='Made by Jxnblk' />
     </Box>
   </Box>
 )
