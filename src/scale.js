@@ -1,12 +1,5 @@
 
-class Scale extends Array {
-  constructor() {
-    super()
-    this.length = scale.length
-  }
-}
-
-let scale = [
+const scale = [
   0,
   8,
   16,
@@ -14,10 +7,5 @@ let scale = [
   64
 ]
 
-function set (arr) {
-  scale = arr
-  return scale
-}
-
-export default { set, ...scale }
+export default scale
 
