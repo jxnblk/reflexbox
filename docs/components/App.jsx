@@ -30,6 +30,7 @@ class App extends React.Component {
     super()
     this.update = debounce(this.update.bind(this), 200)
     this.setBreakpoint = this.setBreakpoint.bind(this)
+    this.checkBreakpoint = this.checkBreakpoint.bind(this)
     this.handleResize = this.handleResize.bind(this)
     this.state = {
       breakpoint: null
@@ -50,6 +51,7 @@ class App extends React.Component {
     if (!win) {
       return false
     }
+    const { breakpoint } = this.state
 
     const { matchMedia } = window
     function match (breakpoint) {
@@ -57,13 +59,20 @@ class App extends React.Component {
     }
 
     if (match(breakpoints.lg)) {
-      this.setState({ breakpoint: 'lg' })
+      this.checkBreakpoint('lg')
     } else if (match(breakpoints.md)) {
-      this.setState({ breakpoint: 'md' })
+      this.checkBreakpoint('md')
     } else if (match(breakpoints.sm)) {
-      this.setState({ breakpoint: 'sm' })
+      this.checkBreakpoint('sm')
     } else {
-      this.setState({ breakpoint: 'xs' })
+      this.checkBreakpoint('xs')
+    }
+  }
+
+  checkBreakpoint (breakpoint) {
+    if (breakpoint !== this.state.breakpoint) {
+      this.setState({ breakpoint })
+      this.forceUpdate()
     }
   }
 
@@ -72,7 +81,6 @@ class App extends React.Component {
 
   update () {
     this.setBreakpoint()
-    this.forceUpdate()
   }
 
   render () {
