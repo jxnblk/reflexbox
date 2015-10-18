@@ -39,6 +39,10 @@ module.exports = {
         loaders: [ 'react-hot', 'babel' ]
       },
       {
+        test: /\.json$/,
+        loaders: ['json']
+      },
+      {
         test: /\.css$/,
         loaders: [ 'style', 'css', 'postcss' ]
       }
