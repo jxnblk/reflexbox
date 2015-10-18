@@ -1,11 +1,4 @@
 
-/*
- * Temporary hack for bad demos
-body {
-  overflow-x: hidden;
-}
- * */
-
 body {
   font-family: -apple-system, system, Roboto, Helvetica, sans-serif;
   line-height: 1.5;
@@ -16,10 +9,5 @@ p,
 h1, h2, h3,
 h4, h5, h6 {
   margin: 0;
-}
-
-.caps {
-  text-transform: uppercase;
-  letter-spacing: .4em;
 }
 
