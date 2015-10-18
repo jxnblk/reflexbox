@@ -1,21 +1,15 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import TestUtils from 'react-addons-test-utils'
-// import * as docgen from 'react-docgen'
 
 import App from './components/App'
 import Root from './components/Root'
-// import 'basscss/css/basscss.css'
-// import 'blk/src/css/blk.css'
 import './app.css'
 
-import { Flex, Box } from '../src'
-// import rawFlex from '!!raw!../src/Flex'
-// import rawBox from '!!raw!../src/Box'
+import { Flex, Box, styles } from '../src'
 
+// import TestUtils from 'react-addons-test-utils'
 // var renderer = TestUtils.createRenderer()
-
 // function getRenderOutput (comp) {
 //   renderer.render(React.createElement(comp))
 //   return renderer.getRenderOutput()
@@ -39,15 +33,21 @@ const props = {
     flex: {
       name: 'Flex',
       // output: getRenderOutput(Flex),
-      // data: docgen.parse(rawFlex)
     },
     box: {
       name: 'Box',
+      // component: Box
       // output: getRenderOutput(Box),
-      // data: docgen.parse(rawBox)
     }
   }
 }
+
+// const propTypes = props.components.box.component.propTypes
+// Object.keys(propTypes).forEach((key) => {
+//   console.log(key)
+//   console.log(propTypes[key])
+//   console.log(React.PropTypes)
+// })
 
 ReactDOM.render(<Root {...props} />, document.getElementById('app'))
 

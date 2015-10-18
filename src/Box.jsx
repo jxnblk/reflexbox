@@ -1,7 +1,6 @@
 
 import React from 'react'
-import scale from './scale'
-import breakpoints from './breakpoints'
+import { breakpoints, scale } from './styles'
 
 const Box = ({
   p,

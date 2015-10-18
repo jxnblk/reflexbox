@@ -10,5 +10,6 @@ describe('scale', () => {
   it('should have a length of 5', () => {
     expect(scale).to.have.length(5)
   })
+
 })
 

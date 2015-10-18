@@ -8,3 +8,4 @@ const scale = [
 ]
 
 export default scale
+

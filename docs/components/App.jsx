@@ -2,7 +2,7 @@
 import React from 'react'
 import { debounce, throttle } from 'lodash'
 import { Footer } from 'blk'
-import { Flex, Box, breakpoints } from '../../src'
+import { Flex, Box, styles } from '../../src'
 import Header from './Header'
 import Heading from './Heading'
 import Text from './Text'
@@ -28,9 +28,9 @@ class App extends React.Component {
 
   constructor () {
     super()
-    this.update = debounce(this.update.bind(this), 200)
+    this.handleResize = debounce(this.handleResize.bind(this), 200)
     this.setBreakpoint = this.setBreakpoint.bind(this)
-    this.handleResize = this.handleResize.bind(this)
+    this.checkBreakpoint = this.checkBreakpoint.bind(this)
     this.state = {
       breakpoint: null
     }
@@ -39,11 +39,11 @@ class App extends React.Component {
 
   componentDidMount () {
     this.setBreakpoint()
-    win.addEventListener('resize', this.update)
+    win.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount () {
-    win.removeEventListener('resize', this.update)
+    win.removeEventListener('resize', this.handleResize)
   }
 
   setBreakpoint () {
@@ -51,28 +51,43 @@ class App extends React.Component {
       return false
     }
 
+    const { breakpoints } = styles
+    const { breakpoint } = this.state
+
     const { matchMedia } = window
     function match (breakpoint) {
       return matchMedia(breakpoint).matches
     }
 
     if (match(breakpoints.lg)) {
-      this.setState({ breakpoint: 'lg' })
+      this.checkBreakpoint('lg')
     } else if (match(breakpoints.md)) {
-      this.setState({ breakpoint: 'md' })
+      this.checkBreakpoint('md')
     } else if (match(breakpoints.sm)) {
-      this.setState({ breakpoint: 'sm' })
+      this.checkBreakpoint('sm')
     } else {
-      this.setState({ breakpoint: 'xs' })
+      this.checkBreakpoint('xs')
+    }
+  }
+
+  checkBreakpoint (breakpoint) {
+    if (breakpoint !== this.state.breakpoint) {
+      this.setState({ breakpoint })
+      this.adjustScale(breakpoint)
+      this.forceUpdate()
+    }
+  }
+
+  adjustScale (breakpoint) {
+    if (breakpoint == 'xs') {
+      styles.setScale([0, 4, 8, 16, 32])
+    } else {
+      styles.setScale([0, 8, 16, 32, 64])
     }
   }
 
   handleResize () {
-  }
-
-  update () {
     this.setBreakpoint()
-    this.forceUpdate()
   }
 
   render () {
@@ -105,10 +120,6 @@ class App extends React.Component {
     )
   }
 
-}
-
-App.propTypes = {
-  components: React.PropTypes.object
 }
 
 export default App
