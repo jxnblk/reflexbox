@@ -39,18 +39,14 @@ A component that creates a flexbox context to control layout of children.
 
 ### Props
 
-#### `wrap` (boolean, default false)
-Sets `flex-wrap: wrap`.
-
-#### `column` (boolean, default false)
-Sets `flex-direction: column`.
-
-#### `align` (string, default null)
-Sets `align-item`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
-
-#### `justify` (string, default null)
-Sets `justify-content`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
-
+- `wrap` (boolean, default false) Sets `flex-wrap: wrap`.
+- `column` (boolean, default false) Sets `flex-direction: column`.
+- `align` (string, default null) Sets `align-item`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
+- `justify` (string, default null) Sets `justify-content`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
+- `gutter` (number, default null) Sets negative left and right margins to compensate for <Box /> padding.
+- `sm` (boolean, default false) Sets `display: flex` only above the small breakpoint
+- `md` (boolean, default false) Sets `display: flex` only above the medium breakpoint
+- `lg` (boolean, default false) Sets `display: flex` only above the large breakpoint
 
 ## `<Box />`
 
@@ -58,41 +54,18 @@ A component that sets padding and width that works independently or as a child c
 
 ### Props
 
-#### `fill` (boolean, default false)
-Sets `flex: 1 1 auto`
-
-#### `p` (number, default null)
-Sets padding based on a scale from 0 – 4.
-
-#### `px` (number, default null)
-Sets x-axis padding based on a scale from 0 – 4.
-
-#### `py` (number, default null)
-Sets y-axis padding based on a scale from 0 – 4.
-
-#### `pt` (number, default null)
-Sets padding-top based on a scale from 0 – 4.
-
-#### `pb` (number, default null)
-Sets padding-bottom based on a scale from 0 – 4.
-
-#### `pl` (number, default null)
-Sets padding-left based on a scale from 0 – 4.
-
-#### `pr` (number, default null)
-Sets padding-right based on a scale from 0 – 4.
-
-#### `col` (number, default null)
-Sets width and flex-basis based on a twelve column grid.
-
-#### `sm` (number, default null)
-Sets width and flex-basis above the small breakpoint based on a twelve column grid.
-
-#### `md` (number, default null)
-Sets width and flex-basis above the medium breakpoint based on a twelve column grid.
-
-#### `lg` (number, default null)
-Sets width and flex-basis above the large breakpoint based on a twelve column grid.
+- `fill` (boolean, default false) Sets `flex: 1 1 auto`
+- `p` (number, default null) Sets padding based on a scale from 0 – 4.
+- `px` (number, default null) Sets x-axis padding based on a scale from 0 – 4.
+- `py` (number, default null) Sets y-axis padding based on a scale from 0 – 4.
+- `pt` (number, default null) Sets padding-top based on a scale from 0 – 4.
+- `pb` (number, default null) Sets padding-bottom based on a scale from 0 – 4.
+- `pl` (number, default null) Sets padding-left based on a scale from 0 – 4.
+- `pr` (number, default null) Sets padding-right based on a scale from 0 – 4.
+- `col` (number, default null) Sets width and flex-basis based on a twelve column grid.
+- `sm` (number, default null) Sets width and flex-basis above the small breakpoint based on a twelve column grid.
+- `md` (number, default null) Sets width and flex-basis above the medium breakpoint based on a twelve column grid.
+- `lg` (number, default null) Sets width and flex-basis above the large breakpoint based on a twelve column grid.
 
 ## Tests
 
