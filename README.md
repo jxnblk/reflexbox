@@ -33,7 +33,7 @@ class Component extends React.Component {
 
 Reflexbox is composed of two React v0.14 stateless function components that can handle virtually any layout composition.
 
-## `<Flex />`
+## \<Flex /\>
 
 A component that creates a flexbox context to control layout of children.
 
@@ -43,14 +43,14 @@ A component that creates a flexbox context to control layout of children.
 - `column` (boolean, default false) Sets `flex-direction: column`.
 - `align` (string, default null) Sets `align-item`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
 - `justify` (string, default null) Sets `justify-content`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
-- `gutter` (number, default null) Sets negative left and right margins to compensate for <Box /> padding.
+- `gutter` (number, default null) Sets negative left and right margins to compensate for \<Box /\> padding.
 - `sm` (boolean, default false) Sets `display: flex` only above the small breakpoint
 - `md` (boolean, default false) Sets `display: flex` only above the medium breakpoint
 - `lg` (boolean, default false) Sets `display: flex` only above the large breakpoint
 
-## `<Box />`
+## \<Box /\>
 
-A component that sets padding and width that works independently or as a child component of <Flex />.
+A component that sets padding and width that works independently or as a child component of \<Flex /\>.
 
 ### Props
 
