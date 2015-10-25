@@ -32,7 +32,7 @@ const Flex = ({
     display = 'flex'
   }
 
-  const style = styleNormalizer({
+  const style = {
     display,
     flexWrap: wrap ? 'wrap' : null,
     flexDirection: column ? 'column' : null,
@@ -40,7 +40,7 @@ const Flex = ({
     justifyContent: justify || null,
     marginLeft: gutter ? -scale[gutter] : null,
     marginRight: gutter ? -scale[gutter] : null
-  })
+  }
 
   return <div
     {...props}

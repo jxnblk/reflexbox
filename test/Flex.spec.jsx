@@ -5,12 +5,11 @@ import { expect } from 'chai'
 import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Flex } from '../src'
-import normalize from 'react-style-normalizer'
 
 describe('Flex', () => {
   let dom, instance, style, computed
 
-  const initial = normalize({
+  const initial = {
     display: 'flex',
     flexWrap: null,
     flexDirection: null,
@@ -18,7 +17,7 @@ describe('Flex', () => {
     justifyContent: null,
     marginLeft: null,
     marginRight: null,
-  })
+  }
 
   beforeEach(() => {
     const tree = sd.shallowRender(<Flex />)
@@ -282,8 +281,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -355,8 +353,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -372,8 +369,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -429,8 +425,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -446,8 +441,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -463,8 +457,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -504,8 +497,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -521,8 +513,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -538,8 +529,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
 
@@ -555,8 +545,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          const value = normalize({ display: 'flex' }).display
-          expect(computed.display).to.equal(value)
+          expect(computed.display).to.equal('flex')
         })
       })
     })
