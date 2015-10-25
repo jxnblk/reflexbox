@@ -1,6 +1,5 @@
 
 import React from 'react'
-import styleNormalizer from 'react-style-normalizer'
 import { breakpoints, scale } from './styles'
 
 const Flex = ({
