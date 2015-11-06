@@ -74,5 +74,9 @@ Flex.propTypes = {
   ])
 }
 
+Flex.defaultProps = {
+  style: {}
+}
+
 export default Flex
 
