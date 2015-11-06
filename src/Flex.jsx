@@ -11,6 +11,7 @@ const Flex = ({
   sm,
   md,
   lg,
+  style,
   ...props
 }) => {
 
@@ -32,7 +33,7 @@ const Flex = ({
     display = 'flex'
   }
 
-  const style = {
+  const sx = Object.assign(style, {
     display,
     flexWrap: wrap ? 'wrap' : null,
     flexDirection: column ? 'column' : null,
@@ -40,11 +41,11 @@ const Flex = ({
     justifyContent: justify || null,
     marginLeft: gutter ? -scale[gutter] : null,
     marginRight: gutter ? -scale[gutter] : null
-  }
+  })
 
   return <div
     {...props}
-    style={style}
+    style={sx}
     className='Flex' />
 }
 
