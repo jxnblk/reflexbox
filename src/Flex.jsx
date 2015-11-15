@@ -11,6 +11,7 @@ const Flex = ({
   sm,
   md,
   lg,
+  stretch,
   style,
   ...props
 }) => {
@@ -33,10 +34,11 @@ const Flex = ({
     display = 'flex'
   }
 
-  const sx = Object.assign(style, {
+  const sx = Object.assign({}, style, {
     display,
     flexWrap: wrap ? 'wrap' : null,
     flexDirection: column ? 'column' : null,
+    flex: stretch ? '1 1 auto' : null,
     alignItems: align || null,
     justifyContent: justify || null,
     marginLeft: gutter ? -scale[gutter] : null,
@@ -71,7 +73,8 @@ Flex.propTypes = {
     'space-between',
     'flex-start',
     'flex-end',
-  ])
+  ]),
+  stretch: bool
 }
 
 Flex.defaultProps = {
