@@ -13,6 +13,7 @@ describe('Flex', () => {
     display: 'flex',
     flexWrap: null,
     flexDirection: null,
+    flex: null,
     alignItems: null,
     justifyContent: null,
     marginLeft: null,

@@ -141,9 +141,9 @@ describe('Box', () => {
     })
   })
 
-  context('when fill prop is set', () => {
+  context('when stretch prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box fill />)
+      const tree = sd.shallowRender(<Box stretch />)
       dom = tree.getRenderOutput()
       style = dom.props.style
     })
