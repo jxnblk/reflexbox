@@ -11,7 +11,8 @@ const Box = ({
   pb,
   pl,
   pr,
-  stretch,
+  flex,
+  auto,
   col,
   sm,
   md,
@@ -44,7 +45,8 @@ const Box = ({
 
   const sx = Object.assign({}, style, {
     boxSizing: 'border-box',
-    flex: stretch ? '1 1 auto' : null,
+    flex: auto ? '1 1 auto' : null,
+    display: flex ? 'flex' : null,
     padding: p ? scale[p] : null,
     paddingTop:    py ? scale[py] : (pt ? scale[pt] : null),
     paddingBottom: py ? scale[py] : (pb ? scale[pb] : null),
@@ -63,7 +65,8 @@ const Box = ({
 const { bool, oneOf } = React.PropTypes
 
 Box.propTypes = {
-  stretch: bool,
+  auto: bool,
+  flex: bool,
   col: oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   sm: oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   md: oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
