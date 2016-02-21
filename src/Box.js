@@ -16,6 +16,8 @@ const Box = ({
   sm,
   md,
   lg,
+  style,
+  className,
   ...props
 }) => {
 
@@ -40,7 +42,7 @@ const Box = ({
     }
   }
 
-  const style = {
+  const sx = Object.assign({}, style, {
     boxSizing: 'border-box',
     flex: stretch ? '1 1 auto' : null,
     padding: p ? scale[p] : null,
@@ -50,12 +52,12 @@ const Box = ({
     paddingRight:  px ? scale[px] : (pr ? scale[pr] : null),
     width: width,
     flexBasis: width
-  }
+  })
 
   return <div
     {...props}
-    style={style}
-    className='Box' />
+    style={sx}
+    className={className ? `Box ${className}` : 'Box'} />
 }
 
 const { bool, oneOf } = React.PropTypes

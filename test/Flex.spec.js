@@ -35,6 +35,44 @@ describe('Flex', () => {
     expect(style).to.deep.equal(initial)
   })
 
+  context('when setting style prop', () => {
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Flex style={{ backgroundColor: 'tomato' }} />)
+      dom = tree.getRenderOutput()
+      style = dom.props.style
+    })
+
+    it('should assign styles', () => {
+      expect(style).to.deep.equal(assign({ backgroundColor: 'tomato' }, initial))
+    })
+  })
+
+  context('when setting className prop', () => {
+    let className
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Flex className='Flex--custom' />)
+      dom = tree.getRenderOutput()
+      className = dom.props.className
+    })
+
+    it('should add a class', () => {
+      expect(className).to.equal('Flex Flex--custom')
+    })
+  })
+
+  context('when no className is set', () => {
+    let className
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Flex />)
+      dom = tree.getRenderOutput()
+      className = dom.props.className
+    })
+
+    it('should not add a class', () => {
+      expect(className).to.equal('Flex')
+    })
+  })
+
   context('when wrap prop is true', () => {
     beforeEach(() => {
       const tree = sd.shallowRender(<Flex wrap />)

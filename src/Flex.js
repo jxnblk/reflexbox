@@ -13,6 +13,7 @@ const Flex = ({
   lg,
   stretch,
   style,
+  className,
   ...props
 }) => {
 
@@ -49,7 +50,7 @@ const Flex = ({
   return <div
     {...props}
     style={sx}
-    className='Flex' />
+    className={className ? `Flex ${className}` : 'Flex'} />
 }
 
 const { bool, oneOf } = React.PropTypes

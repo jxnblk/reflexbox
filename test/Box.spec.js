@@ -36,6 +36,44 @@ describe('Box', () => {
     expect(style).to.deep.equal(initial)
   })
 
+  context('when setting style prop', () => {
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Box style={{ backgroundColor: 'tomato' }} />)
+      dom = tree.getRenderOutput()
+      style = dom.props.style
+    })
+
+    it('should assign styles', () => {
+      expect(style).to.deep.equal(assign({ backgroundColor: 'tomato' }, initial))
+    })
+  })
+
+  context('when setting className prop', () => {
+    let className
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Box className='Box--custom' />)
+      dom = tree.getRenderOutput()
+      className = dom.props.className
+    })
+
+    it('should add a class', () => {
+      expect(className).to.equal('Box Box--custom')
+    })
+  })
+
+  context('when no className is set', () => {
+    let className
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Box />)
+      dom = tree.getRenderOutput()
+      className = dom.props.className
+    })
+
+    it('should not add a class', () => {
+      expect(className).to.equal('Box')
+    })
+  })
+
   context('when p prop is set', () => {
     beforeEach(() => {
       const tree = sd.shallowRender(<Box p={1} />)
