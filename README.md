@@ -47,6 +47,8 @@ A component that creates a flexbox context to control layout of children.
 - `sm` (boolean, default false) Sets `display: flex` only above the small breakpoint
 - `md` (boolean, default false) Sets `display: flex` only above the medium breakpoint
 - `lg` (boolean, default false) Sets `display: flex` only above the large breakpoint
+- `style` (object) Assigns styles to the component [*](#note-on-style-prop)
+- `className` (string) Adds a class to the component [*](#note-on-style-prop)
 
 ## \<Box /\>
 
@@ -66,6 +68,13 @@ A component that sets padding and width that works independently or as a child c
 - `sm` (number, default null) Sets width and flex-basis above the small breakpoint based on a twelve column grid.
 - `md` (number, default null) Sets width and flex-basis above the medium breakpoint based on a twelve column grid.
 - `lg` (number, default null) Sets width and flex-basis above the large breakpoint based on a twelve column grid.
+- `style` (object) Assigns styles to the component [*](#note-on-style-prop)
+- `className` (string) Adds a class to the component [*](#note-on-style-prop)
+
+#### Note on style prop
+
+The `style` and `className` props are added as a convenience and are only recommended for adding color styles.
+For other layout styles, prefer using component composition over using these props.
 
 ## Tests
 
