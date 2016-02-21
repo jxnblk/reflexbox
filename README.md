@@ -23,7 +23,7 @@ class Component extends React.Component {
       <Box p={2}>
         <Flex align='center'>
           <Box px={2}>Box A</Box>
-          <Box px={2} fill>Box B</Box>
+          <Box px={2} auto>Box B</Box>
         </Flex>
       </Box>
     )
@@ -56,7 +56,8 @@ A component that sets padding and width that works independently or as a child c
 
 ### Props
 
-- `fill` (boolean, default false) Sets `flex: 1 1 auto`
+- `auto` (boolean, default false) Sets `flex: 1 1 auto`
+- `flex` (boolean, default false) Sets `display: flex`
 - `p` (number, default null) Sets padding based on a scale from 0 – 4.
 - `px` (number, default null) Sets x-axis padding based on a scale from 0 – 4.
 - `py` (number, default null) Sets y-axis padding based on a scale from 0 – 4.

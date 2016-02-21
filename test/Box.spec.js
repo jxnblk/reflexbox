@@ -12,6 +12,7 @@ describe('Box', () => {
   const initial = {
     boxSizing: 'border-box',
     flex: null,
+    display: null,
     padding: null,
     paddingTop: null,
     paddingBottom: null,
@@ -179,9 +180,23 @@ describe('Box', () => {
     })
   })
 
-  context('when stretch prop is set', () => {
+  context('when flex prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box stretch />)
+      const tree = sd.shallowRender(<Box flex />)
+      dom = tree.getRenderOutput()
+      style = dom.props.style
+    })
+
+    it('should have padding', () => {
+      computed = assign({}, style, { display: 'flex' })
+      expect(style).to.deep.equal(computed)
+    })
+  })
+
+
+  context('when auto prop is set', () => {
+    beforeEach(() => {
+      const tree = sd.shallowRender(<Box auto />)
       dom = tree.getRenderOutput()
       style = dom.props.style
     })
