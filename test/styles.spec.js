@@ -63,5 +63,11 @@ describe('styles', () => {
     })
   })
 
+  context('when setting custom breakpoints', () => {
+    it('should add a single breakpoint')
+    it('should override a single breakpoint')
+    it('should clear a single breakpoint')
+  })
+
 })
 

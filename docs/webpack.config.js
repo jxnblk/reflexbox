@@ -1,5 +1,5 @@
 
-require('babel/register')()
+require('babel-register')
 
 var webpack = require('webpack')
 var postcssImport = require('postcss-import')

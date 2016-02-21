@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { breakpoints, scale } from './styles'
+import styles from './styles'
 
 const Flex = ({
   wrap,
@@ -17,6 +17,7 @@ const Flex = ({
 }) => {
 
   let display
+  const { breakpoints, scale } = styles
 
   if (typeof window !== 'undefined') {
     if (sm && window.matchMedia(breakpoints.sm).matches) {

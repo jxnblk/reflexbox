@@ -3,25 +3,35 @@ import breakpoints from './breakpoints'
 import scale from './scale'
 
 class Styles {
-  constructor () {
-    this.scale = scale
-    this.breakpoints = breakpoints
+  constructor (init) {
+    Object.assign(this, init)
   }
 
-  setScale (arr) {
-    this.scale = arr
+  set (obj) {
+    if (typeof obj !== 'object') {
+      return false
+    }
+    Object.assign(this, obj)
   }
 
-  setBreakpoints (obj) {
-    this.breakpoints = obj
+  get(key) {
+    return this[key]
+  }
+
+  setScale (scale) {
+    this.set({ scale })
+  }
+
+  setBreakpoints (breakpoints) {
+    this.set({ breakpoints })
   }
 
   reset () {
-    this.breakpoints = breakpoints
-    this.scale = scale
+    this.set({ breakpoints, scale })
   }
 }
 
-let styles = styles || new Styles
+const createStyles = () => new Styles({ breakpoints, scale })
+let styles = createStyles()
 
 export default styles

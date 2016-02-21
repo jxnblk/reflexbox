@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { breakpoints, scale } from './styles'
+import styles from './styles'
+
 
 const Box = ({
   p,
@@ -17,6 +18,8 @@ const Box = ({
   lg,
   ...props
 }) => {
+
+  const { breakpoints, scale } = styles
 
   function w(n) {
     return n ? (n / 12 * 100) + '%' : null
