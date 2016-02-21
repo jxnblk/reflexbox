@@ -27,14 +27,10 @@ module.exports = {
     filename: '[name].js',
   },
 
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules|react\-docgen/,
         loaders: [ 'react-hot', 'babel' ]
       },
