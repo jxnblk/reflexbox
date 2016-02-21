@@ -2,10 +2,6 @@
 require('babel-register')
 
 var webpack = require('webpack')
-var postcssImport = require('postcss-import')
-var postcssCustomMedia = require('postcss-custom-media')
-var postcssCustomProperties = require('postcss-custom-properties')
-var autoprefixer = require('autoprefixer')
 
 module.exports = {
 
@@ -32,30 +28,24 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules|react\-docgen/,
-        loaders: [ 'react-hot', 'babel' ]
+        loaders: [
+          // 'react-hot',
+          'babel'
+        ]
       },
       {
         test: /\.json$/,
-        loaders: ['json']
+        loaders: [
+          'json'
+        ]
       },
       {
         test: /\.css$/,
-        loaders: [ 'style', 'css', 'postcss' ]
+        loaders: [
+          'style',
+          'css'
+        ]
       }
-    ]
-  },
-
-  postcss: function () {
-    return [
-      postcssImport({
-        onImport: function (files) {
-          files.forEach(this.addDependency);
-        }.bind(this)
-      }),
-      postcssCustomMedia,
-      postcssCustomProperties,
-      postcssCustomProperties,
-      autoprefixer
     ]
   },
 
@@ -68,7 +58,9 @@ module.exports = {
   ],
 
   devServer: {
-    // historyApiFallback: true,
+    // historyApiFallback: {
+    //   index: '/docsdev'
+    // },
     hot: true
   }
 
