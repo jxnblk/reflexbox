@@ -53,30 +53,30 @@ const Flex = ({
     className={className ? `Flex ${className}` : 'Flex'} />
 }
 
-const { bool, oneOf } = React.PropTypes
-
 Flex.propTypes = {
-  wrap: bool,
-  column: bool,
-  sm: bool,
-  md: bool,
-  lg: bool,
-  gutter: oneOf([0, 1, 2, 3, 4]),
-  align: oneOf([
+  style: React.PropTypes.object,
+  className: React.PropTypes.string,
+  wrap: React.PropTypes.bool,
+  column: React.PropTypes.bool,
+  sm: React.PropTypes.bool,
+  md: React.PropTypes.bool,
+  lg: React.PropTypes.bool,
+  gutter: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  align: React.PropTypes.oneOf([
     'stretch',
     'center',
     'baseline',
     'flex-start',
     'flex-end',
   ]),
-  justify: oneOf([
+  justify: React.PropTypes.oneOf([
     'center',
     'space-around',
     'space-between',
     'flex-start',
     'flex-end',
   ]),
-  stretch: bool
+  stretch: React.PropTypes.bool
 }
 
 Flex.defaultProps = {
