@@ -2,6 +2,7 @@
 import React from 'react'
 import { Flex, Box } from '../../src'
 import ComponentDocs from './ComponentDocs'
+import CarbonAd from './CarbonAd'
 
 class Root extends React.Component {
 
@@ -37,6 +38,7 @@ class Root extends React.Component {
               The Box component controls padding, flex-basis, and width.
               With breakpoint-based responsive styles, these two components can handle virtually any layout composition.
             </p>
+            <CarbonAd />
           </Flex>
         </header>
         <ComponentDocs {...flex} />
