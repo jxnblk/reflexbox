@@ -12,7 +12,7 @@ class ComponentDocs extends React.Component {
     const headers = [
       'Prop',
       'Type',
-      'Default',
+      // 'Default',
       'Description',
     ]
 
@@ -23,14 +23,15 @@ class ComponentDocs extends React.Component {
         return [
           key + (prop.required ? '*' : ''),
           prop.type.name === 'enum' ? `oneOf(${oneOfValues})` : prop.type.name,
-          prop.defaultValue ? prop.defaultValue.value : 'null',
+          // prop.defaultValue ? prop.defaultValue.value : 'null',
           prop.description
         ]
       })
 
     return (
-      <section id={name}
-        className='v100 p4'>
+      <section id={name} className='v100 p4'>
+        {name === 'Flex' && <FlexDemo />}
+        {name === 'Box' && <BoxDemo />}
         <h2>
           <a href={`#${name}`}
             style={{

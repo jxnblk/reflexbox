@@ -1,43 +1,25 @@
 
 .mono { font-family: 'Roboto Mono', monospace }
-.h0 { font-size: 3rem }
-.h00 { font-size: 4rem }
 
-.y256 { min-height: 256px }
-.y100 { min-height: 100% }
+@media screen and (min-width: 32em) {
+  .h0 { font-size: 3rem }
+  .h00 { font-size: 4rem }
+}
+
 .v100 { min-height: 100vh }
 
-@media screen and (min-height: 36em) {
-  .v100 { height: 100vh }
-}
-
-.demo-red {
-  outline: 1px solid #510;
-}
-
-.demo-flex {
-  outline: 1px solid rgba(255, 127, 0, .5);
-}
-
-.demo-box {
-  outline: 1px solid rgba(0, 127, 255, .5);
-}
+.demo-flex { outline: 1px solid #047 }
+.demo-box { outline: 1px solid #08b }
 
 .black { color: #111 }
 .white { color: #fff }
-.blue { color: #08e }
+.blue { color: #0bf }
 .dark-blue { color: #047 }
-.red { color: #f51 }
-.dark-red { color: #510 }
 
 .bg-black { background-color: #111 }
 .bg-white { background-color: #fff }
-.bg-blue { background-color: #08e }
-.bg-red { background-color: #e40 }
+.bg-blue { background-color: #0bf }
 
-.b2 { border-width: 2px }
 .b3 { border-width: 3px }
-.b4 { border-width: 4px }
-
 .border-white { border-color: #fff }
 

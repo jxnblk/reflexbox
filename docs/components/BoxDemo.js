@@ -10,17 +10,17 @@ const propsString = (obj) => {
   return str
 }
 
-const BoxDemo = ({ config, ...props }) => {
+const BoxDemo = ({ ...props }) => {
 
   return (
-    <div className='max-width-4 mb3'>
-      <Flex className='demo-flex'>
-        <Box {...config} children='Box' className='demo-box' />
-        <Box {...config} children='Box' className='demo-box' />
-        <Box {...config} children='Box' className='demo-box' />
-        <Box {...config} children='Box' className='demo-box' />
-        <Box {...config} children='Box' className='demo-box' />
-        <Box {...config} children='Box' className='demo-box' />
+    <div className='mb3 white'>
+      <Flex align='center' justify='space-between' className='demo-flex'>
+        <Box p={4} col={7}
+          className='demo-box'>
+          <h3 className='m0' children='<Box p={4} col={7} />' />
+        </Box>
+        <Box p={2} col={3} children='Box' className='demo-box' />
+        <Box p={2} col={2} children='Box' className='demo-box' />
       </Flex>
     </div>
   )

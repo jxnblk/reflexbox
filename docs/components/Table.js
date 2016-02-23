@@ -27,7 +27,7 @@ const Table = ({ headers, data, color, ...props }) => (
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody className='h5 mono'>
         {data.map((row, i) => (
           <tr key={i}>
             {row.map((d, i) => (
@@ -55,7 +55,7 @@ Table.propTypes = {
 }
 
 Table.defaultProps = {
-  color: '#ccc'
+  color: '#08b'
 }
 
 export default Table

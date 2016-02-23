@@ -15,11 +15,11 @@ class Root extends React.Component {
     const { components: { flex, box } } = this.props
 
     return (
-      <div>
-        <header className='v100 p4 dark-blue bg-blue'>
+      <div className='dark-blue bg-blue'>
+        <header className='v100'>
           <Flex column
             justify='center'
-            className='y100'>
+            className='v100 p4'>
             <h1 className='h0 m0 white'>
               <Flex align='baseline'>
                 <Box p={2}
@@ -42,7 +42,18 @@ class Root extends React.Component {
         <ComponentDocs {...flex} />
         <ComponentDocs {...box} />
         <footer className='p4 '>
-          <h2 className='h00 m0'>Footer</h2>
+          <Flex align='flex-end'>
+            <Box auto p={3}>
+              <p className='h2 caps bold'>Get Started</p>
+              <a href='//github.com/jxnblk/reflexbox'
+                className='bold text-decoration-none inline-block p2 rounded dark-blue bg-white'>
+                View on GitHub
+              </a>
+            </Box>
+            <Box p={3}>
+              <a href='//jxnblk.com' className='h5 white'>Made by Jxnblk</a>
+            </Box>
+          </Flex>
         </footer>
       </div>
     )
