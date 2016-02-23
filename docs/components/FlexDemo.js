@@ -10,11 +10,11 @@ const propsString = (obj) => {
   return str
 }
 
-const FlexDemo = ({ config, ...props }) => {
+const FlexDemo = ({ ...props }) => {
 
   return (
     <div className='mb3 white'>
-      <Flex justify='stretch' align='center' className='demo-flex'>
+      <Flex align='center' className='demo-flex'>
         <Box p={3} col={8}>
           <h3 className='m0'>
             {'<Flex align=\'center\' />'}
@@ -24,21 +24,6 @@ const FlexDemo = ({ config, ...props }) => {
       </Flex>
     </div>
   )
-}
-
-FlexDemo.propTypes = {
-  config: React.PropTypes.object
-}
-
-FlexDemo.defaultProps = {
-  config: {
-    wrap: false,
-    column: false,
-    gutter: null,
-    align: null,
-    justify: null,
-    auto: false,
-  }
 }
 
 export default FlexDemo

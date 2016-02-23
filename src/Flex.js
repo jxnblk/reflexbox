@@ -32,21 +32,6 @@ const Flex = ({
         display = 'flex'
       }
     })
-    /*
-      if (sm && window.matchMedia(breakpoints.sm).matches) {
-        display = 'flex'
-      } else if (md && window.matchMedia(breakpoints.md).matches) {
-        display = 'flex'
-      } else if (lg && window.matchMedia(breakpoints.lg).matches) {
-        display = 'flex'
-      } else if (sm || md || lg) {
-        display = 'block'
-      } else {
-        display = 'flex'
-      }
-    */
-  } else {
-    display = 'flex'
   }
 
   const sx = Object.assign({}, style, {
@@ -71,10 +56,13 @@ const Flex = ({
 const scaleIndexes = Array.from({ length: styles.scale.length }, (s, i) => i)
 
 Flex.propTypes = {
+  /** Sets flex-wrap: wrap */
   wrap: React.PropTypes.bool,
+  /** Sets flex-direction: column */
   column: React.PropTypes.bool,
-  breakpoint: React.PropTypes.oneOf(Object.keys(styles.breakpoints)),
+  /** Sets negative left and right margins to compensate for <Box /> padding */
   gutter: React.PropTypes.oneOf(scaleIndexes),
+  /** Sets align-item */
   align: React.PropTypes.oneOf([
     'stretch',
     'center',
@@ -82,6 +70,7 @@ Flex.propTypes = {
     'flex-start',
     'flex-end',
   ]),
+  /** Sets justify-content */
   justify: React.PropTypes.oneOf([
     'center',
     'space-around',
@@ -89,12 +78,9 @@ Flex.propTypes = {
     'flex-start',
     'flex-end',
   ]),
+  /** Sets flex: 1 1 auto */
   auto: React.PropTypes.bool
 }
-
-// Flex.defaultProps = {
-//   style: {}
-// }
 
 export default Flex
 

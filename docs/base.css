@@ -8,17 +8,29 @@
 
 .v100 { min-height: 100vh }
 
-.demo-flex { outline: 1px solid #047 }
-.demo-box { outline: 1px solid #08b }
+.demo-flex,
+.Example .Flex {
+  outline: 1px solid #047;
+  outline: 1px solid #068;
+  outline: 1px solid #aef;
+}
 
-.black { color: #111 }
+.demo-box,
+.Example .Box {
+  outline: 1px solid #08b;
+  outline: 1px solid #068;
+  outline: 1px solid #aef;
+}
+
+
 .white { color: #fff }
-.blue { color: #0bf }
+.blue { color: #09d }
+.dark-blue { color: #024 }
 .dark-blue { color: #047 }
 
-.bg-black { background-color: #111 }
 .bg-white { background-color: #fff }
-.bg-blue { background-color: #0bf }
+.bg-blue { background-color: #09d }
+  .bg-blue { background-color: #0cf }
 
 .b3 { border-width: 3px }
 .border-white { border-color: #fff }
