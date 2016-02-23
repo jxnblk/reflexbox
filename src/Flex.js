@@ -68,13 +68,13 @@ const Flex = ({
     className={cx} />
 }
 
+const scaleIndexes = Array.from({ length: styles.scale.length }, (s, i) => i)
+
 Flex.propTypes = {
   wrap: React.PropTypes.bool,
   column: React.PropTypes.bool,
   breakpoint: React.PropTypes.oneOf(Object.keys(styles.breakpoints)),
-  gutter: React.PropTypes.oneOf(
-    Array.from({ length: styles.scale.length }, (s, i) => i)
-  ),
+  gutter: React.PropTypes.oneOf(scaleIndexes),
   align: React.PropTypes.oneOf([
     'stretch',
     'center',
@@ -92,9 +92,9 @@ Flex.propTypes = {
   auto: React.PropTypes.bool
 }
 
-Flex.defaultProps = {
-  style: {}
-}
+// Flex.defaultProps = {
+//   style: {}
+// }
 
 export default Flex
 

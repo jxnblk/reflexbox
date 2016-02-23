@@ -59,6 +59,8 @@ const Box = ({
     className={cx} />
 }
 
+const scaleIndexes = Array.from({ length: styles.scale.length }, (s, i) => i)
+
 Box.propTypes = {
   /** Sets flex: 1 1 auto */
   auto: React.PropTypes.bool,
@@ -67,19 +69,19 @@ Box.propTypes = {
   /** Sets width and flex-basis based on a 12 column grid */
   col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   /** Sets padding based on a scale of 0–4 */
-  p: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  p: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-left and padding-right based on a scale of 0–4 */
-  px: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  px: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-top and padding-bottom based on a scale of 0–4 */
-  py: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  py: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-top based on a scale of 0–4 */
-  pt: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  pt: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-bottom based on a scale of 0–4 */
-  pb: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  pb: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-left based on a scale of 0–4 */
-  pl: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  pl: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-right based on a scale of 0–4 */
-  pr: React.PropTypes.oneOf([0, 1, 2, 3, 4]),
+  pr: React.PropTypes.oneOf(scaleIndexes),
 }
 
 export default Box
