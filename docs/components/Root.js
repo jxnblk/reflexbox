@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Flex, Box } from '../../src'
+import { styles, Flex, Box } from '../../src'
 import Header from './Header'
 import ComponentDocs from './ComponentDocs'
 import Examples from './Examples'

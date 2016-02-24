@@ -1,14 +1,9 @@
 
 require('babel-register')
 
-var webpack = require('webpack')
-
 module.exports = {
-
   entry: {
     dev: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      'webpack/hot/only-dev-server',
       './docs/dev.entry',
       './docs/entry'
     ],
@@ -29,7 +24,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules|react\-docgen/,
         loaders: [
-          // 'react-hot',
           'babel'
         ]
       },
@@ -38,31 +32,12 @@ module.exports = {
         loaders: [
           'json'
         ]
-      },
-      {
-        test: /\.css$/,
-        loaders: [
-          'style',
-          'css'
-        ]
       }
     ]
   },
 
   node: {
     fs: 'empty'
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-
-  devServer: {
-    // historyApiFallback: {
-    //   index: '/docsdev'
-    // },
-    hot: true
   }
-
 }
 
