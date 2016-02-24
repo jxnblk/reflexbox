@@ -1,9 +1,9 @@
 
-.mono { font-family: 'Roboto Mono', monospace }
-
-@media screen and (min-width: 32em) {
-  .h0 { font-size: 3rem }
-  .h00 { font-size: 4rem }
+pre, samp, code,
+.mono {
+  font-family: 'Roboto Mono', monospace;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 .v100 { min-height: 100vh }
@@ -21,7 +21,6 @@
   outline: 1px solid #068;
   outline: 1px solid #aef;
 }
-
 
 .white { color: #fff }
 .blue { color: #0cf }
