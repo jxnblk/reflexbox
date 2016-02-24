@@ -6,6 +6,9 @@ import { Flex, Box, styles } from '../src'
 import flexSrc from '!!babel!raw!../src/Flex'
 import boxSrc from '!!babel!raw!../src/Box'
 
+Flex.displayName = 'Flex'
+Box.displayName = 'Box'
+
 const examples = [
 <Flex>
   <Box children='Box' />
