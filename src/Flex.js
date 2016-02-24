@@ -23,7 +23,7 @@ const Flex = ({
 
   if (typeof window !== 'undefined') {
     Object.keys(breakpoints).forEach(key => {
-      if (Object.keys(props).includes(key)) {
+      if (Object.keys(props).indexOf(key) > -1) {
         display = 'block'
       }
     })
