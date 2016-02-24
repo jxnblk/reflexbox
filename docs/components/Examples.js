@@ -3,7 +3,7 @@ import React from 'react'
 import Example from './Example'
 
 const Examples = ({ examples, ...props }) => (
-  <section id='examples' className='p4'>
+  <section id='examples' className='p3'>
     <h2>
       <a href='#examples'
         style={{

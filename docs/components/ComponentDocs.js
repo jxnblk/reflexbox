@@ -29,7 +29,7 @@ class ComponentDocs extends React.Component {
       })
 
     return (
-      <section id={name} className='v100 p4'>
+      <section id={name} className='v100 p3'>
         {name === 'Flex' && <FlexDemo />}
         {name === 'Box' && <BoxDemo />}
         <h2>

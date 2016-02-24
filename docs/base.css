@@ -24,13 +24,12 @@
 
 
 .white { color: #fff }
-.blue { color: #09d }
+.blue { color: #0cf }
 .dark-blue { color: #024 }
 .dark-blue { color: #047 }
 
 .bg-white { background-color: #fff }
-.bg-blue { background-color: #09d }
-  .bg-blue { background-color: #0cf }
+.bg-blue { background-color: #0cf }
 
 .b3 { border-width: 3px }
 .border-white { border-color: #fff }
