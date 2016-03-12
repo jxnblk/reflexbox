@@ -10,15 +10,6 @@ const renderer = TestUtils.createRenderer()
 describe('Flex', () => {
   let tree, style, computed
 
-  const initial = {
-    display: 'flex',
-    flexWrap: null,
-    flexDirection: null,
-    flex: null,
-    alignItems: null,
-    justifyContent: null
-  }
-
   beforeEach(() => {
     renderer.render(<Flex />)
     tree = renderer.getRenderOutput()
@@ -30,7 +21,7 @@ describe('Flex', () => {
   })
 
   it('should have no styles by default', () => {
-    expect(style).toEqual(initial)
+    expect(style).toEqual({})
   })
 
   context('when setting style prop', () => {
@@ -79,8 +70,7 @@ describe('Flex', () => {
     })
 
     it('should set flex-wrap wrap', () => {
-      computed = assign({}, initial, { flexWrap: 'wrap' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ flexWrap: 'wrap' })
     })
   })
 
@@ -92,8 +82,7 @@ describe('Flex', () => {
     })
 
     it('should set flex-direction column', () => {
-      computed = assign({}, initial, { flexDirection: 'column' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ flexDirection: 'column' })
     })
   })
 
@@ -105,8 +94,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items stretch', () => {
-      computed = assign({}, initial, { alignItems: 'stretch' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ alignItems: 'stretch' })
     })
   })
 
@@ -118,8 +106,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items center', () => {
-      computed = assign({}, initial, { alignItems: 'center' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ alignItems: 'center' })
     })
   })
 
@@ -131,8 +118,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      computed = assign({}, initial, { alignItems: 'baseline' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ alignItems: 'baseline' })
     })
   })
 
@@ -144,8 +130,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      computed = assign({}, initial, { alignItems: 'flex-start' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ alignItems: 'flex-start' })
     })
   })
 
@@ -157,8 +142,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      computed = assign({}, initial, { alignItems: 'flex-end' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ alignItems: 'flex-end' })
     })
   })
 
@@ -170,8 +154,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content center', () => {
-      computed = assign({}, initial, { justifyContent: 'center' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ justifyContent: 'center' })
     })
   })
 
@@ -183,8 +166,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content space-around', () => {
-      computed = assign({}, initial, { justifyContent: 'space-around' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ justifyContent: 'space-around' })
     })
   })
 
@@ -196,8 +178,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content space-between', () => {
-      computed = assign({}, initial, { justifyContent: 'space-between' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ justifyContent: 'space-between' })
     })
   })
 
@@ -209,8 +190,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content flex-start', () => {
-      computed = assign({}, initial, { justifyContent: 'flex-start' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ justifyContent: 'flex-start' })
     })
   })
 
@@ -222,8 +202,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content flex-end', () => {
-      computed = assign({}, initial, { justifyContent: 'flex-end' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ justifyContent: 'flex-end' })
     })
   })
 

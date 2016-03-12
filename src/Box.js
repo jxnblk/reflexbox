@@ -1,5 +1,6 @@
 
 import React from 'react'
+import assign from 'object-assign'
 import Base from './Base'
 import config from './config'
 import margin from './util/margin'
@@ -12,6 +13,8 @@ import padding from './util/padding'
 const Box = ({
   flex,
   auto,
+  align,
+  order,
   col,
   ...props
 }, { reflexbox }) => {
@@ -32,14 +35,14 @@ const Box = ({
     })
   }
 
-  const sx = Object.assign(
+  const sx = assign(
     {},
-    {
-      flex: auto ? '1 1 auto' : null,
-      display: flex ? 'flex' : null,
-      width,
-      flexBasis: width
-    }
+    auto ? { flex: '1 1 auto' } : null,
+    flex ? { display: 'flex' } : null,
+    align ? { alignSelf: align } : null,
+    order ? { order } : null,
+    width ? { width } : null,
+    width ? { flexBasis: width } : null
   )
 
   return (
@@ -55,6 +58,16 @@ Box.propTypes = {
   auto: React.PropTypes.bool,
   /** Sets display: flex */
   flex: React.PropTypes.bool,
+  /** Sets align-self */
+  align: React.PropTypes.oneOf([
+    'stretch',
+    'center',
+    'baseline',
+    'flex-start',
+    'flex-end',
+  ]),
+  /** Sets order */
+  order: React.PropTypes.number,
   /** Sets width and flex-basis based on a 12 column grid */
   col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
 

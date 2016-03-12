@@ -1,5 +1,6 @@
 
 import React from 'react'
+import assign from 'object-assign'
 import Base from './Base'
 import config from './config'
 
@@ -32,14 +33,14 @@ const Flex = ({
     })
   }
 
-  const sx = {
-    display,
-    flexWrap: wrap ? 'wrap' : null,
-    flexDirection: column ? 'column' : null,
-    flex: auto ? '1 1 auto' : null,
-    alignItems: align || null,
-    justifyContent: justify || null
-  }
+  const sx = assign(
+    display ? { display } : null,
+    wrap ? { flexWrap: 'wrap' } : null,
+    column ? { flexDirection: 'column' } : null,
+    auto ? { flex: '1 1 auto' } : null,
+    align ? { alignItems: align } : null,
+    justify ? { justifyContent: justify } : null
+  )
 
   return (
     <Base

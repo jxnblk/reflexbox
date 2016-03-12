@@ -12,13 +12,6 @@ const round = (n) => Math.round(n * 100) / 100
 describe('Box', () => {
   let tree, style
 
-  const initial = {
-    flex: null,
-    display: null,
-    width: null,
-    flexBasis: null
-  }
-
   beforeEach(() => {
     renderer.render(<Box />)
     tree = renderer.getRenderOutput()
@@ -30,7 +23,7 @@ describe('Box', () => {
   })
 
   it('should have no styles by default', () => {
-    expect(style).toEqual(initial)
+    expect(style).toEqual({})
   })
 
   context('when setting style prop', () => {
