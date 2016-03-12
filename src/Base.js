@@ -13,13 +13,13 @@ const Base = ({
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
 
-  const sx = Object.assign(
-    {},
-    style,
-    _style,
-    margin(props, scale),
-    padding(props, scale)
-  )
+  const sx = {
+    ...{},
+    ...style,
+    ..._style,
+    ...margin(props, scale),
+    ...padding(props, scale)
+  }
 
   const cx = className ? `${_className} ${className}` : _className
 
