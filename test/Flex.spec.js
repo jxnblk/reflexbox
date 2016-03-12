@@ -290,9 +290,34 @@ describe('Flex', () => {
 
   describe('React context', () => {
     context('when setting scale', () => {
-      it('should pick up new scale values')
+      beforeEach(() => {
+        renderer.render(<Flex gutter={2} />, {
+          reflexbox: {
+            scale: [0, 2, 4, 6, 8]
+          }
+        })
+        tree = renderer.getRenderOutput()
+      })
+
+      it('should pick up new scale values', () => {
+        expect(tree.props.style.marginLeft).toEqual(-4)
+        expect(tree.props.style.marginRight).toEqual(-4)
+      })
     })
+
     context('when setting breakpoints', () => {
+      beforeEach(() => {
+        renderer.render(<Flex mobile />, {
+          reflexbox: {
+            breakpoints: {
+              mobile: '(min-width: 30em)',
+              tablet: '(min-width: 48em)',
+              desktop: '(min-width: 60em)'
+            }
+          }
+        })
+        tree = renderer.getRenderOutput()
+      })
       it('should pick up new breakpoints values')
     })
   })
@@ -587,6 +612,62 @@ describe('Flex', () => {
             <Root>
               <Flex lg />
             </Root>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          expect(computed.display).toEqual('flex')
+        })
+      })
+    })
+
+    context('when setting custom breakpoints in context', () => {
+      let root, flex
+
+      const ctx = {
+        reflexbox: {
+          breakpoints: {
+            mobile: '(min-width: 30em)',
+            tablet: '(min-width: 48em)',
+            desktop: '(min-width: 60em)'
+          }
+        }
+      }
+
+      context('when below the tablet breakpoint', () => {
+        if (!window.matchMedia('(max-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex mobile />
+            </Root>,
+            ctx
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should not set display flex', () => {
+          expect(computed.display).toEqual('block')
+        })
+      })
+
+      context('when above the tablet breakpoint', () => {
+        if (!window.matchMedia('(min-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <Root>
+              <Flex mobile />
+            </Root>,
+            ctx
           )
           flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
           computed = flex.style
