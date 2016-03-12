@@ -42,11 +42,9 @@ describe('margin util', () => {
     expect(m.margin).toEqual(scale[4])
   })
 
-  it('should return undefined when m is 5', () => {
+  it('should not return margin when m is 5', () => {
     const m = margin({ m: 5 }, scale)
-    expect(m).toEqual({
-      margin: undefined
-    })
+    expect(m).toEqual({})
   })
 
   it('should return auto when m is auto', () => {
@@ -189,6 +187,22 @@ describe('margin util', () => {
     expect(m).toEqual({
       margin: scale[3],
       marginTop: scale[1]
+    })
+  })
+
+  it('should return negative margin left and right when gutter is set', () => {
+    const m = margin({ gutter: 3 }, scale)
+    expect(m).toEqual({
+      marginLeft: -scale[3],
+      marginRight: -scale[3]
+    })
+  })
+
+  it('should override ml and mx when gutter is set', () => {
+    const m = margin({ gutter: 3, ml: 1, mx: 2 }, scale)
+    expect(m).toEqual({
+      marginLeft: -scale[3],
+      marginRight: -scale[3]
     })
   })
 })

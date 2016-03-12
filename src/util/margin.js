@@ -1,7 +1,7 @@
 
 const a = (x) => (key) => x === 'auto' ? { [key]: 'auto' } : null
 
-const n = (key, x, s) => typeof x === 'number' ? { [key]: s[x] } : a(x)(key)
+const n = (key, x, s, multiplier) => typeof s[x] === 'number' ? { [key]: s[x] * (multiplier || 1) } : a(x)(key)
 
 function margin (props, scale) {
   scale = scale || []
@@ -12,7 +12,8 @@ function margin (props, scale) {
     mt,
     mr,
     mb,
-    ml
+    ml,
+    gutter
   } = props || {}
 
   const result = Object.assign({},
@@ -24,7 +25,10 @@ function margin (props, scale) {
     n('marginLeft', ml, scale),
     n('marginRight', mr, scale),
     n('marginLeft', mx, scale),
-    n('marginRight', mx, scale)
+    n('marginRight', mx, scale),
+
+    n('marginLeft', gutter, scale, -1),
+    n('marginRight', gutter, scale, -1),
   )
 
   return result
