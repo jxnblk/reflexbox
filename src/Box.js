@@ -1,6 +1,6 @@
 
 import React from 'react'
-import styles from './styles'
+import config from './config'
 
 /**
  * Sets padding and width and works independently or as a child of <Flex />.
@@ -22,7 +22,7 @@ const Box = ({
   ...props
 }, { reflexbox }) => {
 
-  const { breakpoints, scale } = styles
+  const { breakpoints, scale } = { ...config, ...reflexbox }
 
   function w(n) {
     return n ? (n / 12 * 100) + '%' : null
@@ -59,7 +59,7 @@ const Box = ({
     className={cx} />
 }
 
-const scaleIndexes = Array.from({ length: styles.scale.length }, (s, i) => i)
+const scaleIndexes = Array.from({ length: config.scale.length }, (s, i) => i)
 
 Box.propTypes = {
   /** Sets flex: 1 1 auto */

@@ -377,6 +377,15 @@ describe('Box', () => {
     })
   })
 
+  describe('React context', () => {
+    context('when setting scale', () => {
+      it('should pick up new scale values')
+    })
+    context('when setting breakpoints', () => {
+      it('should pick up new breakpoints values')
+    })
+  })
+
   describe('media queries', () => {
     let root, width, flexBasis
 
