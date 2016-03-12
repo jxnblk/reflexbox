@@ -67,12 +67,10 @@ describe('Box', () => {
       style = tree.props._style
     })
 
-    it('should have padding', () => {
-      const computed = assign({}, style, { display: 'flex' })
-      expect(style).toEqual(computed)
+    it('should set display flex', () => {
+      expect(style).toEqual({ display: 'flex' })
     })
   })
-
 
   context('when auto prop is set', () => {
     beforeEach(() => {
@@ -82,8 +80,31 @@ describe('Box', () => {
     })
 
     it('should set flex: 1 1 auto', () => {
-      const computed = assign({}, style, { flex: '1 1 auto' })
-      expect(style).toEqual(computed)
+      expect(style).toEqual({ flex: '1 1 auto' })
+    })
+  })
+
+  context('when order prop is set', () => {
+    beforeEach(() => {
+      renderer.render(<Box order={2} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props._style
+    })
+
+    it('should set order: 2', () => {
+      expect(style).toEqual({ order: 2 })
+    })
+  })
+
+  context('when align prop is set', () => {
+    beforeEach(() => {
+      renderer.render(<Box align='center' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props._style
+    })
+
+    it('should set align-self: center', () => {
+      expect(style).toEqual({ alignSelf: 'center' })
     })
   })
 
