@@ -1,6 +1,7 @@
 
 import React from 'react'
 import config from './config'
+import Base from './Base'
 import margin from './util/margin'
 import padding from './util/padding'
 
@@ -14,13 +15,11 @@ const Flex = ({
   align,
   justify,
   auto,
-  style,
-  className,
   ...props
 }, { reflexbox }) => {
 
   let display = 'flex'
-  const { breakpoints, scale } = { ...config, ...reflexbox }
+  const { breakpoints } = { ...config, ...reflexbox }
 
   if (typeof window !== 'undefined') {
     Object.keys(breakpoints).forEach(key => {
@@ -35,27 +34,21 @@ const Flex = ({
     })
   }
 
-  const sx = Object.assign(
-    {},
-    style,
-    {
-      display,
-      flexWrap: wrap ? 'wrap' : null,
-      flexDirection: column ? 'column' : null,
-      flex: auto ? '1 1 auto' : null,
-      alignItems: align || null,
-      justifyContent: justify || null
-    },
-    margin(props, scale),
-    padding(props, scale)
+  const sx = {
+    display,
+    flexWrap: wrap ? 'wrap' : null,
+    flexDirection: column ? 'column' : null,
+    flex: auto ? '1 1 auto' : null,
+    alignItems: align || null,
+    justifyContent: justify || null
+  }
+
+  return (
+    <Base
+      {...props}
+      _style={sx}
+      _className='Flex' />
   )
-
-  const cx = className ? `Flex ${className}` : 'Flex'
-
-  return <div
-    {...props}
-    style={sx}
-    className={cx} />
 }
 
 Flex.propTypes = {

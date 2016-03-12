@@ -3,7 +3,7 @@ import { assign } from 'lodash'
 import React from 'react'
 import expect from 'expect'
 import TestUtils from 'react-addons-test-utils'
-import { Flex } from '../src'
+import { Flex, Base } from '../src'
 
 const renderer = TestUtils.createRenderer()
 
@@ -22,11 +22,11 @@ describe('Flex', () => {
   beforeEach(() => {
     renderer.render(<Flex />)
     tree = renderer.getRenderOutput()
-    style = tree.props.style
+    style = tree.props._style
   })
 
   it('should render', () => {
-    expect(tree.type).toEqual('div')
+    expect(tree.type).toEqual(Base)
   })
 
   it('should have no styles by default', () => {
@@ -41,7 +41,7 @@ describe('Flex', () => {
     })
 
     it('should assign styles', () => {
-      expect(style).toEqual(assign({ backgroundColor: 'tomato' }, initial))
+      expect(style).toEqual({ backgroundColor: 'tomato' })
     })
   })
 
@@ -54,7 +54,7 @@ describe('Flex', () => {
     })
 
     it('should add a class', () => {
-      expect(className).toEqual('Flex Flex--custom')
+      expect(className).toEqual('Flex--custom')
     })
   })
 
@@ -67,7 +67,7 @@ describe('Flex', () => {
     })
 
     it('should not add a class', () => {
-      expect(className).toEqual('Flex')
+      expect(className).toNotExist()
     })
   })
 
@@ -75,7 +75,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex wrap />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set flex-wrap wrap', () => {
@@ -88,7 +88,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex column />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set flex-direction column', () => {
@@ -101,7 +101,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex align='stretch' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set align-items stretch', () => {
@@ -114,7 +114,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex align='center' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set align-items center', () => {
@@ -127,7 +127,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex align='baseline' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set align-items baseline', () => {
@@ -140,7 +140,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex align='flex-start' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set align-items baseline', () => {
@@ -153,7 +153,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex align='flex-end' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set align-items baseline', () => {
@@ -166,7 +166,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex justify='center' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set justify-content center', () => {
@@ -179,7 +179,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex justify='space-around' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set justify-content space-around', () => {
@@ -192,7 +192,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex justify='space-between' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set justify-content space-between', () => {
@@ -205,7 +205,7 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex justify='flex-start' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set justify-content flex-start', () => {
@@ -218,89 +218,12 @@ describe('Flex', () => {
     beforeEach(() => {
       renderer.render(<Flex justify='flex-end' />)
       tree = renderer.getRenderOutput()
-      style = tree.props.style
+      style = tree.props._style
     })
 
     it('should set justify-content flex-end', () => {
       computed = assign({}, initial, { justifyContent: 'flex-end' })
       expect(style).toEqual(computed)
-    })
-  })
-
-  describe('gutter prop', () => {
-    context('when set to 1', () => {
-      beforeEach(() => {
-        renderer.render(<Flex gutter={1} />)
-        style = renderer.getRenderOutput().props.style
-      })
-
-      it('should set margin left and margin right -8', () => {
-        computed = assign({}, initial, {
-          marginLeft: -8,
-          marginRight: -8
-        })
-        expect(style).toEqual(computed)
-      })
-    })
-    context('when set to 2', () => {
-      beforeEach(() => {
-        renderer.render(<Flex gutter={2} />)
-        style = renderer.getRenderOutput().props.style
-      })
-
-      it('should set margin left and margin right -16', () => {
-        computed = assign({}, initial, {
-          marginLeft: -16,
-          marginRight: -16
-        })
-        expect(style).toEqual(computed)
-      })
-    })
-    context('when set to 3', () => {
-      beforeEach(() => {
-        renderer.render(<Flex gutter={3} />)
-        style = renderer.getRenderOutput().props.style
-      })
-
-      it('should set margin left and margin right -32', () => {
-        computed = assign({}, initial, {
-          marginLeft: -32,
-          marginRight: -32
-        })
-        expect(style).toEqual(computed)
-      })
-    })
-    context('when set to 4', () => {
-      beforeEach(() => {
-        renderer.render(<Flex gutter={4} />)
-        style = renderer.getRenderOutput().props.style
-      })
-
-      it('should set margin left and margin right -64', () => {
-        computed = assign({}, initial, {
-          marginLeft: -64,
-          marginRight: -64
-        })
-        expect(style).toEqual(computed)
-      })
-    })
-  })
-
-  describe('React context', () => {
-    context('when setting scale', () => {
-      beforeEach(() => {
-        renderer.render(<Flex gutter={2} />, {
-          reflexbox: {
-            scale: [0, 2, 4, 6, 8]
-          }
-        })
-        tree = renderer.getRenderOutput()
-      })
-
-      it('should pick up new scale values', () => {
-        expect(tree.props.style.marginLeft).toEqual(-4)
-        expect(tree.props.style.marginRight).toEqual(-4)
-      })
     })
   })
 
