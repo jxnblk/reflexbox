@@ -2,12 +2,13 @@
 import { assign, round } from 'lodash'
 import React from 'react'
 import expect from 'expect'
-import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Box } from '../src'
 
+const renderer = TestUtils.createRenderer()
+
 describe('Box', () => {
-  let dom, instance, style, computed
+  let tree, style
 
   const initial = {
     boxSizing: 'border-box',
@@ -23,14 +24,13 @@ describe('Box', () => {
   }
 
   beforeEach(() => {
-    const tree = sd.shallowRender(<Box />)
-    instance = tree.getMountedInstance()
-    dom = tree.getRenderOutput()
-    style = dom.props.style
+    renderer.render(<Box />)
+    tree = renderer.getRenderOutput()
+    style = tree.props.style
   })
 
   it('should render', () => {
-    expect(instance).toExist()
+    expect(tree.type).toEqual('div')
   })
 
   it('should have no styles by default', () => {
@@ -39,9 +39,9 @@ describe('Box', () => {
 
   context('when setting style prop', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box style={{ backgroundColor: 'tomato' }} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box style={{ backgroundColor: 'tomato' }} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should assign styles', () => {
@@ -50,53 +50,49 @@ describe('Box', () => {
   })
 
   context('when setting className prop', () => {
-    let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box className='Box--custom' />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Box className='Box--custom' />)
+      tree = renderer.getRenderOutput()
     })
 
     it('should add a class', () => {
-      expect(className).toEqual('Box Box--custom')
+      expect(tree.props.className).toEqual('Box Box--custom')
     })
   })
 
   context('when no className is set', () => {
-    let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Box />)
+      tree = renderer.getRenderOutput()
     })
 
     it('should not add a class', () => {
-      expect(className).toEqual('Box')
+      expect(tree.props.className).toEqual('Box')
     })
   })
 
   context('when p prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box p={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box p={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding', () => {
-      computed = assign({}, style, { padding: 8 })
+      const computed = assign({}, style, { padding: 8 })
       expect(style).toEqual(computed)
     })
   })
 
   context('when px prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box px={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box px={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding left and right', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingLeft: 8,
         paddingRight: 8
       })
@@ -106,13 +102,13 @@ describe('Box', () => {
 
   context('when py prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box py={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box py={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding top and bottom', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingTop: 8,
         paddingBottom: 8
       })
@@ -122,13 +118,13 @@ describe('Box', () => {
 
   context('when pt prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box pt={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box pt={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding top', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingTop: 8
       })
       expect(style).toEqual(computed)
@@ -137,13 +133,13 @@ describe('Box', () => {
 
   context('when pr prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box pr={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box pr={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding right', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingRight: 8
       })
       expect(style).toEqual(computed)
@@ -152,13 +148,13 @@ describe('Box', () => {
 
   context('when pb prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box pb={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box pb={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding bottom', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingBottom: 8
       })
       expect(style).toEqual(computed)
@@ -167,13 +163,13 @@ describe('Box', () => {
 
   context('when pl prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box px={1} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box px={1} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding left', () => {
-      computed = assign({}, style, {
+      const computed = assign({}, style, {
         paddingLeft: 8
       })
       expect(style).toEqual(computed)
@@ -182,13 +178,13 @@ describe('Box', () => {
 
   context('when flex prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box flex />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box flex />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should have padding', () => {
-      computed = assign({}, style, { display: 'flex' })
+      const computed = assign({}, style, { display: 'flex' })
       expect(style).toEqual(computed)
     })
   })
@@ -196,13 +192,13 @@ describe('Box', () => {
 
   context('when auto prop is set', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Box auto />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Box auto />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set flex: 1 1 auto', () => {
-      computed = assign({}, style, { flex: '1 1 auto' })
+      const computed = assign({}, style, { flex: '1 1 auto' })
       expect(style).toEqual(computed)
     })
   })
@@ -210,11 +206,11 @@ describe('Box', () => {
   describe('col prop', () => {
     context('when set to 1', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={1} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={1} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 8.3%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (1 / 12 * 100) + '%',
           flexBasis: (1 / 12 * 100) + '%'
         })
@@ -224,11 +220,11 @@ describe('Box', () => {
 
     context('when set to 2', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={2} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={2} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 16.6%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (2 / 12 * 100) + '%',
           flexBasis: (2 / 12 * 100) + '%'
         })
@@ -238,11 +234,11 @@ describe('Box', () => {
 
     context('when set to 3', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={3} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={3} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 25%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (3 / 12 * 100) + '%',
           flexBasis: (3 / 12 * 100) + '%'
         })
@@ -252,11 +248,11 @@ describe('Box', () => {
 
     context('when set to 4', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={4} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={4} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 33.3%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (4 / 12 * 100) + '%',
           flexBasis: (4 / 12 * 100) + '%'
         })
@@ -266,11 +262,11 @@ describe('Box', () => {
 
     context('when set to 5', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={5} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={5} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 41.6%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (5 / 12 * 100) + '%',
           flexBasis: (5 / 12 * 100) + '%'
         })
@@ -280,11 +276,11 @@ describe('Box', () => {
 
     context('when set to 6', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={6} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={6} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 50%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (6 / 12 * 100) + '%',
           flexBasis: (6 / 12 * 100) + '%'
         })
@@ -294,11 +290,11 @@ describe('Box', () => {
 
     context('when set to 7', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={7} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={7} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 58.3%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (7 / 12 * 100) + '%',
           flexBasis: (7 / 12 * 100) + '%'
         })
@@ -308,11 +304,11 @@ describe('Box', () => {
 
     context('when set to 8', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={8} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={8} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 66.6%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (8 / 12 * 100) + '%',
           flexBasis: (8 / 12 * 100) + '%'
         })
@@ -322,11 +318,11 @@ describe('Box', () => {
 
     context('when set to 9', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={9} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={9} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 75%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (9 / 12 * 100) + '%',
           flexBasis: (9 / 12 * 100) + '%'
         })
@@ -336,11 +332,11 @@ describe('Box', () => {
 
     context('when set to 10', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={10} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={10} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 83.3%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (10 / 12 * 100) + '%',
           flexBasis: (10 / 12 * 100) + '%'
         })
@@ -350,11 +346,11 @@ describe('Box', () => {
 
     context('when set to 11', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={11} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={11} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 91.6%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (11 / 12 * 100) + '%',
           flexBasis: (11 / 12 * 100) + '%'
         })
@@ -364,11 +360,11 @@ describe('Box', () => {
 
     context('when set to 12', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Box col={12} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Box col={12} />)
+        style = renderer.getRenderOutput().props.style
       })
       it('should set width and flex-basis to 100%', () => {
-        computed = assign({}, style, {
+        const computed = assign({}, style, {
           width: (12 / 12 * 100) + '%',
           flexBasis: (12 / 12 * 100) + '%'
         })
@@ -387,7 +383,7 @@ describe('Box', () => {
   })
 
   describe('media queries', () => {
-    let root, width, flexBasis
+    let root, computed, width, flexBasis
 
     if (typeof window === 'undefined') {
       return false
