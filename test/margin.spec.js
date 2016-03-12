@@ -49,6 +49,13 @@ describe('margin util', () => {
     })
   })
 
+  it('should return auto when m is auto', () => {
+    const m = margin({ m: 'auto' }, scale)
+    expect(m).toEqual({
+      margin: 'auto'
+    })
+  })
+
   it('should return margin left and right when mx is 0', () => {
     const m = margin({ mx: 0 }, scale)
     expect(m).toEqual({
@@ -65,6 +72,14 @@ describe('margin util', () => {
     })
   })
 
+  it('should return auto when mx is auto', () => {
+    const m = margin({ mx: 'auto' }, scale)
+    expect(m).toEqual({
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    })
+  })
+
   it('should return margin top and bottom when my is 0', () => {
     const m = margin({ my: 0 }, scale)
     expect(m).toEqual({
@@ -78,6 +93,14 @@ describe('margin util', () => {
     expect(m).toEqual({
       marginTop: scale[1],
       marginBottom: scale[1]
+    })
+  })
+
+  it('should return auto when my is auto', () => {
+    const m = margin({ my: 'auto' }, scale)
+    expect(m).toEqual({
+      marginTop: 'auto',
+      marginBottom: 'auto'
     })
   })
 
@@ -147,6 +170,14 @@ describe('margin util', () => {
 
   it('should return override mt with my', () => {
     const m = margin({ mt: 1, my: 2 }, scale)
+    expect(m).toEqual({
+      marginTop: scale[2],
+      marginBottom: scale[2]
+    })
+  })
+
+  it('should return override mt auto with my', () => {
+    const m = margin({ mt: 'auto', my: 2 }, scale)
     expect(m).toEqual({
       marginTop: scale[2],
       marginBottom: scale[2]

@@ -1,5 +1,7 @@
 
-const n = (key, x, s) => typeof x === 'number' ? { [key]: s[x] } : null
+const a = (x) => (key) => x === 'auto' ? { [key]: 'auto' } : null
+
+const n = (key, x, s) => typeof x === 'number' ? { [key]: s[x] } : a(x)(key)
 
 function margin (props, scale) {
   scale = scale || []
