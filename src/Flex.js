@@ -1,9 +1,7 @@
 
 import React from 'react'
-import config from './config'
 import Base from './Base'
-import margin from './util/margin'
-import padding from './util/padding'
+import config from './config'
 
 /**
  * Creates a flexbox context to control layout of children.
