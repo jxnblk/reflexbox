@@ -13,7 +13,7 @@ describe('Flex', () => {
   beforeEach(() => {
     renderer.render(<Flex />)
     tree = renderer.getRenderOutput()
-    style = tree.props._style
+    style = tree.props.style
   })
 
   it('should render', () => {
@@ -21,7 +21,7 @@ describe('Flex', () => {
   })
 
   it('should have no styles by default', () => {
-    expect(style).toEqual({})
+    expect(style).toNotExist()
   })
 
   context('when setting style prop', () => {
@@ -70,7 +70,7 @@ describe('Flex', () => {
     })
 
     it('should set flex-wrap wrap', () => {
-      expect(style).toEqual({ flexWrap: 'wrap' })
+      expect(style).toEqual({ display: 'flex', flexWrap: 'wrap' })
     })
   })
 
@@ -82,7 +82,7 @@ describe('Flex', () => {
     })
 
     it('should set flex-direction column', () => {
-      expect(style).toEqual({ flexDirection: 'column' })
+      expect(style).toEqual({ display: 'flex', flexDirection: 'column' })
     })
   })
 
@@ -94,7 +94,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items stretch', () => {
-      expect(style).toEqual({ alignItems: 'stretch' })
+      expect(style).toEqual({ display: 'flex', alignItems: 'stretch' })
     })
   })
 
@@ -106,7 +106,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items center', () => {
-      expect(style).toEqual({ alignItems: 'center' })
+      expect(style).toEqual({ display: 'flex', alignItems: 'center' })
     })
   })
 
@@ -118,7 +118,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      expect(style).toEqual({ alignItems: 'baseline' })
+      expect(style).toEqual({ display: 'flex', alignItems: 'baseline' })
     })
   })
 
@@ -130,7 +130,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      expect(style).toEqual({ alignItems: 'flex-start' })
+      expect(style).toEqual({ display: 'flex', alignItems: 'flex-start' })
     })
   })
 
@@ -142,7 +142,7 @@ describe('Flex', () => {
     })
 
     it('should set align-items baseline', () => {
-      expect(style).toEqual({ alignItems: 'flex-end' })
+      expect(style).toEqual({ display: 'flex', alignItems: 'flex-end' })
     })
   })
 
@@ -154,7 +154,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content center', () => {
-      expect(style).toEqual({ justifyContent: 'center' })
+      expect(style).toEqual({ display: 'flex', justifyContent: 'center' })
     })
   })
 
@@ -166,7 +166,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content space-around', () => {
-      expect(style).toEqual({ justifyContent: 'space-around' })
+      expect(style).toEqual({ display: 'flex', justifyContent: 'space-around' })
     })
   })
 
@@ -178,7 +178,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content space-between', () => {
-      expect(style).toEqual({ justifyContent: 'space-between' })
+      expect(style).toEqual({ display: 'flex', justifyContent: 'space-between' })
     })
   })
 
@@ -190,7 +190,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content flex-start', () => {
-      expect(style).toEqual({ justifyContent: 'flex-start' })
+      expect(style).toEqual({ display: 'flex', justifyContent: 'flex-start' })
     })
   })
 
@@ -202,7 +202,7 @@ describe('Flex', () => {
     })
 
     it('should set justify-content flex-end', () => {
-      expect(style).toEqual({ justifyContent: 'flex-end' })
+      expect(style).toEqual({ display: 'flex', justifyContent: 'flex-end' })
     })
   })
 
