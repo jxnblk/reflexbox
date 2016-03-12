@@ -112,7 +112,6 @@ describe('Base', () => {
         })
 
         it('should have padding', () => {
-          console.log(tree.base.style.padding)
           expect(tree.base.style.padding).toEqual('8px')
         })
       })
@@ -152,176 +151,147 @@ describe('Base', () => {
         })
       })
 
-      /*
-      context('when py prop is set', () => {
+      context('when p, pr, and px prop are set', () => {
         beforeEach(() => {
-          renderer.render(<Base py={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base _className='Test' p={2} pr={3} px={1} />)
+        })
+
+        it('should have padding', () => {
+          expect(tree.base.style.padding).toEqual('16px 8px')
         })
 
         it('should have padding top and bottom', () => {
-          expect(style).toEqual({
-            paddingTop: 8,
-            paddingBottom: 8
-          })
+          expect(tree.base.style.paddingTop).toEqual('16px')
+          expect(tree.base.style.paddingBottom).toEqual('16px')
+        })
+
+        it('should have padding left and right', () => {
+          expect(tree.base.style.paddingLeft).toEqual('8px')
+          expect(tree.base.style.paddingRight).toEqual('8px')
+        })
+      })
+
+      context('when py prop is set', () => {
+        beforeEach(() => {
+          tree = render(<Base py={1} />)
+        })
+
+        it('should have padding top and bottom', () => {
+          expect(tree.base.style.paddingTop).toEqual('8px')
         })
       })
 
       context('when pt prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base pt={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base pt={1} />)
         })
 
         it('should have padding top', () => {
-          expect(style).toEqual({
-            paddingTop: 8
-          })
+          expect(tree.base.style.paddingTop).toEqual('8px')
         })
       })
 
       context('when pr prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base pr={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base pr={1} />)
         })
 
         it('should have padding right', () => {
-          expect(style).toEqual({
-            paddingRight: 8
-          })
+          expect(tree.base.style.paddingRight).toEqual('8px')
         })
       })
 
       context('when pb prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base pb={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base pb={1} />)
         })
 
         it('should have padding bottom', () => {
-          expect(style).toEqual({
-            paddingBottom: 8
-          })
+          expect(tree.base.style.paddingBottom).toEqual('8px')
         })
       })
 
       context('when pl prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base pl={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base pl={1} />)
         })
 
         it('should have padding left', () => {
-          expect(style).toEqual({
-            paddingLeft: 8
-          })
+          expect(tree.base.style.paddingLeft).toEqual('8px')
         })
       })
-      */
     })
 
     describe('margin', () => {
       context('when m prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base m={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base m={1} />)
         })
 
         it('should have margin', () => {
-          expect(style).toEqual({ margin: 8 })
+          expect(tree.base.style.margin).toEqual('8px')
         })
       })
 
       context('when mx prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base mx={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base mx={1} />)
         })
 
         it('should have margin left and right', () => {
-          expect(style).toEqual({
-            marginLeft: 8,
-            marginRight: 8
-          })
+          expect(tree.base.style.marginLeft).toEqual('8px')
+          expect(tree.base.style.marginRight).toEqual('8px')
         })
       })
 
       context('when my prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base my={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base my={1} />)
         })
 
         it('should have margin top and bottom', () => {
-          expect(style).toEqual({
-            marginTop: 8,
-            marginBottom: 8
-          })
+          expect(tree.base.style.marginTop).toEqual('8px')
+          expect(tree.base.style.marginBottom).toEqual('8px')
         })
       })
 
       context('when mt prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base mt={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base mt={1} />)
         })
 
         it('should have margin top', () => {
-          expect(style).toEqual({
-            marginTop: 8
-          })
+          expect(tree.base.style.marginTop).toEqual('8px')
         })
       })
 
       context('when mr prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base mr={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base mr={1} />)
         })
 
         it('should have margin right', () => {
-          expect(style).toEqual({
-            marginRight: 8
-          })
+          expect(tree.base.style.marginRight).toEqual('8px')
         })
       })
 
       context('when mb prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base mb={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base mb={1} />)
         })
 
         it('should have margin bottom', () => {
-          expect(style).toEqual({
-            marginBottom: 8
-          })
+          expect(tree.base.style.marginBottom).toEqual('8px')
         })
       })
 
       context('when ml prop is set', () => {
         beforeEach(() => {
-          renderer.render(<Base ml={1} />)
-          tree = renderer.getRenderOutput()
-          style = tree.props.style
+          tree = render(<Base ml={1} />)
         })
 
         it('should have margin left', () => {
-          expect(style).toEqual({
-            marginLeft: 8
-          })
+          expect(tree.base.style.marginLeft).toEqual('8px')
         })
       })
     })
