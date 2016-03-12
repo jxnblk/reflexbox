@@ -16,7 +16,7 @@ const Flex = ({
   style,
   className,
   ...props
-}) => {
+}, { reflexbox }) => {
 
   let display = 'flex'
   const { breakpoints, scale } = styles
@@ -80,6 +80,13 @@ Flex.propTypes = {
   ]),
   /** Sets flex: 1 1 auto */
   auto: React.PropTypes.bool
+}
+
+Flex.contextTypes = {
+  reflexbox: React.PropTypes.shape({
+    breakpoints: React.PropTypes.object,
+    scale: React.PropTypes.array
+  })
 }
 
 export default Flex

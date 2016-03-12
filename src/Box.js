@@ -20,7 +20,7 @@ const Box = ({
   style,
   className,
   ...props
-}) => {
+}, { reflexbox }) => {
 
   const { breakpoints, scale } = styles
 
@@ -82,6 +82,13 @@ Box.propTypes = {
   pl: React.PropTypes.oneOf(scaleIndexes),
   /** Sets padding-right based on a scale of 0–4 */
   pr: React.PropTypes.oneOf(scaleIndexes),
+}
+
+Box.contextTypes = {
+  reflexbox: React.PropTypes.shape({
+    breakpoints: React.PropTypes.object,
+    scale: React.PropTypes.array
+  })
 }
 
 export default Box
