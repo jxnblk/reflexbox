@@ -375,10 +375,17 @@ describe('Box', () => {
 
   describe('React context', () => {
     context('when setting scale', () => {
-      it('should pick up new scale values')
-    })
-    context('when setting breakpoints', () => {
-      it('should pick up new breakpoints values')
+      beforeEach(() => {
+        renderer.render(<Box p={2} />, {
+          reflexbox: {
+            scale: [0, 2, 4, 6, 8]
+          }
+        })
+        tree = renderer.getRenderOutput()
+      })
+      it('should pick up new scale values', () => {
+        expect(tree.props.style.padding).toEqual(4)
+      })
     })
   })
 
@@ -747,6 +754,72 @@ describe('Box', () => {
 
         it(`should have flex-basis set to ${expected}%`, () => {
           expect(flexBasis).toEqual(expected)
+        })
+      })
+    })
+
+    context('when setting custom breakpoints in React context', () => {
+      const ctx = {
+        reflexbox: {
+          breakpoints: {
+            mobile: '(min-width: 30em)',
+            tablet: '(min-width: 48em)',
+            desktop: '(min-width: 60em)'
+          }
+        }
+      }
+
+      class ContextRoot extends React.Component {
+        static childContextTypes = {
+          reflexbox: React.PropTypes.object
+        }
+        getChildContext () { return ctx }
+        render () { return <div {...this.props} /> }
+      }
+
+      context('when below the tablet breakpoint', () => {
+        if (!window.matchMedia('(max-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <ContextRoot>
+              <Box tablet={6} />
+            </ContextRoot>
+          )
+          computed = TestUtils.findRenderedDOMComponentWithClass(root, 'Box').style
+        })
+
+        it('should not set width', () => {
+          expect(computed.width).toEqual('')
+        })
+
+        it('should not set flex-basis', () => {
+          expect(computed.flexBasis).toEqual('')
+        })
+      })
+
+      context('when above the tablet breakpoint', () => {
+        if (!window.matchMedia('(min-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <ContextRoot>
+              <Box tablet={6} />
+            </ContextRoot>
+          )
+          computed = TestUtils.findRenderedDOMComponentWithClass(root, 'Box').style
+        })
+
+        it('should set width', () => {
+          expect(computed.width).toEqual('50%')
+        })
+
+        it('should set flex-basis', () => {
+          expect(computed.flexBasis).toEqual('50%')
         })
       })
     })

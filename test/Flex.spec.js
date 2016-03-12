@@ -304,22 +304,6 @@ describe('Flex', () => {
         expect(tree.props.style.marginRight).toEqual(-4)
       })
     })
-
-    context('when setting breakpoints', () => {
-      beforeEach(() => {
-        renderer.render(<Flex mobile />, {
-          reflexbox: {
-            breakpoints: {
-              mobile: '(min-width: 30em)',
-              tablet: '(min-width: 48em)',
-              desktop: '(min-width: 60em)'
-            }
-          }
-        })
-        tree = renderer.getRenderOutput()
-      })
-      it('should pick up new breakpoints values')
-    })
   })
 
   describe('media queries', () => {
@@ -643,7 +627,6 @@ describe('Flex', () => {
         getChildContext () { return ctx }
         render () { return <div {...this.props} /> }
       }
-
 
       context('when below the tablet breakpoint', () => {
         if (!window.matchMedia('(max-width: 48em)').matches) {
