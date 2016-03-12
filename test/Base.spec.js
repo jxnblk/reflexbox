@@ -1,11 +1,13 @@
 
-import { assign, round } from 'lodash'
 import React from 'react'
 import expect from 'expect'
 import TestUtils from 'react-addons-test-utils'
+import assign from 'object-assign'
 import { Base } from '../src'
 
 const renderer = TestUtils.createRenderer()
+
+const round = (n) => Math.round(n * 100) / 100
 
 describe('Base', () => {
   let tree, style

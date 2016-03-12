@@ -1,5 +1,5 @@
 
-import { assign } from 'lodash'
+import assign from 'object-assign'
 import React from 'react'
 import expect from 'expect'
 import TestUtils from 'react-addons-test-utils'

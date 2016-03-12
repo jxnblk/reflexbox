@@ -37,7 +37,6 @@
     "karma-mocha-reporter": "^1.1.1",
     "karma-safari-launcher": "^0.1.1",
     "karma-webpack": "^1.7.0",
-    "lodash": "^3.10.1",
     "mocha": "^2.3.3",
     "raw-loader": "^0.5.1",
     "react": "^0.14.7",
@@ -48,6 +47,9 @@
     "standard": "^5.3.1",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1"
   },
   "directories": {
     "doc": "docs",

@@ -1,4 +1,6 @@
 
+import assign from 'object-assign'
+
 const n = (key, x, s) => typeof x === 'number' ? { [key]: s[x] } : null
 
 function padding (props, scale) {
@@ -13,7 +15,7 @@ function padding (props, scale) {
     pl
   } = props || {}
 
-  const result = Object.assign({},
+  const result = assign({},
     n('padding', p, scale),
     n('paddingTop', pt, scale),
     n('paddingBottom', pb, scale),

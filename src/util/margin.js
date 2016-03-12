@@ -1,4 +1,6 @@
 
+import assign from 'object-assign'
+
 const a = (x) => (key) => x === 'auto' ? { [key]: 'auto' } : null
 
 const n = (key, x, s, multiplier) => typeof s[x] === 'number' ? { [key]: s[x] * (multiplier || 1) } : a(x)(key)
@@ -16,7 +18,7 @@ function margin (props, scale) {
     gutter
   } = props || {}
 
-  const result = Object.assign({},
+  const result = assign({},
     n('margin', m, scale),
     n('marginTop', mt, scale),
     n('marginBottom', mb, scale),
