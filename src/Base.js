@@ -1,5 +1,6 @@
 
 import React from 'react'
+import assign from 'object-assign'
 import config from './config'
 import margin from './util/margin'
 import padding from './util/padding'
@@ -13,15 +14,13 @@ const Base = ({
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
 
-  const sx = {
-    ...{
-      boxSizing: 'border-box'
-    },
-    ...style,
-    ..._style,
-    ...margin(props, scale),
-    ...padding(props, scale)
-  }
+  const sx = assign(
+    { boxSizing: 'border-box' },
+    style,
+    _style,
+    margin(props, scale),
+    padding(props, scale)
+  )
 
   const cx = className ? `${_className} ${className}` : _className
 
