@@ -623,7 +623,7 @@ describe('Flex', () => {
       })
     })
 
-    context('when setting custom breakpoints in context', () => {
+    context('when setting custom breakpoints in React context', () => {
       let root, flex
 
       const ctx = {
@@ -636,6 +636,15 @@ describe('Flex', () => {
         }
       }
 
+      class ContextRoot extends React.Component {
+        static childContextTypes = {
+          reflexbox: React.PropTypes.object
+        }
+        getChildContext () { return ctx }
+        render () { return <div {...this.props} /> }
+      }
+
+
       context('when below the tablet breakpoint', () => {
         if (!window.matchMedia('(max-width: 48em)').matches) {
           return false
@@ -643,10 +652,9 @@ describe('Flex', () => {
 
         beforeEach(() => {
           root = TestUtils.renderIntoDocument(
-            <Root>
-              <Flex mobile />
-            </Root>,
-            ctx
+            <ContextRoot>
+              <Flex tablet />
+            </ContextRoot>
           )
           flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
           computed = flex.style
@@ -664,10 +672,9 @@ describe('Flex', () => {
 
         beforeEach(() => {
           root = TestUtils.renderIntoDocument(
-            <Root>
-              <Flex mobile />
-            </Root>,
-            ctx
+            <ContextRoot>
+              <Flex tablet />
+            </ContextRoot>
           )
           flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
           computed = flex.style
