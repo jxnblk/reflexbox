@@ -14,7 +14,9 @@ const Base = ({
   const { scale } = { ...config, ...reflexbox }
 
   const sx = {
-    ...{},
+    ...{
+      boxSizing: 'border-box'
+    },
     ...style,
     ..._style,
     ...margin(props, scale),

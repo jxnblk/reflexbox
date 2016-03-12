@@ -20,8 +20,8 @@ describe('Base', () => {
     expect(tree.type).toEqual('div')
   })
 
-  it('should have no styles by default', () => {
-    expect(style).toEqual({})
+  it('should have box-sizing by default', () => {
+    expect(style).toEqual({ boxSizing: 'border-box' })
   })
 
   context('when setting style prop', () => {
@@ -32,7 +32,7 @@ describe('Base', () => {
     })
 
     it('should assign styles', () => {
-      expect(style).toEqual({ backgroundColor: 'tomato' })
+      expect(style).toEqual({ boxSizing: 'border-box', backgroundColor: 'tomato' })
     })
   })
 
@@ -48,7 +48,7 @@ describe('Base', () => {
     })
 
     it('should override style with _style', () => {
-      expect(style).toEqual({ backgroundColor: 'green' })
+      expect(style).toEqual({ boxSizing: 'border-box', backgroundColor: 'green' })
     })
   })
 
