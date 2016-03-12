@@ -1,7 +1,7 @@
 
 import { assign, round } from 'lodash'
 import React from 'react'
-import { expect } from 'chai'
+import expect from 'expect'
 import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Box } from '../src'
@@ -30,11 +30,11 @@ describe('Box', () => {
   })
 
   it('should render', () => {
-    expect(instance).to.exist
+    expect(instance).toExist()
   })
 
   it('should have no styles by default', () => {
-    expect(style).to.deep.equal(initial)
+    expect(style).toEqual(initial)
   })
 
   context('when setting style prop', () => {
@@ -45,7 +45,7 @@ describe('Box', () => {
     })
 
     it('should assign styles', () => {
-      expect(style).to.deep.equal(assign({ backgroundColor: 'tomato' }, initial))
+      expect(style).toEqual(assign({ backgroundColor: 'tomato' }, initial))
     })
   })
 
@@ -58,7 +58,7 @@ describe('Box', () => {
     })
 
     it('should add a class', () => {
-      expect(className).to.equal('Box Box--custom')
+      expect(className).toEqual('Box Box--custom')
     })
   })
 
@@ -71,7 +71,7 @@ describe('Box', () => {
     })
 
     it('should not add a class', () => {
-      expect(className).to.equal('Box')
+      expect(className).toEqual('Box')
     })
   })
 
@@ -84,7 +84,7 @@ describe('Box', () => {
 
     it('should have padding', () => {
       computed = assign({}, style, { padding: 8 })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -100,7 +100,7 @@ describe('Box', () => {
         paddingLeft: 8,
         paddingRight: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -116,7 +116,7 @@ describe('Box', () => {
         paddingTop: 8,
         paddingBottom: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -131,7 +131,7 @@ describe('Box', () => {
       computed = assign({}, style, {
         paddingTop: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -146,7 +146,7 @@ describe('Box', () => {
       computed = assign({}, style, {
         paddingRight: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -161,7 +161,7 @@ describe('Box', () => {
       computed = assign({}, style, {
         paddingBottom: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -176,7 +176,7 @@ describe('Box', () => {
       computed = assign({}, style, {
         paddingLeft: 8
       })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -189,7 +189,7 @@ describe('Box', () => {
 
     it('should have padding', () => {
       computed = assign({}, style, { display: 'flex' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -203,7 +203,7 @@ describe('Box', () => {
 
     it('should set flex: 1 1 auto', () => {
       computed = assign({}, style, { flex: '1 1 auto' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -218,7 +218,7 @@ describe('Box', () => {
           width: (1 / 12 * 100) + '%',
           flexBasis: (1 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -232,7 +232,7 @@ describe('Box', () => {
           width: (2 / 12 * 100) + '%',
           flexBasis: (2 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -246,7 +246,7 @@ describe('Box', () => {
           width: (3 / 12 * 100) + '%',
           flexBasis: (3 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -260,7 +260,7 @@ describe('Box', () => {
           width: (4 / 12 * 100) + '%',
           flexBasis: (4 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -274,7 +274,7 @@ describe('Box', () => {
           width: (5 / 12 * 100) + '%',
           flexBasis: (5 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -288,7 +288,7 @@ describe('Box', () => {
           width: (6 / 12 * 100) + '%',
           flexBasis: (6 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -302,7 +302,7 @@ describe('Box', () => {
           width: (7 / 12 * 100) + '%',
           flexBasis: (7 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -316,7 +316,7 @@ describe('Box', () => {
           width: (8 / 12 * 100) + '%',
           flexBasis: (8 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -330,7 +330,7 @@ describe('Box', () => {
           width: (9 / 12 * 100) + '%',
           flexBasis: (9 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -344,7 +344,7 @@ describe('Box', () => {
           width: (10 / 12 * 100) + '%',
           flexBasis: (10 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -358,7 +358,7 @@ describe('Box', () => {
           width: (11 / 12 * 100) + '%',
           flexBasis: (11 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
 
@@ -372,7 +372,7 @@ describe('Box', () => {
           width: (12 / 12 * 100) + '%',
           flexBasis: (12 / 12 * 100) + '%'
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
   })
@@ -407,7 +407,7 @@ describe('Box', () => {
     const sizes = Array.from({ length: 12 }, (a, b) => b + 1)
 
     it('should be in a windowed environment', () => {
-      expect(window).to.exist
+      expect(window).toExist()
     })
 
     context('when below sm breakpoint', () => {
@@ -425,11 +425,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal('')
+              expect(width).toEqual('')
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal('')
+              expect(flexBasis).toEqual('')
             })
           })
         })
@@ -445,11 +445,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal('')
+              expect(width).toEqual('')
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal('')
+              expect(flexBasis).toEqual('')
             })
           })
         })
@@ -465,11 +465,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal('')
+              expect(width).toEqual('')
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal('')
+              expect(flexBasis).toEqual('')
             })
           })
         })
@@ -494,11 +494,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -516,11 +516,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -538,11 +538,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -559,11 +559,11 @@ describe('Box', () => {
         })
 
         it(`should have width set to ${expected}%`, () => {
-          expect(width).to.equal(expected)
+          expect(width).toEqual(expected)
         })
 
         it(`should have flex-basis set to ${expected}%`, () => {
-          expect(flexBasis).to.equal(expected)
+          expect(flexBasis).toEqual(expected)
         })
       })
     })
@@ -586,11 +586,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -609,11 +609,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -631,11 +631,11 @@ describe('Box', () => {
             })
 
             it(`should not have width set`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should not have flex-basis set`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -652,11 +652,11 @@ describe('Box', () => {
         })
 
         it(`should have width set to ${expected}%`, () => {
-          expect(width).to.equal(expected)
+          expect(width).toEqual(expected)
         })
 
         it(`should have flex-basis set to ${expected}%`, () => {
-          expect(flexBasis).to.equal(expected)
+          expect(flexBasis).toEqual(expected)
         })
       })
     })
@@ -679,11 +679,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -702,11 +702,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -725,11 +725,11 @@ describe('Box', () => {
             })
 
             it(`should have width set to ${expected}%`, () => {
-              expect(width).to.equal(expected)
+              expect(width).toEqual(expected)
             })
 
             it(`should have flex-basis set to ${expected}%`, () => {
-              expect(flexBasis).to.equal(expected)
+              expect(flexBasis).toEqual(expected)
             })
           })
         })
@@ -746,11 +746,11 @@ describe('Box', () => {
         })
 
         it(`should have width set to ${expected}%`, () => {
-          expect(width).to.equal(expected)
+          expect(width).toEqual(expected)
         })
 
         it(`should have flex-basis set to ${expected}%`, () => {
-          expect(flexBasis).to.equal(expected)
+          expect(flexBasis).toEqual(expected)
         })
       })
     })
