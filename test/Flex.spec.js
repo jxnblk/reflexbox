@@ -1,7 +1,7 @@
 
 import { assign } from 'lodash'
 import React from 'react'
-import { expect } from 'chai'
+import expect from 'expect'
 import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Flex } from '../src'
@@ -28,11 +28,11 @@ describe('Flex', () => {
   })
 
   it('should render', () => {
-    expect(instance).to.exist
+    expect(instance).toExist()
   })
 
   it('should have no styles by default', () => {
-    expect(style).to.deep.equal(initial)
+    expect(style).toEqual(initial)
   })
 
   context('when setting style prop', () => {
@@ -43,7 +43,7 @@ describe('Flex', () => {
     })
 
     it('should assign styles', () => {
-      expect(style).to.deep.equal(assign({ backgroundColor: 'tomato' }, initial))
+      expect(style).toEqual(assign({ backgroundColor: 'tomato' }, initial))
     })
   })
 
@@ -56,7 +56,7 @@ describe('Flex', () => {
     })
 
     it('should add a class', () => {
-      expect(className).to.equal('Flex Flex--custom')
+      expect(className).toEqual('Flex Flex--custom')
     })
   })
 
@@ -69,7 +69,7 @@ describe('Flex', () => {
     })
 
     it('should not add a class', () => {
-      expect(className).to.equal('Flex')
+      expect(className).toEqual('Flex')
     })
   })
 
@@ -82,7 +82,7 @@ describe('Flex', () => {
 
     it('should set flex-wrap wrap', () => {
       computed = assign({}, initial, { flexWrap: 'wrap' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -95,7 +95,7 @@ describe('Flex', () => {
 
     it('should set flex-direction column', () => {
       computed = assign({}, initial, { flexDirection: 'column' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -108,7 +108,7 @@ describe('Flex', () => {
 
     it('should set align-items stretch', () => {
       computed = assign({}, initial, { alignItems: 'stretch' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -121,7 +121,7 @@ describe('Flex', () => {
 
     it('should set align-items center', () => {
       computed = assign({}, initial, { alignItems: 'center' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -134,7 +134,7 @@ describe('Flex', () => {
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'baseline' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -147,7 +147,7 @@ describe('Flex', () => {
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'flex-start' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -160,7 +160,7 @@ describe('Flex', () => {
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'flex-end' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -173,7 +173,7 @@ describe('Flex', () => {
 
     it('should set justify-content center', () => {
       computed = assign({}, initial, { justifyContent: 'center' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -186,7 +186,7 @@ describe('Flex', () => {
 
     it('should set justify-content space-around', () => {
       computed = assign({}, initial, { justifyContent: 'space-around' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -199,7 +199,7 @@ describe('Flex', () => {
 
     it('should set justify-content space-between', () => {
       computed = assign({}, initial, { justifyContent: 'space-between' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -212,7 +212,7 @@ describe('Flex', () => {
 
     it('should set justify-content flex-start', () => {
       computed = assign({}, initial, { justifyContent: 'flex-start' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -225,7 +225,7 @@ describe('Flex', () => {
 
     it('should set justify-content flex-end', () => {
       computed = assign({}, initial, { justifyContent: 'flex-end' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
@@ -241,7 +241,7 @@ describe('Flex', () => {
           marginLeft: -8,
           marginRight: -8
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 2', () => {
@@ -255,7 +255,7 @@ describe('Flex', () => {
           marginLeft: -16,
           marginRight: -16
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 3', () => {
@@ -269,7 +269,7 @@ describe('Flex', () => {
           marginLeft: -32,
           marginRight: -32
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 4', () => {
@@ -283,7 +283,7 @@ describe('Flex', () => {
           marginLeft: -64,
           marginRight: -64
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
   })
@@ -307,7 +307,7 @@ describe('Flex', () => {
     }
 
     it('should be in a windowed environment', () => {
-      expect(window).to.exist
+      expect(window).toExist()
     })
 
     context('when below sm breakpoint', () => {
@@ -329,7 +329,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -345,7 +345,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -361,7 +361,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -377,7 +377,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -401,7 +401,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -417,7 +417,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -433,7 +433,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -449,7 +449,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -473,7 +473,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -489,7 +489,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -505,7 +505,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -521,7 +521,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -545,7 +545,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -561,7 +561,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -577,7 +577,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -593,7 +593,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
     })
