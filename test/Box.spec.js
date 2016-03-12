@@ -14,11 +14,6 @@ describe('Box', () => {
     boxSizing: 'border-box',
     flex: null,
     display: null,
-    padding: null,
-    paddingTop: null,
-    paddingBottom: null,
-    paddingLeft: null,
-    paddingRight: null,
     width: null,
     flexBasis: null
   }

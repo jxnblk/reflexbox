@@ -1,19 +1,14 @@
 
 import React from 'react'
 import config from './config'
+import margin from './util/margin'
+import padding from './util/padding'
 
 /**
- * Sets padding and width and works independently or as a child of <Flex />.
+ * Sets margin, padding, and width and works independently or as a child of <Flex />.
  */
 
 const Box = ({
-  p,
-  px,
-  py,
-  pt,
-  pb,
-  pl,
-  pr,
   flex,
   auto,
   col,
@@ -38,18 +33,19 @@ const Box = ({
     })
   }
 
-  const sx = Object.assign({}, style, {
-    boxSizing: 'border-box',
-    flex: auto ? '1 1 auto' : null,
-    display: flex ? 'flex' : null,
-    padding: p ? scale[p] : null,
-    paddingTop:    py ? scale[py] : (pt ? scale[pt] : null),
-    paddingBottom: py ? scale[py] : (pb ? scale[pb] : null),
-    paddingLeft:   px ? scale[px] : (pl ? scale[pl] : null),
-    paddingRight:  px ? scale[px] : (pr ? scale[pr] : null),
-    width,
-    flexBasis: width
-  })
+  const sx = Object.assign(
+    {},
+    style,
+    {
+      boxSizing: 'border-box',
+      flex: auto ? '1 1 auto' : null,
+      display: flex ? 'flex' : null,
+      width,
+      flexBasis: width
+    },
+    padding(props, scale),
+    margin(props, scale)
+  )
 
   const cx = className ? `Box ${className}` : 'Box'
 
