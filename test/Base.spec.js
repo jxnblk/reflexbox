@@ -96,8 +96,9 @@ describe('Base', () => {
     }
 
     const render = (children, ctx) => {
+      const content = React.cloneElement(children, { _className: 'Test' })
       const root = TestUtils.renderIntoDocument(
-        <Root ctx={ctx}>{children}</Root>
+        <Root ctx={ctx}>{content}</Root>
       )
       const base = TestUtils.findRenderedDOMComponentWithClass(root, 'Test')
       return { root, base }
@@ -108,7 +109,7 @@ describe('Base', () => {
 
       context('when p prop is set', () => {
         beforeEach(() => {
-          tree = render(<Base _className='Test' p={1} />)
+          tree = render(<Base p={1} />)
         })
 
         it('should have padding', () => {
@@ -118,7 +119,7 @@ describe('Base', () => {
 
       context('when px prop is set', () => {
         beforeEach(() => {
-          tree = render(<Base _className='Test' px={1} />)
+          tree = render(<Base px={1} />)
         })
 
         it('should not have padding', () => {
@@ -133,7 +134,7 @@ describe('Base', () => {
 
       context('when p and px prop are set', () => {
         beforeEach(() => {
-          tree = render(<Base _className='Test' p={2} px={1} />)
+          tree = render(<Base p={2} px={1} />)
         })
 
         it('should have padding', () => {
@@ -153,7 +154,7 @@ describe('Base', () => {
 
       context('when p, pr, and px prop are set', () => {
         beforeEach(() => {
-          tree = render(<Base _className='Test' p={2} pr={3} px={1} />)
+          tree = render(<Base p={2} pr={3} px={1} />)
         })
 
         it('should have padding', () => {
