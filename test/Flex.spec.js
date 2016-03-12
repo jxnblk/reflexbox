@@ -2,12 +2,13 @@
 import { assign } from 'lodash'
 import React from 'react'
 import expect from 'expect'
-import sd from 'skin-deep'
 import TestUtils from 'react-addons-test-utils'
 import { Flex } from '../src'
 
+const renderer = TestUtils.createRenderer()
+
 describe('Flex', () => {
-  let dom, instance, style, computed
+  let tree, style, computed
 
   const initial = {
     display: 'flex',
@@ -21,14 +22,13 @@ describe('Flex', () => {
   }
 
   beforeEach(() => {
-    const tree = sd.shallowRender(<Flex />)
-    instance = tree.getMountedInstance()
-    dom = tree.getRenderOutput()
-    style = dom.props.style
+    renderer.render(<Flex />)
+    tree = renderer.getRenderOutput()
+    style = tree.props.style
   })
 
   it('should render', () => {
-    expect(instance).toExist()
+    expect(tree.type).toEqual('div')
   })
 
   it('should have no styles by default', () => {
@@ -37,9 +37,9 @@ describe('Flex', () => {
 
   context('when setting style prop', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex style={{ backgroundColor: 'tomato' }} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex style={{ backgroundColor: 'tomato' }} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should assign styles', () => {
@@ -50,9 +50,9 @@ describe('Flex', () => {
   context('when setting className prop', () => {
     let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex className='Flex--custom' />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Flex className='Flex--custom' />)
+      tree = renderer.getRenderOutput()
+      className = tree.props.className
     })
 
     it('should add a class', () => {
@@ -63,9 +63,9 @@ describe('Flex', () => {
   context('when no className is set', () => {
     let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Flex />)
+      tree = renderer.getRenderOutput()
+      className = tree.props.className
     })
 
     it('should not add a class', () => {
@@ -75,9 +75,9 @@ describe('Flex', () => {
 
   context('when wrap prop is true', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex wrap />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex wrap />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set flex-wrap wrap', () => {
@@ -88,9 +88,9 @@ describe('Flex', () => {
 
   context('when column prop is true', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex column />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex column />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set flex-direction column', () => {
@@ -101,9 +101,9 @@ describe('Flex', () => {
 
   context('when align prop is set to stretch', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='stretch' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='stretch' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items stretch', () => {
@@ -114,9 +114,9 @@ describe('Flex', () => {
 
   context('when align prop is set to center', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='center' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='center' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items center', () => {
@@ -127,9 +127,9 @@ describe('Flex', () => {
 
   context('when align prop is set to baseline', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='baseline' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='baseline' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
@@ -140,9 +140,9 @@ describe('Flex', () => {
 
   context('when align prop is set to flex-start', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='flex-start' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='flex-start' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
@@ -153,9 +153,9 @@ describe('Flex', () => {
 
   context('when align prop is set to flex-end', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='flex-end' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='flex-end' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
@@ -166,9 +166,9 @@ describe('Flex', () => {
 
   context('when justify prop is set to center', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='center' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='center' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content center', () => {
@@ -179,9 +179,9 @@ describe('Flex', () => {
 
   context('when justify prop is set to space-around', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='space-around' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='space-around' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content space-around', () => {
@@ -192,9 +192,9 @@ describe('Flex', () => {
 
   context('when justify prop is set to space-between', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='space-between' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='space-between' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content space-between', () => {
@@ -205,9 +205,9 @@ describe('Flex', () => {
 
   context('when justify prop is set to flex-start', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='flex-start' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='flex-start' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content flex-start', () => {
@@ -218,9 +218,9 @@ describe('Flex', () => {
 
   context('when justify prop is set to flex-end', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='flex-end' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='flex-end' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content flex-end', () => {
@@ -232,8 +232,8 @@ describe('Flex', () => {
   describe('gutter prop', () => {
     context('when set to 1', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={1} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={1} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -8', () => {
@@ -246,8 +246,8 @@ describe('Flex', () => {
     })
     context('when set to 2', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={2} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={2} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -16', () => {
@@ -260,8 +260,8 @@ describe('Flex', () => {
     })
     context('when set to 3', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={3} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={3} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -32', () => {
@@ -274,8 +274,8 @@ describe('Flex', () => {
     })
     context('when set to 4', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={4} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={4} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -64', () => {
