@@ -1,6 +1,8 @@
 
 import React from 'react'
 import config from './config'
+import margin from './util/margin'
+import padding from './util/padding'
 
 /**
  * Creates a flexbox context to control layout of children.
@@ -11,7 +13,6 @@ const Flex = ({
   column,
   align,
   justify,
-  gutter,
   auto,
   style,
   className,
@@ -34,16 +35,20 @@ const Flex = ({
     })
   }
 
-  const sx = Object.assign({}, style, {
-    display,
-    flexWrap: wrap ? 'wrap' : null,
-    flexDirection: column ? 'column' : null,
-    flex: auto ? '1 1 auto' : null,
-    alignItems: align || null,
-    justifyContent: justify || null,
-    marginLeft: gutter ? -scale[gutter] : null,
-    marginRight: gutter ? -scale[gutter] : null
-  })
+  const sx = Object.assign(
+    {},
+    style,
+    {
+      display,
+      flexWrap: wrap ? 'wrap' : null,
+      flexDirection: column ? 'column' : null,
+      flex: auto ? '1 1 auto' : null,
+      alignItems: align || null,
+      justifyContent: justify || null
+    },
+    margin(props, scale),
+    padding(props, scale)
+  )
 
   const cx = className ? `Flex ${className}` : 'Flex'
 

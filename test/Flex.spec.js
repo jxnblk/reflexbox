@@ -16,9 +16,7 @@ describe('Flex', () => {
     flexDirection: null,
     flex: null,
     alignItems: null,
-    justifyContent: null,
-    marginLeft: null,
-    marginRight: null,
+    justifyContent: null
   }
 
   beforeEach(() => {
