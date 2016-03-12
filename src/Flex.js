@@ -1,6 +1,6 @@
 
 import React from 'react'
-import styles from './styles'
+import config from './config'
 
 /**
  * Creates a flexbox context to control layout of children.
@@ -16,10 +16,10 @@ const Flex = ({
   style,
   className,
   ...props
-}) => {
+}, { reflexbox }) => {
 
   let display = 'flex'
-  const { breakpoints, scale } = styles
+  const { breakpoints, scale } = { ...config, ...reflexbox }
 
   if (typeof window !== 'undefined') {
     Object.keys(breakpoints).forEach(key => {
@@ -53,7 +53,7 @@ const Flex = ({
     className={cx} />
 }
 
-const scaleIndexes = Array.from({ length: styles.scale.length }, (s, i) => i)
+const scaleIndexes = Array.from({ length: config.scale.length }, (s, i) => i)
 
 Flex.propTypes = {
   /** Sets flex-wrap: wrap */
@@ -80,6 +80,13 @@ Flex.propTypes = {
   ]),
   /** Sets flex: 1 1 auto */
   auto: React.PropTypes.bool
+}
+
+Flex.contextTypes = {
+  reflexbox: React.PropTypes.shape({
+    breakpoints: React.PropTypes.object,
+    scale: React.PropTypes.array
+  })
 }
 
 export default Flex

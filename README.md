@@ -76,11 +76,12 @@ A component that sets padding and width that works independently or as a child c
 
 #### * Breakpoint props
 
-The `sm`, `md`, and `lg` props are based on the keys from the `styles.breakpoints` object. When setting custom values for breakpoints, these props will match the keys of the custom `breakpoints` object.
+The `sm`, `md`, and `lg` props are based on the keys from the `config.breakpoints` object.
+When setting custom values for breakpoints, these props will match the keys of the custom `breakpoints` object.
 
 #### ** Spacing scale props
 
-The values for padding and gutter props are based on the length of the `styles.scale` array.
+The values for padding and gutter props are based on the length of the `config.scale` array.
 When setting custom values for the spacing scale, the values should be from 0 through the length of the array.
 
 #### *** style and className props
@@ -90,31 +91,50 @@ For other layout styles, prefer using component composition over using these pro
 
 ## Configuration
 
-The Flex and Box components use an instance of the `Styles` class in [`src/styles.js`](src/styles.js) to determine breakpoints and spacing scales.
+Values for the spacing scale and breakpoints can be configured with
+[React Context](https://facebook.github.io/react/docs/context.html).
 
-To set custom breakpoints, configure the styles instance with the `setBreakpoints` method.
-
-```js
-import { styles } from 'reflexbox'
-styles.setBreakpoints({
-  sm: '(min-width: 36em)',
-  lg: '(min-eidth: 60em)'
-})
-```
-
-To set a custom spacing scale, use the `setScale` method.
+To configure reflexbox, add `childContextTypes` and `getChildContext` to a container component.
 
 ```js
-import { styles } from 'reflexbox'
-styles.setScale([0, 6, 12, 24, 48])
+class App extends React.Component {
+  static childContextTypes = {
+    reflexbox: React.PropTypes.object
+  }
+
+  getChildContext () {
+    return {
+      reflexbox: {
+        scale: [0 10, 20, 40, 80],
+        breakpoints: {
+          mobile: '(min-width: 30em)',
+          tablet: '(min-width: 48em)',
+          desktop: '(min-width: 60em)'
+        }
+      }
+    }
+  }
+
+  render () {
+    return (
+      <Flex gutter={2}>
+        <Box mobile={6} tablet={3}>Box</Box>
+        <Box mobile={6} tablet={3}>Box</Box>
+        <Box mobile={6} tablet={3}>Box</Box>
+        <Box mobile={6} tablet={3}>Box</Box>
+      </Flex>
+    )
+  }
+}
 ```
 
 ## Tests
 
-Runs React shallowRender and browser tests with Karma for four different breakpoints.
+Runs tests with React shallow rendering and browser tests with Karma for four different breakpoints.
 
 ```
 npm test
 ```
 
-MIT License
+[MIT License](.github/LICENSE.md)
+

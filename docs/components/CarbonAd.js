@@ -7,6 +7,7 @@ const css = `
   font-size: 14px;
   line-height: 1.25;
   text-align: left;
+  max-width: 320px;
 }
 #carbonads a,
 #carbonads a:hover {
@@ -32,11 +33,6 @@ const css = `
   float: left;
   margin-top: .25em;
   opacity: 0.5;
-}
-@media (min-width: 40em) {
-  #carbonads {
-    max-width: 320px;
-  }
 }
 `
 const CarbonAd = () => (

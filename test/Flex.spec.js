@@ -1,13 +1,14 @@
 
 import { assign } from 'lodash'
 import React from 'react'
-import { expect } from 'chai'
-import sd from 'skin-deep'
+import expect from 'expect'
 import TestUtils from 'react-addons-test-utils'
 import { Flex } from '../src'
 
+const renderer = TestUtils.createRenderer()
+
 describe('Flex', () => {
-  let dom, instance, style, computed
+  let tree, style, computed
 
   const initial = {
     display: 'flex',
@@ -21,219 +22,218 @@ describe('Flex', () => {
   }
 
   beforeEach(() => {
-    const tree = sd.shallowRender(<Flex />)
-    instance = tree.getMountedInstance()
-    dom = tree.getRenderOutput()
-    style = dom.props.style
+    renderer.render(<Flex />)
+    tree = renderer.getRenderOutput()
+    style = tree.props.style
   })
 
   it('should render', () => {
-    expect(instance).to.exist
+    expect(tree.type).toEqual('div')
   })
 
   it('should have no styles by default', () => {
-    expect(style).to.deep.equal(initial)
+    expect(style).toEqual(initial)
   })
 
   context('when setting style prop', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex style={{ backgroundColor: 'tomato' }} />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex style={{ backgroundColor: 'tomato' }} />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should assign styles', () => {
-      expect(style).to.deep.equal(assign({ backgroundColor: 'tomato' }, initial))
+      expect(style).toEqual(assign({ backgroundColor: 'tomato' }, initial))
     })
   })
 
   context('when setting className prop', () => {
     let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex className='Flex--custom' />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Flex className='Flex--custom' />)
+      tree = renderer.getRenderOutput()
+      className = tree.props.className
     })
 
     it('should add a class', () => {
-      expect(className).to.equal('Flex Flex--custom')
+      expect(className).toEqual('Flex Flex--custom')
     })
   })
 
   context('when no className is set', () => {
     let className
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex />)
-      dom = tree.getRenderOutput()
-      className = dom.props.className
+      renderer.render(<Flex />)
+      tree = renderer.getRenderOutput()
+      className = tree.props.className
     })
 
     it('should not add a class', () => {
-      expect(className).to.equal('Flex')
+      expect(className).toEqual('Flex')
     })
   })
 
   context('when wrap prop is true', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex wrap />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex wrap />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set flex-wrap wrap', () => {
       computed = assign({}, initial, { flexWrap: 'wrap' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when column prop is true', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex column />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex column />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set flex-direction column', () => {
       computed = assign({}, initial, { flexDirection: 'column' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when align prop is set to stretch', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='stretch' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='stretch' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items stretch', () => {
       computed = assign({}, initial, { alignItems: 'stretch' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when align prop is set to center', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='center' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='center' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items center', () => {
       computed = assign({}, initial, { alignItems: 'center' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when align prop is set to baseline', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='baseline' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='baseline' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'baseline' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when align prop is set to flex-start', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='flex-start' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='flex-start' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'flex-start' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when align prop is set to flex-end', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex align='flex-end' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex align='flex-end' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set align-items baseline', () => {
       computed = assign({}, initial, { alignItems: 'flex-end' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when justify prop is set to center', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='center' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='center' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content center', () => {
       computed = assign({}, initial, { justifyContent: 'center' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when justify prop is set to space-around', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='space-around' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='space-around' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content space-around', () => {
       computed = assign({}, initial, { justifyContent: 'space-around' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when justify prop is set to space-between', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='space-between' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='space-between' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content space-between', () => {
       computed = assign({}, initial, { justifyContent: 'space-between' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when justify prop is set to flex-start', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='flex-start' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='flex-start' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content flex-start', () => {
       computed = assign({}, initial, { justifyContent: 'flex-start' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   context('when justify prop is set to flex-end', () => {
     beforeEach(() => {
-      const tree = sd.shallowRender(<Flex justify='flex-end' />)
-      dom = tree.getRenderOutput()
-      style = dom.props.style
+      renderer.render(<Flex justify='flex-end' />)
+      tree = renderer.getRenderOutput()
+      style = tree.props.style
     })
 
     it('should set justify-content flex-end', () => {
       computed = assign({}, initial, { justifyContent: 'flex-end' })
-      expect(style).to.deep.equal(computed)
+      expect(style).toEqual(computed)
     })
   })
 
   describe('gutter prop', () => {
     context('when set to 1', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={1} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={1} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -8', () => {
@@ -241,13 +241,13 @@ describe('Flex', () => {
           marginLeft: -8,
           marginRight: -8
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 2', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={2} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={2} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -16', () => {
@@ -255,13 +255,13 @@ describe('Flex', () => {
           marginLeft: -16,
           marginRight: -16
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 3', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={3} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={3} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -32', () => {
@@ -269,13 +269,13 @@ describe('Flex', () => {
           marginLeft: -32,
           marginRight: -32
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
       })
     })
     context('when set to 4', () => {
       beforeEach(() => {
-        const tree = sd.shallowRender(<Flex gutter={4} />)
-        style = tree.getRenderOutput().props.style
+        renderer.render(<Flex gutter={4} />)
+        style = renderer.getRenderOutput().props.style
       })
 
       it('should set margin left and margin right -64', () => {
@@ -283,7 +283,25 @@ describe('Flex', () => {
           marginLeft: -64,
           marginRight: -64
         })
-        expect(style).to.deep.equal(computed)
+        expect(style).toEqual(computed)
+      })
+    })
+  })
+
+  describe('React context', () => {
+    context('when setting scale', () => {
+      beforeEach(() => {
+        renderer.render(<Flex gutter={2} />, {
+          reflexbox: {
+            scale: [0, 2, 4, 6, 8]
+          }
+        })
+        tree = renderer.getRenderOutput()
+      })
+
+      it('should pick up new scale values', () => {
+        expect(tree.props.style.marginLeft).toEqual(-4)
+        expect(tree.props.style.marginRight).toEqual(-4)
       })
     })
   })
@@ -298,7 +316,7 @@ describe('Flex', () => {
     }
 
     it('should be in a windowed environment', () => {
-      expect(window).to.exist
+      expect(window).toExist()
     })
 
     context('when below sm breakpoint', () => {
@@ -320,7 +338,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -336,7 +354,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -352,7 +370,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -368,7 +386,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -392,7 +410,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -408,7 +426,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -424,7 +442,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
 
@@ -440,7 +458,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -464,7 +482,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -480,7 +498,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -496,7 +514,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -512,7 +530,7 @@ describe('Flex', () => {
         })
 
         it('should set display block', () => {
-          expect(computed.display).to.equal('block')
+          expect(computed.display).toEqual('block')
         })
       })
     })
@@ -536,7 +554,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -552,7 +570,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -568,7 +586,7 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
         })
       })
 
@@ -584,7 +602,69 @@ describe('Flex', () => {
         })
 
         it('should set display flex', () => {
-          expect(computed.display).to.equal('flex')
+          expect(computed.display).toEqual('flex')
+        })
+      })
+    })
+
+    context('when setting custom breakpoints in React context', () => {
+      let root, flex
+
+      const ctx = {
+        reflexbox: {
+          breakpoints: {
+            mobile: '(min-width: 30em)',
+            tablet: '(min-width: 48em)',
+            desktop: '(min-width: 60em)'
+          }
+        }
+      }
+
+      class ContextRoot extends React.Component {
+        static childContextTypes = {
+          reflexbox: React.PropTypes.object
+        }
+        getChildContext () { return ctx }
+        render () { return <div {...this.props} /> }
+      }
+
+      context('when below the tablet breakpoint', () => {
+        if (!window.matchMedia('(max-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <ContextRoot>
+              <Flex tablet />
+            </ContextRoot>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should not set display flex', () => {
+          expect(computed.display).toEqual('block')
+        })
+      })
+
+      context('when above the tablet breakpoint', () => {
+        if (!window.matchMedia('(min-width: 48em)').matches) {
+          return false
+        }
+
+        beforeEach(() => {
+          root = TestUtils.renderIntoDocument(
+            <ContextRoot>
+              <Flex tablet />
+            </ContextRoot>
+          )
+          flex = TestUtils.findRenderedDOMComponentWithClass(root, 'Flex')
+          computed = flex.style
+        })
+
+        it('should set display flex', () => {
+          expect(computed.display).toEqual('flex')
         })
       })
     })

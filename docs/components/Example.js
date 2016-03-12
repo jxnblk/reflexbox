@@ -6,7 +6,6 @@ const Example = ({ example, ...props }) => (
   <div className='Example mb3 border border-light-blue rounded'>
     <div className='p2' children={example} />
     <pre children={toJsx(example)}
-      style={{ maxHeight: 256 }}
       className='m0 p2 overflow-scroll border-top border-light-blue' />
   </div>
 )
