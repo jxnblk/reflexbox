@@ -58,16 +58,14 @@ const Flex = ({
     className={cx} />
 }
 
-const scaleIndexes = Array.from({ length: config.scale.length }, (s, i) => i)
-
 Flex.propTypes = {
   /** Sets flex-wrap: wrap */
   wrap: React.PropTypes.bool,
   /** Sets flex-direction: column */
   column: React.PropTypes.bool,
   /** Sets negative left and right margins to compensate for <Box /> padding */
-  gutter: React.PropTypes.oneOf(scaleIndexes),
-  /** Sets align-item */
+  gutter: React.PropTypes.number,
+  /** Sets align-items */
   align: React.PropTypes.oneOf([
     'stretch',
     'center',
