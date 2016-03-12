@@ -136,4 +136,5 @@ Runs tests with React shallow rendering and browser tests with Karma for four di
 npm test
 ```
 
-MIT License
+[MIT License](.github/LICENSE.md)
+
