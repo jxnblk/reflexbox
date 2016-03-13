@@ -48,8 +48,6 @@ A component that creates a flexbox context to control layout of children.
 - `md` (boolean) Sets `display: flex` only above the medium breakpoint [*](breakpoint-props)
 - `lg` (boolean) Sets `display: flex` only above the large breakpoint [*](breakpoint-props)
 - `auto` (boolean) Sets `flex: 1 1 auto`
-- `style` (object) Assigns styles to the component [***](#style-and-classname-props)
-- `className` (string) Adds a class to the component [***](#style-and-classname-props)
 
 ## \<Box /\>
 
@@ -59,6 +57,25 @@ A component that sets padding and width that works independently or as a child c
 
 - `auto` (boolean) Sets `flex: 1 1 auto`
 - `flex` (boolean) Sets `display: flex`
+- `align` (string) Sets `align-self` property
+- `order` (number) Sets `order` property
+- `col` (number) Sets width and flex-basis based on a twelve column grid.
+- `sm` (number) Sets width and flex-basis above the small breakpoint based on a twelve column grid. [*](breakpoint-props)
+- `md` (number) Sets width and flex-basis above the medium breakpoint based on a twelve column grid. [*](breakpoint-props)
+- `lg` (number) Sets width and flex-basis above the large breakpoint based on a twelve column grid. [*](breakpoint-props)
+
+## Shared Props
+
+Both \<Box /\> and \<Flex /\> accept the following props:
+
+- `is` (element or node) Passes in a custom element or component
+- `m` (number) Sets margin based on a scale from 0 – 4. [**](spacing-scale-props)
+- `mx` (number) Sets x-axis margin based on a scale from 0 – 4. [**](spacing-scale-props)
+- `my` (number) Sets y-axis margin based on a scale from 0 – 4. [**](spacing-scale-props)
+- `mt` (number) Sets margin-top based on a scale from 0 – 4. [**](spacing-scale-props)
+- `mb` (number) Sets margin-bottom based on a scale from 0 – 4. [**](spacing-scale-props)
+- `ml` (number) Sets margin-left based on a scale from 0 – 4. [**](spacing-scale-props)
+- `mr` (number) Sets margin-right based on a scale from 0 – 4. [**](spacing-scale-props)
 - `p` (number) Sets padding based on a scale from 0 – 4. [**](spacing-scale-props)
 - `px` (number) Sets x-axis padding based on a scale from 0 – 4. [**](spacing-scale-props)
 - `py` (number) Sets y-axis padding based on a scale from 0 – 4. [**](spacing-scale-props)
@@ -66,13 +83,8 @@ A component that sets padding and width that works independently or as a child c
 - `pb` (number) Sets padding-bottom based on a scale from 0 – 4. [**](spacing-scale-props)
 - `pl` (number) Sets padding-left based on a scale from 0 – 4. [**](spacing-scale-props)
 - `pr` (number) Sets padding-right based on a scale from 0 – 4. [**](spacing-scale-props)
-- `col` (number) Sets width and flex-basis based on a twelve column grid.
-- `sm` (number) Sets width and flex-basis above the small breakpoint based on a twelve column grid. [*](breakpoint-props)
-- `md` (number) Sets width and flex-basis above the medium breakpoint based on a twelve column grid. [*](breakpoint-props)
-- `lg` (number) Sets width and flex-basis above the large breakpoint based on a twelve column grid. [*](breakpoint-props)
 - `style` (object) Assigns styles to the component [***](#style-and-classname-props)
 - `className` (string) Adds a class to the component [***](#style-and-classname-props)
-
 
 #### * Breakpoint props
 
@@ -126,6 +138,29 @@ class App extends React.Component {
     )
   }
 }
+```
+
+## Advanced Usage
+
+### `is` prop
+
+Change the root component of Flex or Box with the `is` prop.
+
+```js
+<Flex
+  is={MyHeader}
+  gutter={2}
+  align='center'>
+  <Box
+    is='h1'
+    px={2}
+    auto>
+    Hello
+  </Box>
+  <Box px={2}>
+    Box
+  </Box>
+</Flex>
 ```
 
 ## Tests

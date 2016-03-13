@@ -1,81 +1,47 @@
 
 import React from 'react'
 import assign from 'object-assign'
-import Base from './Base'
 import config from './config'
 import margin from './util/margin'
 import padding from './util/padding'
 
-/**
- * Sets margin, padding, and width and works independently or as a child of <Flex />.
- */
-
-const Box = ({
-  flex,
-  auto,
-  align,
-  order,
-  col,
+const Base = ({
+  style,
+  className,
+  is,
+  _style,
+  _className,
   ...props
 }, { reflexbox }) => {
-
-  const { breakpoints, scale } = { ...config, ...reflexbox }
-
-  function w(n) {
-    return n ? (n / 12 * 100) + '%' : null
-  }
-
-  let width = w(col)
-
-  if (typeof window !== 'undefined') {
-    Object.keys(breakpoints).forEach(key => {
-      if (props[key] && window.matchMedia(breakpoints[key]).matches) {
-        width = w(props[key]) || width
-      }
-    })
-  }
+  const { scale } = { ...config, ...reflexbox }
 
   const sx = assign(
-    {},
-    auto ? { flex: '1 1 auto' } : null,
-    flex ? { display: 'flex' } : null,
-    align ? { alignSelf: align } : null,
-    order ? { order } : null,
-    width ? { width } : null,
-    width ? { flexBasis: width } : null
+    { boxSizing: 'border-box' },
+    style,
+    _style,
+    margin(props, scale),
+    padding(props, scale)
   )
 
+  const cx = className ? `${_className} ${className}` : _className
+  const Component = is || 'div'
+
   return (
-    <Base
+    <Component
       {...props}
-      _style={sx}
-      _className='Box' />
+      style={sx}
+      className={cx} />
   )
 }
 
-Box.propTypes = {
-  /** Sets flex: 1 1 auto */
-  auto: React.PropTypes.bool,
-  /** Sets display: flex */
-  flex: React.PropTypes.bool,
-  /** Sets align-self */
-  align: React.PropTypes.oneOf([
-    'stretch',
-    'center',
-    'baseline',
-    'flex-start',
-    'flex-end',
-  ]),
-  /** Sets order */
-  order: React.PropTypes.number,
-  /** Sets width and flex-basis based on a 12 column grid */
-  col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-
+Base.propTypes = {
   /** Passes in a custom element or component */
   is: React.PropTypes.oneOfType([
     React.PropTypes.element,
     React.PropTypes.node
   ]),
+  _className: React.PropTypes.string,
+  _style: React.PropTypes.object,
 
   /** Sets padding based on a scale of 0–4 */
   m: React.PropTypes.number,
@@ -91,6 +57,9 @@ Box.propTypes = {
   ml: React.PropTypes.number,
   /** Sets margin-right based on a scale of 0–4 */
   mr: React.PropTypes.number,
+
+  /** Sets negative left and right margins to compensate for child component padding */
+  gutter: React.PropTypes.number,
 
   /** Sets padding based on a scale of 0–4 */
   p: React.PropTypes.number,
@@ -108,12 +77,12 @@ Box.propTypes = {
   pr: React.PropTypes.number
 }
 
-Box.contextTypes = {
+Base.contextTypes = {
   reflexbox: React.PropTypes.shape({
     breakpoints: React.PropTypes.object,
     scale: React.PropTypes.array
   })
 }
 
-export default Box
+export default Base
 

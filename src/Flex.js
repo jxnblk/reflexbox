@@ -1,5 +1,7 @@
 
 import React from 'react'
+import assign from 'object-assign'
+import Base from './Base'
 import config from './config'
 
 /**
@@ -11,15 +13,12 @@ const Flex = ({
   column,
   align,
   justify,
-  gutter,
   auto,
-  style,
-  className,
   ...props
 }, { reflexbox }) => {
 
   let display = 'flex'
-  const { breakpoints, scale } = { ...config, ...reflexbox }
+  const { breakpoints } = { ...config, ...reflexbox }
 
   if (typeof window !== 'undefined') {
     Object.keys(breakpoints).forEach(key => {
@@ -34,26 +33,22 @@ const Flex = ({
     })
   }
 
-  const sx = Object.assign({}, style, {
-    display,
-    flexWrap: wrap ? 'wrap' : null,
-    flexDirection: column ? 'column' : null,
-    flex: auto ? '1 1 auto' : null,
-    alignItems: align || null,
-    justifyContent: justify || null,
-    marginLeft: gutter ? -scale[gutter] : null,
-    marginRight: gutter ? -scale[gutter] : null
-  })
+  const sx = assign(
+    display ? { display } : null,
+    wrap ? { flexWrap: 'wrap' } : null,
+    column ? { flexDirection: 'column' } : null,
+    auto ? { flex: '1 1 auto' } : null,
+    align ? { alignItems: align } : null,
+    justify ? { justifyContent: justify } : null
+  )
 
-  const cx = className ? `Flex ${className}` : 'Flex'
-
-  return <div
-    {...props}
-    style={sx}
-    className={cx} />
+  return (
+    <Base
+      {...props}
+      _style={sx}
+      _className='Flex' />
+  )
 }
-
-const scaleIndexes = Array.from({ length: config.scale.length }, (s, i) => i)
 
 Flex.propTypes = {
   /** Sets flex-wrap: wrap */
@@ -61,8 +56,8 @@ Flex.propTypes = {
   /** Sets flex-direction: column */
   column: React.PropTypes.bool,
   /** Sets negative left and right margins to compensate for <Box /> padding */
-  gutter: React.PropTypes.oneOf(scaleIndexes),
-  /** Sets align-item */
+  gutter: React.PropTypes.number,
+  /** Sets align-items */
   align: React.PropTypes.oneOf([
     'stretch',
     'center',
@@ -79,7 +74,12 @@ Flex.propTypes = {
     'flex-end',
   ]),
   /** Sets flex: 1 1 auto */
-  auto: React.PropTypes.bool
+  auto: React.PropTypes.bool,
+  /** Passes in a custom element or component */
+  is: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.node
+  ])
 }
 
 Flex.contextTypes = {

@@ -4,6 +4,7 @@ var webpack = require('webpack')
 var configuration = {
   browsers: [
     'Firefox',
+    // 'Safari',
     'Chrome_xs',
     'Chrome_sm',
     'Chrome_md',
@@ -42,6 +43,7 @@ var configuration = {
   plugins: [
     'karma-chrome-launcher',
     'karma-firefox-launcher',
+    'karma-safari-launcher',
     'karma-mocha',
     'karma-mocha-reporter',
     'karma-webpack'
