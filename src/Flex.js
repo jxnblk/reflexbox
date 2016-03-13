@@ -74,7 +74,12 @@ Flex.propTypes = {
     'flex-end',
   ]),
   /** Sets flex: 1 1 auto */
-  auto: React.PropTypes.bool
+  auto: React.PropTypes.bool,
+  /** Passes in a custom element or component */
+  is: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.node
+  ])
 }
 
 Flex.contextTypes = {

@@ -65,6 +65,30 @@ describe('Base', () => {
     })
   })
 
+  context('when setting is prop', () => {
+    beforeEach(() => {
+      renderer.render(<Base is='ul' />)
+      tree = renderer.getRenderOutput()
+    })
+
+    it('should render a ul', () => {
+      expect(tree.type).toEqual('ul')
+    })
+  })
+
+  context('when setting a component with the is prop', () => {
+    class Test extends React.Component {
+      render () { return (<span {...this.props} />) }
+    }
+    beforeEach(() => {
+      renderer.render(<Base is={Test} />)
+      tree = renderer.getRenderOutput()
+    })
+
+    it('should render a Test component', () => {
+      expect(tree.type).toEqual(Test)
+    })
+  })
 
   describe('React context', () => {
     context('when setting scale', () => {

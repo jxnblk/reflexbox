@@ -71,6 +71,12 @@ Box.propTypes = {
   /** Sets width and flex-basis based on a 12 column grid */
   col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
 
+  /** Passes in a custom element or component */
+  is: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.node
+  ]),
+
   /** Sets padding based on a scale of 0–4 */
   m: React.PropTypes.number,
   /** Sets padding-left and padding-right based on a scale of 0–4 */
