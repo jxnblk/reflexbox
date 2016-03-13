@@ -37,8 +37,9 @@ const Base = ({
 Base.propTypes = {
   /** Passes in a custom element or component */
   is: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.node
+    React.PropTypes.string,
+    React.PropTypes.object,
+    React.PropTypes.func
   ]),
   _className: React.PropTypes.string,
   _style: React.PropTypes.object,
