@@ -140,6 +140,29 @@ class App extends React.Component {
 }
 ```
 
+## Advanced Usage
+
+### `is` prop
+
+Change the root component of Flex or Box with the `is` prop.
+
+```js
+<Flex
+  is={MyHeader}
+  gutter={2}
+  align='center'>
+  <Box
+    is='h1'
+    px={2}
+    auto>
+    Hello
+  </Box>
+  <Box px={2}>
+    Box
+  </Box>
+</Flex>
+```
+
 ## Tests
 
 Runs tests with React shallow rendering and browser tests with Karma for four different breakpoints.
