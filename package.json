@@ -6,6 +6,7 @@
   "scripts": {
     "docs": "webpack -p --progress --colors --config docs/webpack.config.js",
     "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
+    "docs:deploy": "gh-pages -d docs",
     "prepublish": "babel src --out-dir dist",
     "karma": "karma start test/karma.conf.js",
     "karma:watch": "karma start test/karma.conf.js --auto-watch --no-single-run",
@@ -29,6 +30,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.5.2",
     "expect": "^1.15.2",
+    "gh-pages": "^0.11.0",
     "json-loader": "^0.5.3",
     "karma": "^0.13.10",
     "karma-chrome-launcher": "^0.2.1",
