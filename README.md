@@ -117,7 +117,7 @@ class App extends React.Component {
   getChildContext () {
     return {
       reflexbox: {
-        scale: [0 10, 20, 40, 80],
+        scale: [0, 10, 20, 40, 80],
         breakpoints: {
           mobile: '(min-width: 30em)',
           tablet: '(min-width: 48em)',
