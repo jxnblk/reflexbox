@@ -19,7 +19,7 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -41,10 +41,10 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "raw-loader": "^0.5.1",
-    "react": "^0.14.7",
-    "react-addons-test-utils": "^0.14.7",
+    "react": "^15.0.1",
+    "react-addons-test-utils": "^15.0.1",
     "react-docgen": "^2.7.0",
-    "react-dom": "^0.14.7",
+    "react-dom": "^15.0.1",
     "react-element-to-jsx-string": "^2.4.0",
     "standard": "^5.3.1",
     "webpack": "^1.12.2",
