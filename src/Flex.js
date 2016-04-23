@@ -4,6 +4,8 @@ import assign from 'object-assign'
 import Base from './Base'
 import config from './config'
 
+const defaultBreakPoints = Object.keys(config.breakpoints)
+
 /**
  * Creates a flexbox context to control layout of children.
  */
@@ -18,15 +20,16 @@ const Flex = ({
 }, { reflexbox }) => {
 
   let display = 'flex'
-  const { breakpoints } = { ...config, ...reflexbox }
+  const { breakpoints } = reflexbox ? { ...config, ...reflexbox } : config
 
   if (typeof window !== 'undefined') {
-    Object.keys(breakpoints).forEach(key => {
-      if (Object.keys(props).indexOf(key) > -1) {
+    const b = reflexbox ? Object.keys(breakpoints) : defaultBreakPoints
+    b.forEach(key => {
+      if (key in props) {
         display = 'block'
       }
     })
-    Object.keys(breakpoints).forEach(key => {
+    b.forEach(key => {
       if (props[key] && window.matchMedia(breakpoints[key]).matches) {
         display = 'flex'
       }
@@ -77,8 +80,9 @@ Flex.propTypes = {
   auto: React.PropTypes.bool,
   /** Passes in a custom element or component */
   is: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.node
+    React.PropTypes.string,
+    React.PropTypes.object,
+    React.PropTypes.func
   ])
 }
 
@@ -90,4 +94,3 @@ Flex.contextTypes = {
 }
 
 export default Flex
-

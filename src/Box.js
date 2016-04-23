@@ -6,6 +6,12 @@ import config from './config'
 import margin from './util/margin'
 import padding from './util/padding'
 
+const defaultBreakPoints = Object.keys(config.breakpoints)
+
+function w(n) {
+  return n ? (n / 12 * 100) + '%' : null
+}
+
 /**
  * Sets margin, padding, and width and works independently or as a child of <Flex />.
  */
@@ -19,16 +25,12 @@ const Box = ({
   ...props
 }, { reflexbox }) => {
 
-  const { breakpoints, scale } = { ...config, ...reflexbox }
-
-  function w(n) {
-    return n ? (n / 12 * 100) + '%' : null
-  }
+  const { breakpoints, scale } = reflexbox ? { ...config, ...reflexbox } : config
 
   let width = w(col)
 
   if (typeof window !== 'undefined') {
-    Object.keys(breakpoints).forEach(key => {
+    (reflexbox ? Object.keys(breakpoints) : defaultBreakPoints).forEach(key => {
       if (props[key] && window.matchMedia(breakpoints[key]).matches) {
         width = w(props[key]) || width
       }
@@ -73,8 +75,9 @@ Box.propTypes = {
 
   /** Passes in a custom element or component */
   is: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.node
+    React.PropTypes.string,
+    React.PropTypes.object,
+    React.PropTypes.func
   ]),
 
   /** Sets padding based on a scale of 0–4 */
@@ -116,4 +119,3 @@ Box.contextTypes = {
 }
 
 export default Box
-
