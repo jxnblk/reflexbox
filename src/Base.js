@@ -17,15 +17,13 @@ const Base = ({
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
 
-  const sx = assign(
+  const sx = prefixer.prefix(assign(
     { boxSizing: 'border-box' },
     style,
     _style,
     margin(props, scale),
     padding(props, scale)
-  )
-
-  console.log(prefixer.prefix(sx))
+  ))
 
   const cx = className ? `${_className} ${className}` : _className
   const Component = is || 'div'
@@ -33,7 +31,7 @@ const Base = ({
   return (
     <Component
       {...props}
-      style={prefixer.prefix(sx)}
+      style={sx}
       className={cx} />
   )
 }
