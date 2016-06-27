@@ -4,6 +4,7 @@ import assign from 'object-assign'
 import config from './config'
 import margin from './util/margin'
 import padding from './util/padding'
+import prefix from 'react-prefixr'
 
 const Base = ({
   style,
@@ -15,13 +16,13 @@ const Base = ({
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
 
-  const sx = assign(
+  const sx = prefix(assign(
     { boxSizing: 'border-box' },
     style,
     _style,
     margin(props, scale),
     padding(props, scale)
-  )
+  ))
 
   const cx = className ? `${_className} ${className}` : _className
   const Component = is || 'div'
