@@ -4,6 +4,8 @@ import assign from 'object-assign'
 import config from './config'
 import margin from './util/margin'
 import padding from './util/padding'
+import Prefixer from 'inline-style-prefixer'
+const prefixer = new Prefixer()
 
 const Base = ({
   style,
@@ -15,13 +17,13 @@ const Base = ({
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
 
-  const sx = assign(
+  const sx = prefixer.prefix(assign(
     { boxSizing: 'border-box' },
     style,
     _style,
     margin(props, scale),
     padding(props, scale)
-  )
+  ))
 
   const cx = className ? `${_className} ${className}` : _className
   const Component = is || 'div'

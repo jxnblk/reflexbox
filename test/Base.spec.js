@@ -23,7 +23,7 @@ describe('Base', () => {
   })
 
   it('should have box-sizing by default', () => {
-    expect(style).toEqual({ boxSizing: 'border-box' })
+    expect(style).toInclude({ boxSizing: 'border-box' })
   })
 
   context('when setting style prop', () => {
@@ -34,7 +34,7 @@ describe('Base', () => {
     })
 
     it('should assign styles', () => {
-      expect(style).toEqual({ boxSizing: 'border-box', backgroundColor: 'tomato' })
+      expect(style).toInclude({ boxSizing: 'border-box', backgroundColor: 'tomato' })
     })
   })
 
@@ -50,7 +50,7 @@ describe('Base', () => {
     })
 
     it('should override style with _style', () => {
-      expect(style).toEqual({ boxSizing: 'border-box', backgroundColor: 'green' })
+      expect(style).toInclude({ boxSizing: 'border-box', backgroundColor: 'green' })
     })
   })
 
