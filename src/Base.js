@@ -11,6 +11,9 @@ const Base = ({
   is,
   _style,
   _className,
+  gutter,
+  m, mt, mr, mb, ml, mx, my,
+  p, pt, pr, pb, pl, px, py,
   ...props
 }, { reflexbox }) => {
   const { scale } = { ...config, ...reflexbox }
@@ -19,8 +22,8 @@ const Base = ({
     { boxSizing: 'border-box' },
     style,
     _style,
-    margin(props, scale),
-    padding(props, scale)
+    margin({ gutter, m, mt, mr, mb, ml, mx, my }, scale),
+    padding({ p, pt, pr, pb, pl, px, py }, scale)
   )
 
   const cx = className ? `${_className} ${className}` : _className

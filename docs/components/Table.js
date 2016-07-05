@@ -3,15 +3,15 @@ import React from 'react'
 
 const Table = ({ headers, data, color, ...props }) => (
   <div style={{
-      maxWidth: '100%',
-      overflowX: 'scroll'
-    }}>
+    maxWidth: '100%',
+    overflowX: 'scroll'
+  }}>
     <table style={{
-        borderCollapse: 'separate',
-        borderSpacing: 0,
-        maxWidth: '100%',
-        width: '100%'
-      }}>
+      borderCollapse: 'separate',
+      borderSpacing: 0,
+      maxWidth: '100%',
+      width: '100%'
+    }}>
       <thead>
         <tr>
           {headers.map((header, i) => (
