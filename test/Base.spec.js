@@ -2,12 +2,9 @@
 import React from 'react'
 import expect from 'expect'
 import TestUtils from 'react-addons-test-utils'
-import assign from 'object-assign'
 import { Base } from '../src'
 
 const renderer = TestUtils.createRenderer()
-
-const round = (n) => Math.round(n * 100) / 100
 
 describe('Base', () => {
   let tree, style
@@ -90,6 +87,40 @@ describe('Base', () => {
     })
   })
 
+  context('when passing custom Reflexbox props', () => {
+    beforeEach(() => {
+      renderer.render(
+        <Base
+          is='div'
+          _style={{ color: 'black' }}
+          _className='black'
+          m={1} mt={1} mr={1} mb={1} ml={1} mx={1} my={1}
+          p={1} pt={1} pr={1} pb={1} pl={1} px={1} py={1}
+        />
+      )
+      tree = renderer.getRenderOutput()
+    })
+    it('should not pass custom props to DOM elements', () => {
+      expect(tree.props.m).toNotExist()
+      expect(tree.props.mt).toNotExist()
+      expect(tree.props.mr).toNotExist()
+      expect(tree.props.mb).toNotExist()
+      expect(tree.props.ml).toNotExist()
+      expect(tree.props.mx).toNotExist()
+      expect(tree.props.my).toNotExist()
+      expect(tree.props.p).toNotExist()
+      expect(tree.props.pt).toNotExist()
+      expect(tree.props.pr).toNotExist()
+      expect(tree.props.pb).toNotExist()
+      expect(tree.props.pl).toNotExist()
+      expect(tree.props.px).toNotExist()
+      expect(tree.props.py).toNotExist()
+      expect(tree.props.is).toNotExist()
+      expect(tree.props._style).toNotExist()
+      expect(tree.props._className).toNotExist()
+    })
+  })
+
   describe('React context', () => {
     context('when setting scale', () => {
       beforeEach(() => {
@@ -117,7 +148,7 @@ describe('Base', () => {
       }
       getChildContext () { return this.props.ctx || {} }
       render () {
-        return <div {...this.props} />
+        return <div children={this.props.children} />
       }
     }
 
@@ -131,7 +162,7 @@ describe('Base', () => {
     }
 
     describe('padding', () => {
-      let tree, root, base
+      let tree
 
       context('when p prop is set', () => {
         beforeEach(() => {

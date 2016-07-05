@@ -2,16 +2,7 @@
 import React from 'react'
 import { Flex, Box } from '../../src'
 
-const propsString = (obj) => {
-  let str = ''
-  Object.keys(obj).forEach(key => {
-    str += `${key}='${obj[key]}' `
-  })
-  return str
-}
-
 const BoxDemo = ({ ...props }) => {
-
   return (
     <div className='mb3 white'>
       <Flex align='center' justify='space-between' className='demo-flex'>

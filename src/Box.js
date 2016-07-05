@@ -3,8 +3,6 @@ import React from 'react'
 import assign from 'object-assign'
 import Base from './Base'
 import config from './config'
-import margin from './util/margin'
-import padding from './util/padding'
 
 /**
  * Sets margin, padding, and width and works independently or as a child of <Flex />.
@@ -18,10 +16,9 @@ const Box = ({
   col,
   ...props
 }, { reflexbox }) => {
+  const { breakpoints } = { ...config, ...reflexbox }
 
-  const { breakpoints, scale } = { ...config, ...reflexbox }
-
-  function w(n) {
+  function w (n) {
     return n ? (n / 12 * 100) + '%' : null
   }
 
@@ -34,6 +31,11 @@ const Box = ({
       }
     })
   }
+
+  Object.keys(breakpoints)
+    .forEach(key => {
+      delete props[key]
+    })
 
   const sx = assign(
     {},
@@ -64,7 +66,7 @@ Box.propTypes = {
     'center',
     'baseline',
     'flex-start',
-    'flex-end',
+    'flex-end'
   ]),
   /** Sets order */
   order: React.PropTypes.number,

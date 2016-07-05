@@ -316,11 +316,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual('')
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual('')
             })
           })
@@ -336,11 +336,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual('')
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual('')
             })
           })
@@ -356,11 +356,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual('')
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual('')
             })
           })
@@ -407,11 +407,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual(expected)
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual(expected)
             })
           })
@@ -429,11 +429,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual(expected)
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual(expected)
             })
           })
@@ -522,11 +522,11 @@ describe('Box', () => {
               flexBasis = computed.flexBasis
             })
 
-            it(`should not have width set`, () => {
+            it('should not have width set', () => {
               expect(width).toEqual(expected)
             })
 
-            it(`should not have flex-basis set`, () => {
+            it('should not have flex-basis set', () => {
               expect(flexBasis).toEqual(expected)
             })
           })

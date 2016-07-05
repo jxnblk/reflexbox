@@ -7,13 +7,12 @@ import BoxDemo from './BoxDemo'
 class ComponentDocs extends React.Component {
 
   render () {
-    const { name, Component, raw, docs, ...other } = this.props
+    const { name, docs } = this.props
 
     const headers = [
       'Prop',
       'Type',
-      // 'Default',
-      'Description',
+      'Description'
     ]
 
     const data = Object.keys(docs.props)

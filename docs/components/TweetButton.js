@@ -8,8 +8,8 @@ const script = `
 const TweetButton = ({ text, url, via, ...props }) => (
   <div className='inline-block mr2'
     style={{ height: 20 }}>
-    <a href="https://twitter.com/share"
-      className="twitter-share-button"
+    <a href='https://twitter.com/share'
+      className='twitter-share-button'
       data-text={text}
       data-url={url}
       data-via={via}
