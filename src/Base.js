@@ -11,6 +11,7 @@ const Base = ({
   is,
   _style,
   _className,
+  gutter,
   m, mt, mr, mb, ml, mx, my,
   p, pt, pr, pb, pl, px, py,
   ...props
@@ -21,7 +22,7 @@ const Base = ({
     { boxSizing: 'border-box' },
     style,
     _style,
-    margin({ m, mt, mr, mb, ml, mx, my }, scale),
+    margin({ gutter, m, mt, mr, mb, ml, mx, my }, scale),
     padding({ p, pt, pr, pb, pl, px, py }, scale)
   )
 

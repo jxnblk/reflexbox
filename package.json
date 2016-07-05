@@ -14,7 +14,7 @@
     "mocha:watch": "mocha --watch --compilers js:babel-register",
     "standard": "standard",
     "start": "npm run docs:dev",
-    "test": "npm run mocha && npm run karma"
+    "test": "standard && npm run mocha && npm run karma"
   },
   "author": "Brent Jackson",
   "license": "MIT",

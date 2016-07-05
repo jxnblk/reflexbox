@@ -94,6 +94,7 @@ describe('Base', () => {
           is='div'
           _style={{ color: 'black' }}
           _className='black'
+          gutter={1}
           m={1} mt={1} mr={1} mb={1} ml={1} mx={1} my={1}
           p={1} pt={1} pr={1} pb={1} pl={1} px={1} py={1}
         />
