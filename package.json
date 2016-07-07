@@ -84,7 +84,10 @@
       "docs/dev.js"
     ],
     "globals": [
+      "before",
       "beforeEach",
+      "after",
+      "afterEach",
       "context",
       "describe",
       "it"

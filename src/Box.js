@@ -75,8 +75,9 @@ Box.propTypes = {
 
   /** Passes in a custom element or component */
   is: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.node
+    React.PropTypes.string,
+    React.PropTypes.object,
+    React.PropTypes.func
   ]),
 
   /** Sets padding based on a scale of 0–4 */
