@@ -1,9 +1,7 @@
 
 import React from 'react'
 import assign from 'object-assign'
-import config from './config'
-import margin from './util/margin'
-import padding from './util/padding'
+import Reflex from './Reflex'
 
 const Base = ({
   style,
@@ -11,19 +9,12 @@ const Base = ({
   is,
   _style,
   _className,
-  gutter,
-  m, mt, mr, mb, ml, mx, my,
-  p, pt, pr, pb, pl, px, py,
   ...props
-}, { reflexbox }) => {
-  const { scale } = { ...config, ...reflexbox }
-
+}) => {
   const sx = assign(
     { boxSizing: 'border-box' },
     style,
-    _style,
-    margin({ gutter, m, mt, mr, mb, ml, mx, my }, scale),
-    padding({ p, pt, pr, pb, pl, px, py }, scale)
+    _style
   )
 
   const cx = className ? `${_className} ${className}` : _className
@@ -81,12 +72,5 @@ Base.propTypes = {
   pr: React.PropTypes.number
 }
 
-Base.contextTypes = {
-  reflexbox: React.PropTypes.shape({
-    breakpoints: React.PropTypes.object,
-    scale: React.PropTypes.array
-  })
-}
-
-export default Base
+export default Reflex(Base)
 

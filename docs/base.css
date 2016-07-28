@@ -1,7 +1,8 @@
 
 pre, samp, code,
 .mono {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Menlo, monospace;
+  font-size: 14px;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
