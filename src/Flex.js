@@ -1,57 +1,13 @@
 
 import React from 'react'
-import assign from 'object-assign'
-import Base from './Base'
-import config from './config'
+import Box from './Box'
 
 /**
  * Creates a flexbox context to control layout of children.
  */
 
-const Flex = ({
-  wrap,
-  column,
-  align,
-  justify,
-  auto,
-  ...props
-}, { reflexbox }) => {
-  let display = 'flex'
-  const { breakpoints } = { ...config, ...reflexbox }
-
-  if (typeof window !== 'undefined') {
-    Object.keys(breakpoints).forEach(key => {
-      if (Object.keys(props).indexOf(key) > -1) {
-        display = 'block'
-      }
-    })
-    Object.keys(breakpoints).forEach(key => {
-      if (props[key] && window.matchMedia(breakpoints[key]).matches) {
-        display = 'flex'
-      }
-    })
-  }
-
-  Object.keys(breakpoints)
-    .forEach(key => {
-      delete props[key]
-    })
-
-  const sx = assign(
-    display ? { display } : null,
-    wrap ? { flexWrap: 'wrap' } : null,
-    column ? { flexDirection: 'column' } : null,
-    auto ? { flex: '1 1 auto' } : null,
-    align ? { alignItems: align } : null,
-    justify ? { justifyContent: justify } : null
-  )
-
-  return (
-    <Base
-      {...props}
-      _style={sx}
-      _className='Flex' />
-  )
+const Flex = (props) => {
+  return <Box flex {...props} className='Flex' />
 }
 
 Flex.propTypes = {

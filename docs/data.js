@@ -167,13 +167,19 @@ const data = {
       name: 'Flex',
       Component: Flex,
       raw: flexSrc,
-      docs: parse(flexSrc)
+      docs: {
+        props: {}
+      }
+      // docs: parse(flexSrc)
     },
     box: {
       name: 'Box',
       Component: Box,
       raw: boxSrc,
-      docs: parse(boxSrc)
+      docs: {
+        props: {}
+      }
+      // docs: parse(boxSrc)
     }
   },
   examples

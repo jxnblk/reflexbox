@@ -1,58 +1,17 @@
 
 import React from 'react'
-import assign from 'object-assign'
-import Base from './Base'
-import config from './config'
+import Reflex from './Reflex'
 
 /**
  * Sets margin, padding, and width and works independently or as a child of <Flex />.
  */
 
-const Box = ({
-  flex,
-  auto,
-  align,
-  order,
-  col,
-  ...props
-}, { reflexbox }) => {
-  const { breakpoints } = { ...config, ...reflexbox }
+const ReBox = Reflex('div')
 
-  function w (n) {
-    return n ? (n / 12 * 100) + '%' : null
-  }
+const Box = (props) => {
+  const cx = 'Box ' + props.className
 
-  let width = w(col)
-
-  if (typeof window !== 'undefined') {
-    Object.keys(breakpoints).forEach(key => {
-      if (props[key] && window.matchMedia(breakpoints[key]).matches) {
-        width = w(props[key]) || width
-      }
-    })
-  }
-
-  Object.keys(breakpoints)
-    .forEach(key => {
-      delete props[key]
-    })
-
-  const sx = assign(
-    {},
-    auto ? { flex: '1 1 auto' } : null,
-    flex ? { display: 'flex' } : null,
-    align ? { alignSelf: align } : null,
-    order ? { order } : null,
-    width ? { width } : null,
-    width ? { flexBasis: width } : null
-  )
-
-  return (
-    <Base
-      {...props}
-      _style={sx}
-      _className='Box' />
-  )
+  return <Box {...props} className={cx} />
 }
 
 Box.propTypes = {
@@ -118,5 +77,8 @@ Box.contextTypes = {
   })
 }
 
-export default Box
+// export default Box
+
+const BBox = Reflex('div')
+export default props => <BBox {...props} className='Box' />
 
