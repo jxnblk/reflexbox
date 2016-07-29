@@ -1,13 +1,20 @@
 
 import React from 'react'
-import Box from './Box'
+import Reflex from './Reflex'
 
 /**
  * Creates a flexbox context to control layout of children.
  */
 
-const Flex = (props) => {
-  return <Box flex {...props} className='Flex' />
+const Flex = ({ is = 'div', className, ...props }) => {
+  const Base = Reflex(is)
+  const cx = 'Flex' + (className ? ' ' + className : '')
+
+  // Map legacy props
+  props.flexColumn = props.column
+  delete props.column
+
+  return <Base flex {...props} className={cx} />
 }
 
 Flex.propTypes = {
@@ -34,20 +41,7 @@ Flex.propTypes = {
     'flex-end'
   ]),
   /** Sets flex: 1 1 auto */
-  auto: React.PropTypes.bool,
-  /** Passes in a custom element or component */
-  is: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object,
-    React.PropTypes.func
-  ])
-}
-
-Flex.contextTypes = {
-  reflexbox: React.PropTypes.shape({
-    breakpoints: React.PropTypes.object,
-    scale: React.PropTypes.array
-  })
+  auto: React.PropTypes.bool
 }
 
 export default Flex

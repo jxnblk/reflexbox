@@ -7,11 +7,14 @@ import Footer from './Footer'
 
 class Root extends React.Component {
   render () {
-    const { components: { flex, box }, examples } = this.props
+    const { components, examples } = this.props
+    const { reflex, flex, box } = components
+    console.log('reflex', reflex)
 
     return (
       <div className='dark-blue bg-blue'>
         <Header {...this.props} />
+        <ComponentDocs {...reflex} />
         <ComponentDocs {...flex} />
         <ComponentDocs {...box} />
         <Examples examples={examples} />

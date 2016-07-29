@@ -1,8 +1,8 @@
 # reflexbox
 
-React flexbox layout and grid system, built with stateless components and inline styles
+React flexbox layout and grid system and higher order component
 
-[![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg)](https://travis-ci.org/jxnblk/reflexbox)
+[![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg?branch=master)](https://travis-ci.org/jxnblk/reflexbox)
 [![Code Climate](https://codeclimate.com/github/jxnblk/reflexbox/badges/gpa.svg)](https://codeclimate.com/github/jxnblk/reflexbox)
 [![npm version](https://badge.fury.io/js/reflexbox.svg)](https://badge.fury.io/js/reflexbox)
 
@@ -13,7 +13,7 @@ npm install reflexbox
 ```
 
 ```js
-// Example
+// Basic component example
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 
@@ -31,7 +31,26 @@ class Component extends React.Component {
 }
 ```
 
-Reflexbox is composed of two React v0.14 stateless function components that can handle virtually any layout composition.
+```js
+// Higher order component example
+import React from 'react'
+import { Reflex } from 'reflexbox'
+
+const Button = (props) => {
+  return <button {...props} />
+}
+
+export default Reflex(MyButton)
+```
+
+Reflexbox is composed of a higher order component and two React components that can handle virtually any layout composition.
+
+## Reflex
+
+Higher order component that accepts style helper props and is used to create the Flex and Box components.
+The Flex and Box components are mostly provided as a convenience and to ensure backwards compatibility.
+
+### Props
 
 ## \<Flex /\>
 
@@ -66,7 +85,9 @@ A component that sets padding and width that works independently or as a child c
 
 ## Shared Props
 
-Both \<Box /\> and \<Flex /\> accept the following props:
+Components wrapped with the Reflex higher order component
+and both \<Box /\> and \<Flex /\> accept several layout props from
+the [Robox](https://github.com/jxnblk/robox) higher order component.
 
 - `is` (element or node) Passes in a custom element or component
 - `m` (number) Sets margin based on a scale from 0 – 4. [**](spacing-scale-props)
@@ -103,7 +124,7 @@ For other layout styles, prefer using component composition over using these pro
 
 ## Configuration
 
-Values for the spacing scale and breakpoints can be configured with
+Values for the breakpoints can be configured with
 [React Context](https://facebook.github.io/react/docs/context.html).
 
 To configure reflexbox, add `childContextTypes` and `getChildContext` to a container component.
@@ -117,7 +138,6 @@ class App extends React.Component {
   getChildContext () {
     return {
       reflexbox: {
-        scale: [0, 10, 20, 40, 80],
         breakpoints: {
           mobile: '(min-width: 30em)',
           tablet: '(min-width: 48em)',
@@ -138,29 +158,6 @@ class App extends React.Component {
     )
   }
 }
-```
-
-## Advanced Usage
-
-### `is` prop
-
-Change the root component of Flex or Box with the `is` prop.
-
-```js
-<Flex
-  is={MyHeader}
-  gutter={2}
-  align='center'>
-  <Box
-    is='h1'
-    px={2}
-    auto>
-    Hello
-  </Box>
-  <Box px={2}>
-    Box
-  </Box>
-</Flex>
 ```
 
 ## Tests

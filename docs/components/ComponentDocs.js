@@ -28,7 +28,7 @@ class ComponentDocs extends React.Component {
       })
 
     return (
-      <section id={name} className='v100 p3'>
+      <section id={name} className='p3'>
         {name === 'Flex' && <FlexDemo />}
         {name === 'Box' && <BoxDemo />}
         <h2>
@@ -37,13 +37,15 @@ class ComponentDocs extends React.Component {
               color: 'inherit',
               textDecoration: 'none'
             }}>
-            {`<${name} />`}
+            {name}
           </a>
         </h2>
         <p>{docs.description}</p>
-        <Table
-          headers={headers}
-          data={data} />
+        {!!data.length && (
+          <Table
+            headers={headers}
+            data={data} />
+        )}
       </section>
     )
   }

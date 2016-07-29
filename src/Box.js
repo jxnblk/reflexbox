@@ -6,79 +6,29 @@ import Reflex from './Reflex'
  * Sets margin, padding, and width and works independently or as a child of <Flex />.
  */
 
-const ReBox = Reflex('div')
+const Box = ({ is = 'div', className, ...props }) => {
+  const Base = Reflex(is)
+  const cx = 'Box' + (className ? ' ' + className : '')
 
-const Box = (props) => {
-  const cx = 'Box ' + props.className
+  // Map legacy props
+  props.flexAuto = props.auto
+  delete props.auto
 
-  return <Box {...props} className={cx} />
+  return <Base {...props} className={cx} />
 }
 
 Box.propTypes = {
   /** Sets flex: 1 1 auto */
   auto: React.PropTypes.bool,
+  /** Sets flex: none */
+  flexNone: React.PropTypes.bool,
   /** Sets display: flex */
   flex: React.PropTypes.bool,
-  /** Sets align-self */
-  align: React.PropTypes.oneOf([
-    'stretch',
-    'center',
-    'baseline',
-    'flex-start',
-    'flex-end'
-  ]),
   /** Sets order */
   order: React.PropTypes.number,
   /** Sets width and flex-basis based on a 12 column grid */
-  col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-
-  /** Passes in a custom element or component */
-  is: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object,
-    React.PropTypes.func
-  ]),
-
-  /** Sets padding based on a scale of 0–4 */
-  m: React.PropTypes.number,
-  /** Sets padding-left and padding-right based on a scale of 0–4 */
-  mx: React.PropTypes.number,
-  /** Sets margin-top and margin-bottom based on a scale of 0–4 */
-  my: React.PropTypes.number,
-  /** Sets margin-top based on a scale of 0–4 */
-  mt: React.PropTypes.number,
-  /** Sets margin-bottom based on a scale of 0–4 */
-  mb: React.PropTypes.number,
-  /** Sets margin-left based on a scale of 0–4 */
-  ml: React.PropTypes.number,
-  /** Sets margin-right based on a scale of 0–4 */
-  mr: React.PropTypes.number,
-
-  /** Sets padding based on a scale of 0–4 */
-  p: React.PropTypes.number,
-  /** Sets padding-left and padding-right based on a scale of 0–4 */
-  px: React.PropTypes.number,
-  /** Sets padding-top and padding-bottom based on a scale of 0–4 */
-  py: React.PropTypes.number,
-  /** Sets padding-top based on a scale of 0–4 */
-  pt: React.PropTypes.number,
-  /** Sets padding-bottom based on a scale of 0–4 */
-  pb: React.PropTypes.number,
-  /** Sets padding-left based on a scale of 0–4 */
-  pl: React.PropTypes.number,
-  /** Sets padding-right based on a scale of 0–4 */
-  pr: React.PropTypes.number
+  col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 }
 
-Box.contextTypes = {
-  reflexbox: React.PropTypes.shape({
-    breakpoints: React.PropTypes.object,
-    scale: React.PropTypes.array
-  })
-}
-
-// export default Box
-
-const BBox = Reflex('div')
-export default props => <BBox {...props} className='Box' />
+export default Box
 

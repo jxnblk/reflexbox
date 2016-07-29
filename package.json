@@ -33,6 +33,8 @@
     "enzyme": "^2.4.1",
     "expect": "^1.15.2",
     "gh-pages": "^0.11.0",
+    "jsdom": "^9.4.1",
+    "jsdom-global": "^2.0.0",
     "json-loader": "^0.5.3",
     "karma": "^1.1.2",
     "karma-chrome-launcher": "^1.0.1",
@@ -54,7 +56,7 @@
   },
   "dependencies": {
     "object-assign": "^4.0.1",
-    "robox": "^1.0.0-beta.1"
+    "robox": "^1.0.0-beta.2"
   },
   "directories": {
     "doc": "docs",

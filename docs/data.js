@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { parse } from 'react-docgen'
-import { Flex, Box } from '../src'
+import { Reflex, Flex, Box } from '../src'
 
 import flexSrc from '!!babel!raw!../src/Flex'
 import boxSrc from '!!babel!raw!../src/Box'
@@ -163,23 +163,26 @@ const data = {
     }
   ],
   components: {
+    reflex: {
+      name: 'Reflex',
+      Component: Reflex('div'),
+      raw: '',
+      docs: {
+        description: 'Higher order component for adding style helper props.',
+        props: {}
+      }
+    },
     flex: {
-      name: 'Flex',
+      name: '<Flex />',
       Component: Flex,
       raw: flexSrc,
-      docs: {
-        props: {}
-      }
-      // docs: parse(flexSrc)
+      docs: parse(flexSrc)
     },
     box: {
-      name: 'Box',
+      name: '<Box />',
       Component: Box,
       raw: boxSrc,
-      docs: {
-        props: {}
-      }
-      // docs: parse(boxSrc)
+      docs: parse(boxSrc)
     }
   },
   examples
