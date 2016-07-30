@@ -15,16 +15,18 @@ describe('Reflex', () => {
 
   before(() => {
     window.matchMedia = () => ({ matches: false })
-    wrapper = mount(<Box col={6} p={2} />)
-    inner = wrapper.find('WrappecComponent') // Named in Robox
   })
 
   it('should render', () => {
+    expect(() => {
+      wrapper = mount(<Box col={6} p={2} />)
+      inner = wrapper.find('WrappedComponent') // Named in Robox
+    }).toNotThrow()
     expect(wrapper).toExist()
   })
 
   it('should pass props to root component', () => {
-    expect(wrapper.props()).toEqual({
+    expect(inner.props()).toEqual({
       col: 6,
       p: 2
     })

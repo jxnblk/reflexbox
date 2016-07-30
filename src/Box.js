@@ -3,7 +3,7 @@ import React from 'react'
 import Reflex from './Reflex'
 
 /**
- * Sets margin, padding, and width and works independently or as a child of <Flex />.
+ * Sets margin, padding, width, and other layout styles and works independently or as a child of <Flex />.
  */
 
 const Box = ({ is = 'div', className, ...props }) => {
@@ -11,8 +11,10 @@ const Box = ({ is = 'div', className, ...props }) => {
   const cx = 'Box' + (className ? ' ' + className : '')
 
   // Map legacy props
-  props.flexAuto = props.auto
-  delete props.auto
+  if (props.auto) {
+    props.flexAuto = props.auto
+    delete props.auto
+  }
 
   return <Base {...props} className={cx} />
 }
