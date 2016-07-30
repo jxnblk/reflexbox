@@ -1,42 +1,41 @@
 
 import React from 'react'
+import test from 'ava'
 import { mount } from 'enzyme'
-import expect from 'expect'
 import jsdom from 'jsdom-global'
 import { Box } from '../src'
 
+let wrapper
+let inner
+
 jsdom()
 
-describe('Box', () => {
-  let wrapper
-  let inner
+window.matchMedia = () => ({ matches: false })
 
-  before(() => {
-    window.matchMedia = () => ({ matches: false })
+test('renders', t => {
+  t.notThrows(() => {
     wrapper = mount(<Box col={6} p={2} />)
     inner = wrapper.find('ReflexWrap')
   })
+})
 
-  it('should render', () => {
-    expect(() => {
-      wrapper = mount(<Box col={6} p={2} />)
-      inner = wrapper.find('ReflexWrap')
-    }).toNotThrow()
-    expect(wrapper).toExist()
+test('passes props', t => {
+  t.deepEqual(inner.props(), {
+    className: 'Box',
+    col: 6,
+    p: 2
   })
+})
 
-  it('should pass props to root component', () => {
-    expect(inner.props()).toEqual({
-      className: 'Box',
-      col: 6,
-      p: 2
-    })
-  })
+test('passes className prop', t => {
+  wrapper = mount(<Box className='hello' />)
+  inner = wrapper.find('ReflexWrap')
+  t.is(inner.props().className, 'Box hello')
+})
 
-  it('should pass className props', () => {
-    wrapper = mount(<Box className='hello' />)
-    inner = wrapper.find('ReflexWrap')
-    expect(inner.props().className).toEqual('Box hello')
-  })
+test('applies styles', t => {
+  wrapper = mount(<Box flex />)
+  inner = wrapper.find('div')
+  t.is(typeof inner.props().style.display, 'string')
 })
 

@@ -8,10 +8,8 @@
     "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
     "docs:deploy": "gh-pages -d docs",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "mocha": "mocha --compilers js:babel-register",
-    "standard": "standard",
     "start": "npm run docs:dev",
-    "test": "standard && npm run mocha"
+    "test": "standard && ava -v"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -19,6 +17,7 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.5.2",
     "babel-eslint": "^6.1.2",
@@ -44,7 +43,7 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
-    "robox": "^1.0.0-beta.4"
+    "robox": "^1.0.0-beta.5"
   },
   "repository": {
     "type": "git",
@@ -66,6 +65,12 @@
       "stage-0",
       "react"
     ]
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   },
   "standard": {
     "parser": "babel-eslint",

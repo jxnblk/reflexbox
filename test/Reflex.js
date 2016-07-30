@@ -1,221 +1,76 @@
 
 import React from 'react'
+import test from 'ava'
 import { mount } from 'enzyme'
-import expect from 'expect'
 import jsdom from 'jsdom-global'
 import { Reflex } from '../src'
 
+let wrapper
+let button
+let inner
+
 jsdom()
 
+window.matchMedia = () => ({ matches: false })
+
 const Box = Reflex('div')
+const Button = Reflex(p => <button {...p} />)
 
-describe('Reflex', () => {
-  let wrapper
-  let inner
-
-  before(() => {
-    window.matchMedia = () => ({ matches: false })
-  })
-
-  it('should render', () => {
-    expect(() => {
-      wrapper = mount(<Box col={6} p={2} />)
-      inner = wrapper.find('WrappedComponent') // Named in Robox
-    }).toNotThrow()
-    expect(wrapper).toExist()
-  })
-
-  it('should pass props to root component', () => {
-    expect(inner.props()).toEqual({
-      col: 6,
-      p: 2
-    })
-  })
-
-  it('should have no matches', () => {
-    expect(wrapper.state('matches')).toEqual([])
-  })
-
-  it('should rename `column` prop', () => {
-    wrapper = mount(<Box column />)
-    inner = wrapper.find('WrappedComponent')
-    expect(inner.props()).toEqual({
-      col: null,
-      flexColumn: true
-    })
-  })
-
-  it('should rename `auto` prop', () => {
-    wrapper = mount(<Box auto />)
-    inner = wrapper.find('WrappedComponent')
-    expect(inner.props()).toEqual({
-      col: null,
-      flexAuto: true
-    })
-  })
-
-  describe('sm breakpoint', () => {
-    before(() => {
-      window.matchMedia = query => ({
-        matches: /32/.test(query)
-      })
-      wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
-      inner = wrapper.find('WrappedComponent')
-    })
-
-    it('should set matches state', () => {
-      expect(wrapper.state('matches')).toEqual([
-        'sm'
-      ])
-    })
-
-    it('should pass the correct props', () => {
-      expect(inner.props()).toEqual({
-        col: 3
-      })
-    })
-  })
-
-  describe('md breakpoint', () => {
-    before(() => {
-      window.matchMedia = query => ({
-        matches: /48/.test(query)
-      })
-      wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
-      inner = wrapper.find('WrappedComponent')
-    })
-
-    it('should set matches state', () => {
-      expect(wrapper.state('matches')).toEqual([
-        'md'
-      ])
-    })
-
-    it('should pass the correct props', () => {
-      expect(inner.props()).toEqual({
-        col: 2
-      })
-    })
-  })
-
-  describe('lg breakpoint', () => {
-    before(() => {
-      window.matchMedia = query => ({
-        matches: /64/.test(query)
-      })
-      wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
-      inner = wrapper.find('WrappedComponent')
-    })
-
-    it('should set matches state', () => {
-      expect(wrapper.state('matches')).toEqual([
-        'lg'
-      ])
-    })
-
-    it('should pass the correct props', () => {
-      expect(inner.props()).toEqual({
-        col: 1
-      })
-    })
-  })
-
-  context('with breakpoints configured in context', () => {
-    describe('sm breakpoint', () => {
-      before(() => {
-        window.matchMedia = query => ({
-          matches: /24/.test(query)
-        })
-        wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
-          context: {
-            reflexbox: {
-              breakpoints: {
-                sm: '(min-width:24em)',
-                md: '(min-width:36em)',
-                lg: '(min-width:48em)'
-              }
-            }
-          }
-        })
-        inner = wrapper.find('WrappedComponent')
-      })
-
-      it('should set matches state', () => {
-        expect(wrapper.state('matches')).toEqual([
-          'sm'
-        ])
-      })
-
-      it('should pass the correct props', () => {
-        expect(inner.props()).toEqual({
-          col: 3
-        })
-      })
-    })
-
-    describe('md breakpoint', () => {
-      before(() => {
-        window.matchMedia = query => ({
-          matches: /36/.test(query)
-        })
-        wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
-          context: {
-            reflexbox: {
-              breakpoints: {
-                sm: '(min-width:24em)',
-                md: '(min-width:36em)',
-                lg: '(min-width:48em)'
-              }
-            }
-          }
-        })
-        inner = wrapper.find('WrappedComponent')
-      })
-
-      it('should set matches state', () => {
-        expect(wrapper.state('matches')).toEqual([
-          'md'
-        ])
-      })
-
-      it('should pass the correct props', () => {
-        expect(inner.props()).toEqual({
-          col: 2
-        })
-      })
-    })
-
-    describe('lg breakpoint', () => {
-      before(() => {
-        window.matchMedia = query => ({
-          matches: /48/.test(query)
-        })
-        wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
-          context: {
-            reflexbox: {
-              breakpoints: {
-                sm: '(min-width:24em)',
-                md: '(min-width:36em)',
-                lg: '(min-width:48em)'
-              }
-            }
-          }
-        })
-        inner = wrapper.find('WrappedComponent')
-      })
-
-      it('should set matches state', () => {
-        expect(wrapper.state('matches')).toEqual([
-          'lg'
-        ])
-      })
-
-      it('should pass the correct props', () => {
-        expect(inner.props()).toEqual({
-          col: 1
-        })
-      })
-    })
+test('renders', t => {
+  t.notThrows(() => {
+    button = mount(<Button flex col={6} />)
+    wrapper = mount(<Box flex col={6} p={2} />)
+    inner = wrapper.find('ReflexWrap')
   })
 })
 
+test('passes props', t => {
+  t.deepEqual(inner.props(), {
+    flex: true,
+    col: 6,
+    p: 2
+  })
+  t.deepEqual(button.find('ReflexWrap').props(), {
+    flex: true,
+    col: 6
+  })
+})
+
+test('applies styles', t => {
+  const { style } = wrapper.find('div').props()
+  t.is(typeof style.display, 'string')
+  t.is(typeof button.find('button').props().style.display, 'string')
+})
+
+test('has no matches', t => {
+  t.deepEqual(wrapper.state('matches'), [])
+})
+
+test('renames `column` prop', t => {
+  wrapper = mount(<Box column />)
+  inner = wrapper.find('WrappedComponent')
+  t.deepEqual(inner.props(), {
+    col: null,
+    flexColumn: true
+  })
+})
+
+test('renames `auto` prop', t => {
+  wrapper = mount(<Box auto />)
+  inner = wrapper.find('WrappedComponent')
+  t.deepEqual(inner.props(), {
+    col: null,
+    flexAuto: true
+  })
+})
+
+test('sm breakpoint', t => {
+  window.matchMedia = query => ({
+    matches: /32/.test(query)
+  })
+  wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
+  inner = wrapper.find('WrappedComponent')
+
+  t.deepEqual(wrapper.state('matches'), [ 'sm' ], 'sets matches state')
+  t.deepEqual(inner.props(), { col: 3 }, 'passes props')
+})

@@ -22,11 +22,7 @@ const Header = ({ description, ...props }) => (
         </Flex>
       </h1>
       <p className='h3 bold py4 m0 max-width-4'>
-        React flexbox layout and grid system, built with stateless function components and inline styles.
-        Reflexbox is a React grid system composed of the Flex and Box components.
-        The Flex component creates a flexbox context and controls direction, alignment, justification, and gutter compensation.
-        The Box component controls padding, flex-basis, and width.
-        With breakpoint-based responsive styles, these two components can handle virtually any layout composition.
+        {'Reflexbox is a responsive flexbox grid system composed of the Reflex higher order component and <Flex /> and <Box /> helper components.'}
       </p>
       <Box py={3}>
         <Flex align='center'>

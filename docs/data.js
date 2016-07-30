@@ -138,9 +138,10 @@ const examples = [
     <Box p={3} col={6} children='Box' />
     <Box p={3} col={6} children='Box' />
   </Flex>,
-  <Flex align='center' gutter={2}>
-    <Box is='h1' m={0} px={2} auto children='Hello' />
-    <Box px={2} children='Box' />
+  <Flex wrap>
+    <Box p={3} col={6} sm={4} md={3} children='Box' />
+    <Box p={3} col={6} sm={4} md={3} children='Box' />
+    <Box p={3} col={6} sm={4} md={3} children='Box' />
   </Flex>
 ]
 
