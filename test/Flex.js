@@ -18,7 +18,7 @@ describe('Flex', () => {
   it('should render', () => {
     expect(() => {
       wrapper = mount(<Flex className='hello' p={2} />)
-      inner = wrapper.find('Wrapped')
+      inner = wrapper.find('ReflexWrap')
     }).toNotThrow()
     expect(wrapper).toExist()
   })
@@ -26,16 +26,6 @@ describe('Flex', () => {
   it('should pass props to root component', () => {
     expect(inner.props().className).toEqual('Flex hello')
     expect(inner.props().p).toEqual(2)
-  })
-
-  it('should rename `column` prop', () => {
-    wrapper = mount(<Flex column />)
-    inner = wrapper.find('Wrapped')
-    expect(inner.props()).toEqual({
-      flex: true,
-      className: 'Flex',
-      flexColumn: true
-    })
   })
 })
 

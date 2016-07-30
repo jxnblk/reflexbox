@@ -14,13 +14,13 @@ describe('Box', () => {
   before(() => {
     window.matchMedia = () => ({ matches: false })
     wrapper = mount(<Box col={6} p={2} />)
-    inner = wrapper.find('Wrapped')
+    inner = wrapper.find('ReflexWrap')
   })
 
   it('should render', () => {
     expect(() => {
       wrapper = mount(<Box col={6} p={2} />)
-      inner = wrapper.find('Wrapped')
+      inner = wrapper.find('ReflexWrap')
     }).toNotThrow()
     expect(wrapper).toExist()
   })
@@ -35,17 +35,8 @@ describe('Box', () => {
 
   it('should pass className props', () => {
     wrapper = mount(<Box className='hello' />)
-    inner = wrapper.find('Wrapped')
+    inner = wrapper.find('ReflexWrap')
     expect(inner.props().className).toEqual('Box hello')
-  })
-
-  it('should rename `auto` prop', () => {
-    wrapper = mount(<Box auto />)
-    inner = wrapper.find('Wrapped')
-    expect(inner.props()).toEqual({
-      className: 'Box',
-      flexAuto: true
-    })
   })
 })
 

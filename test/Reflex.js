@@ -36,6 +36,24 @@ describe('Reflex', () => {
     expect(wrapper.state('matches')).toEqual([])
   })
 
+  it('should rename `column` prop', () => {
+    wrapper = mount(<Box column />)
+    inner = wrapper.find('WrappedComponent')
+    expect(inner.props()).toEqual({
+      col: null,
+      flexColumn: true
+    })
+  })
+
+  it('should rename `auto` prop', () => {
+    wrapper = mount(<Box auto />)
+    inner = wrapper.find('WrappedComponent')
+    expect(inner.props()).toEqual({
+      col: null,
+      flexAuto: true
+    })
+  })
+
   describe('sm breakpoint', () => {
     before(() => {
       window.matchMedia = query => ({
