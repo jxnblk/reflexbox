@@ -1,10 +1,6 @@
 
 import React from 'react'
-import { parse } from 'react-docgen'
-import { Reflex, Flex, Box } from '../src'
-
-import flexSrc from '!!babel!raw!../src/Flex'
-import boxSrc from '!!babel!raw!../src/Box'
+import { Flex, Box } from '../src'
 
 Flex.displayName = 'Flex'
 Box.displayName = 'Box'
@@ -162,29 +158,6 @@ const data = {
       children: 'GitHub'
     }
   ],
-  components: {
-    reflex: {
-      name: 'Reflex',
-      Component: Reflex('div'),
-      raw: '',
-      docs: {
-        description: 'Higher order component for adding style helper props.',
-        props: {}
-      }
-    },
-    flex: {
-      name: '<Flex />',
-      Component: Flex,
-      raw: flexSrc,
-      docs: parse(flexSrc)
-    },
-    box: {
-      name: '<Box />',
-      Component: Box,
-      raw: boxSrc,
-      docs: parse(boxSrc)
-    }
-  },
   examples
 }
 

@@ -55,7 +55,7 @@ Table.propTypes = {
 }
 
 Table.defaultProps = {
-  color: '#068'
+  color: '#cef'
 }
 
 export default Table

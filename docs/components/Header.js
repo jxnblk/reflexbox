@@ -11,10 +11,10 @@ const Header = ({ description, ...props }) => (
     <Flex column
       justify='center'
       className='v100 p3'>
-      <h1 className='m0 white'>
+      <h1 className='m0'>
         <Flex align='baseline'>
           <Box p={2}
-            className='caps blue bg-white border b3 border-white'>Reflex</Box>
+            className='caps white bg-blue border b3 border-blue'>Reflex</Box>
           <Box p={2}
             className='caps border b3'>
             box

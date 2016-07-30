@@ -11,8 +11,10 @@ const Flex = ({ is = 'div', className, ...props }) => {
   const cx = 'Flex' + (className ? ' ' + className : '')
 
   // Map legacy props
-  props.flexColumn = props.column
-  delete props.column
+  if (props.column) {
+    props.flexColumn = props.column
+    delete props.column
+  }
 
   return <Base flex {...props} className={cx} />
 }

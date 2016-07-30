@@ -8,13 +8,10 @@
     "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
     "docs:deploy": "gh-pages -d docs",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "karma": "karma start test/karma.conf.js",
-    "karma:watch": "karma start test/karma.conf.js --auto-watch --no-single-run",
     "mocha": "mocha --compilers js:babel-register",
-    "mocha:watch": "mocha --watch --compilers js:babel-register",
     "standard": "standard",
     "start": "npm run docs:dev",
-    "test": "standard && npm run mocha && npm run karma"
+    "test": "standard && npm run mocha"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -36,31 +33,17 @@
     "jsdom": "^9.4.1",
     "jsdom-global": "^2.0.0",
     "json-loader": "^0.5.3",
-    "karma": "^1.1.2",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-mocha": "^1.1.1",
-    "karma-mocha-reporter": "^2.0.5",
-    "karma-safari-launcher": "^1.0.0",
-    "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "raw-loader": "^0.5.1",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
-    "react-docgen": "^2.7.0",
     "react-dom": "^15.2.1",
-    "react-element-to-jsx-string": "^3.2.0",
     "standard": "^7.1.2",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
-    "object-assign": "^4.0.1",
     "robox": "^1.0.0-beta.2"
-  },
-  "directories": {
-    "doc": "docs",
-    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -68,6 +51,7 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "flexbox",
     "layout",
     "grid"

@@ -7,7 +7,6 @@ import { Box } from '../src'
 
 jsdom()
 
-
 describe('Box', () => {
   let wrapper
   let inner
