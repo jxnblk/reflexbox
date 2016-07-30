@@ -1,9 +1,10 @@
 
 import React from 'react'
 import Example from './Example'
+import { Box } from '../..'
 
 const Examples = ({ examples, ...props }) => (
-  <section id='examples' className='p3'>
+  <Box p={3} id='examples'>
     <h2>
       <a href='#examples'
         style={{
@@ -16,7 +17,7 @@ const Examples = ({ examples, ...props }) => (
     {examples.map((e, i) => (
       <Example key={i} example={e} />
     ))}
-  </section>
+  </Box>
 )
 
 export default Examples
