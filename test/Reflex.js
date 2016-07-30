@@ -71,6 +71,52 @@ test('sm breakpoint', t => {
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'sm' ], 'sets matches state')
-  t.deepEqual(inner.props(), { col: 3 }, 'passes props')
+  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
+  t.deepEqual(inner.props(), { col: 3 })
 })
+
+test('md breakpoint', t => {
+  window.matchMedia = query => ({
+    matches: /48/.test(query)
+  })
+  wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
+  inner = wrapper.find('WrappedComponent')
+
+  t.deepEqual(wrapper.state('matches'), [ 'md' ])
+  t.deepEqual(inner.props(), { col: 2 })
+})
+
+test('lg breakpoint', t => {
+  window.matchMedia = query => ({
+    matches: /64/.test(query)
+  })
+  wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
+  inner = wrapper.find('WrappedComponent')
+
+  t.deepEqual(wrapper.state('matches'), [ 'lg' ])
+  t.deepEqual(inner.props(), { col: 1 })
+})
+
+test('custom breakpoints', t => {
+  window.matchMedia = query => ({
+    matches: /24/.test(query)
+  })
+  wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
+    context: {
+      reflexbox: {
+        breakpoints: {
+          sm: '(min-width:24em)',
+          md: '(min-width:36em)',
+          lg: '(min-width:48em)'
+        }
+      }
+    }
+  })
+  inner = wrapper.find('WrappedComponent')
+
+  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
+  t.deepEqual(inner.props(), {
+    col: 3
+  })
+})
+
