@@ -3,10 +3,9 @@ import React from 'react'
 import { Flex, Box } from '../../src'
 
 const Footer = () => (
-  <footer className='p3'>
-    <Flex align='flex-end' gutter={3}>
+  <footer>
+    <Flex align='flex-end' py={3}>
       <Box auto p={3}>
-        <p className='h2 caps bold'>Get Started</p>
         <a href='//github.com/jxnblk/reflexbox'
           className='bold text-decoration-none inline-block p2 rounded dark-blue bg-white'>
           View on GitHub

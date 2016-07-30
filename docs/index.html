@@ -2,14 +2,39 @@
 <meta charset='utf-8'>
 <title>reflexbox</title>
 <meta name='viewport' content='width=640, initial-scale=1'>
-<link href='https://npmcdn.com/basscss-basic/index.css' rel='stylesheet'>
-<link href='https://npmcdn.com/basscss@8.0.0/css/basscss.min.css' rel='stylesheet'>
-<link href='base.css' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400' rel='stylesheet'>
+<style>
+body {
+  font-family: -apple-system, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+pre, samp, code,
+.mono {
+  font-family: Menlo, monospace;
+  font-size: 12px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.demo-flex,
+.demo-box,
+.Example .Flex,
+.Example .Box {
+  outline: 1px solid #07c;
+}
+
+.blue { color: #07c }
+.bg-blue { background-color: #07c }
+.white { color: #fff }
+.bg-white { background-color: #fff }
+.b3 { border: solid 3px }
+.border-blue { border-color: #07c }
+.border-light-blue { border-color: #cef }
+</style>
 
 <div id='app'></div>
-
 <script src='bundle.js'></script>
+
 <script>
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");
 </script>
