@@ -1,12 +1,8 @@
 
 import React from 'react'
 import Robox from 'robox'
-import getMatches from './util/get-matches'
+import getMatches from './get-matches'
 import config from './config'
-
-/**
- * Higher order component for adding style prop helpers.
- */
 
 const Reflex = (Comp) => {
   const Base = Robox(Comp)

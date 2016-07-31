@@ -1,5 +1,5 @@
 
-import { breakpoints as defaultBreakpoints } from '../config'
+import { breakpoints as defaultBreakpoints } from './config'
 
 const getMatches = (breakpoints = defaultBreakpoints) => {
   const matches = []
