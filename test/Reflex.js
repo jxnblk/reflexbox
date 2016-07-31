@@ -120,3 +120,18 @@ test('custom breakpoints', t => {
   })
 })
 
+// Needs work
+test('accepts ref attribute', t => {
+  class Root extends React.Component {
+    render () {
+      return (
+        <div>
+          <Box ref='box' />
+        </div>
+      )
+    }
+  }
+  wrapper = mount(<Root />)
+  t.truthy(wrapper.ref('box'))
+})
+
