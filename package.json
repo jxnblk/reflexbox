@@ -4,11 +4,10 @@
   "description": "React flexbox layout and grid system",
   "main": "dist/index.js",
   "scripts": {
-    "docs": "webpack -p --progress --colors --config docs/webpack.config.js",
-    "docs:dev": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
-    "docs:deploy": "gh-pages -d docs",
+    "build": "NODE_ENV=production webpack --progress --colors --config docs/webpack.config.js",
+    "start": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
+    "gh-pages": "gh-pages -d docs",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "start": "npm run docs:dev",
     "test": "standard && ava -v"
   },
   "author": "Brent Jackson",
