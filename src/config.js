@@ -5,17 +5,8 @@ export const breakpoints = {
   lg: '(min-width: 64em)'
 }
 
-export const scale = [
-  0,
-  8,
-  16,
-  32,
-  64
-]
-
 const config = {
-  breakpoints,
-  scale
+  breakpoints
 }
 
 export default config

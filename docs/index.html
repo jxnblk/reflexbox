@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <meta charset='utf-8'>
 <title>reflexbox</title>
-<meta name='viewport' content='width=640, initial-scale=1'>
-<link href='https://npmcdn.com/basscss-basic/index.css' rel='stylesheet'>
-<link href='https://npmcdn.com/basscss@8.0.0/css/basscss.min.css' rel='stylesheet'>
-<link href='base.css' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400' rel='stylesheet'>
+<meta name='viewport' content='width=640, initial-scale=0.5'>
+<style>
+body {
+  font-family: -apple-system, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  background-color: #f0f6ff;
+}
+a {
+  color: inherit;
+  font-weight: 600;
+}
+pre, samp, code,
+.mono {
+  font-family: Menlo, monospace;
+  font-size: 14px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+pre {
+  padding: 16px;
+  border-radius: 1px;
+  background-color: #e0efff;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+.caps {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.m0 { margin: 0 }
+.Example .Flex,
+.Example .Box {
+  font-weight: 600;
+  outline: 1px solid #07b;
+}
+
+.blue { color: #07b }
+.bg-blue { background-color: #07b }
+.white { color: #fff }
+.bg-white { background-color: #fff }
+.gray { color: #f0f6ff }
+.bg-gray { background-color: #f0f6ff }
+.b3 { border: solid 3px }
+.border-blue { border-color: #07b }
+.border-white { background-color: #fff }
+.border-gray { border-color: #f0f6ff }
+.border-light-blue { border-color: #cef }
+</style>
 
 <div id='app'></div>
-
 <script src='bundle.js'></script>
+
 <script>
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");
 </script>

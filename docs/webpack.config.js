@@ -1,12 +1,6 @@
 
-require('babel-register')
-
 module.exports = {
   entry: {
-    dev: [
-      './docs/dev.entry',
-      './docs/entry'
-    ],
     bundle: [
       './docs/entry'
     ]
@@ -14,30 +8,30 @@ module.exports = {
 
   output: {
     path: __dirname,
-    publicPath: 'docs',
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
 
   module: {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules|react\-docgen/,
-        loaders: [
-          'babel'
-        ]
+        exclude: /node_modules/,
+        loader: 'babel'
+      },
+      {
+        test: /\.md$/,
+        exclude: /node_modules/,
+        loader: 'html!markdown'
       },
       {
         test: /\.json$/,
-        loaders: [
-          'json'
-        ]
+        loader: 'json'
       }
     ]
   },
 
-  node: {
-    fs: 'empty'
+  devServer: {
+    contentBase: 'docs'
   }
 }
 

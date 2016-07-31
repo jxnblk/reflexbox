@@ -1,7 +1,8 @@
 
 pre, samp, code,
 .mono {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Menlo, monospace;
+  font-size: 12px;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
@@ -12,18 +13,20 @@ pre, samp, code,
 .demo-box,
 .Example .Flex,
 .Example .Box {
-  outline: 1px solid #aef;
+  outline: 1px solid #07c;
 }
 
 .white { color: #fff }
 .blue { color: #0cf }
-.dark-blue { color: #024 }
 .dark-blue { color: #047 }
 
+.blue { color: #069 }
+  .blue { color: #07c }
+
 .bg-white { background-color: #fff }
-.bg-blue { background-color: #0cf }
+.bg-blue { background-color: #07c }
 
 .b3 { border-width: 3px }
-.border-white { border-color: #fff }
-.border-light-blue { border-color: #aef }
+.border-blue { border-color: #07c }
+.border-light-blue { border-color: #cef }
 
