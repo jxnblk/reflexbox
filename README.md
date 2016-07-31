@@ -59,7 +59,7 @@ that can handle virtually any layout composition.
 
 ### Props
 
-- `col` (number 0–12) Sets width
+- `col` (number 0–12) Sets width based on a 12 column grid.
 - `sm` (number 0-12) Sets width from the `sm` breakpoint and up.
 - `md` (number 0-12) Sets width from the `md` breakpoint and up.
 - `lg` (number 0-12) Sets width from the `lg` breakpoint and up.
