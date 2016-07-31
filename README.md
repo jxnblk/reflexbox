@@ -1,11 +1,17 @@
 
 # Reflexbox
 
-React flexbox grid system higher order component
+Responsive React flexbox grid system higher order component
 
 [![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg?branch=master)](https://travis-ci.org/jxnblk/reflexbox)
 [![Code Climate](https://codeclimate.com/github/jxnblk/reflexbox/badges/gpa.svg)](https://codeclimate.com/github/jxnblk/reflexbox)
 [![npm version](https://badge.fury.io/js/reflexbox.svg)](https://badge.fury.io/js/reflexbox)
+
+## Features
+- Uses inline-styles - no CSS dependencies or leaky global styles
+- Simple API for quickly controlling layout
+- Add layout capabilities to **any** component
+- Helps promote composability and separation of concerns
 
 ## Getting Started
 
@@ -44,61 +50,54 @@ class Component extends React.Component {
 
 ## API
 
-Reflexbox is composed of a higher order component and two React components that can handle virtually any layout composition.
+Reflexbox is composed of a higher order component and two React components.
 
 ## Reflex
 
-Higher order component that accepts style helper props and is used to create the Flex and Box components.
-The Flex and Box components are mostly provided as a convenience and to ensure backwards compatibility.
+Higher order component that accepts several layout style helper props
+that can handle virtually any layout composition.
 
 ### Props
 
-Components wrapped with the Reflex higher order component
-and both \<Box /\> and \<Flex /\> accept several layout props from
-the [Robox](https://github.com/jxnblk/robox) higher order component.
-
-- `m` (number) Sets margin based on a scale from 0 – 6.
-- `mx` (number) Sets x-axis margin based on a scale from 0 – 6.
-- `my` (number) Sets y-axis margin based on a scale from 0 – 6.
-- `mt` (number) Sets margin-top based on a scale from 0 – 6.
-- `mb` (number) Sets margin-bottom based on a scale from 0 – 6.
-- `ml` (number) Sets margin-left based on a scale from 0 – 6.
-- `mr` (number) Sets margin-right based on a scale from 0 – 6.
-- `p` (number) Sets padding based on a scale from 0 – 6.
-- `px` (number) Sets x-axis padding based on a scale from 0 – 6.
-- `py` (number) Sets y-axis padding based on a scale from 0 – 6.
-- `pt` (number) Sets padding-top based on a scale from 0 – 6.
-- `pb` (number) Sets padding-bottom based on a scale from 0 – 6.
-- `pl` (number) Sets padding-left based on a scale from 0 – 6.
-- `pr` (number) Sets padding-right based on a scale from 0 – 6.
-
-## \<Flex /\>
-
-A component that sets display flex to control layout of children.
-
-### Props
-
-- `wrap` (boolean) Sets `flex-wrap: wrap`.
-- `column` (boolean) Sets `flex-direction: column`.
-- `align` (string) Sets `align-item`. Accepted values: `stretch`, `center`, `baseline`, `flex-start`, `flex-end`
-- `justify` (string) Sets `justify-content`. Accepted values: `center`, `space-around`, `space-between`, `flex-start`, `flex-end`
-- `gutter` (number) Sets negative left and right margins to compensate for \<Box /\> padding.
-- `auto` (boolean) Sets `flex: 1 1 auto`
-
-## \<Box /\>
-
-A component that sets padding and width that works independently or as a child component of \<Flex /\>.
-
-### Props
-
+- `col` (number 0–12) Sets width
+- `sm` (number 0-12) Sets width from the `sm` breakpoint and up.
+- `md` (number 0-12) Sets width from the `md` breakpoint and up.
+- `lg` (number 0-12) Sets width from the `lg` breakpoint and up.
+- `align` (string) Sets `align-items`
+- `justify` (string) Sets `justify-content`
+- `wrap` (boolean) Sets `flex-wrap: wrap`
+- `column` (boolean) Sets `flex-direction: column`
 - `auto` (boolean) Sets `flex: 1 1 auto`
 - `flex` (boolean) Sets `display: flex`
-- `align` (string) Sets `align-self` property
-- `order` (number) Sets `order` property
-- `col` (number) Sets width and flex-basis based on a twelve column grid.
-- `sm` (number) Sets width and flex-basis above the small breakpoint based on a twelve column grid.
-- `md` (number) Sets width and flex-basis above the medium breakpoint based on a twelve column grid.
-- `lg` (number) Sets width and flex-basis above the large breakpoint based on a twelve column grid.
+- `order` (boolean) Sets `order`
+
+Components wrapped with the Reflex higher order component accept several layout props from
+the [Robox](https://github.com/jxnblk/robox) higher order component, including the following:
+
+- `gutter` (number) Sets negative left and right margin to compensate for child element padding.
+- `m` (number) Sets margin based on a scale from 0–6.
+- `mx` (number) Sets x-axis margin based on a scale from 0–6.
+- `my` (number) Sets y-axis margin based on a scale from 0–6.
+- `mt` (number) Sets margin-top based on a scale from 0–6.
+- `mb` (number) Sets margin-bottom based on a scale from 0–6.
+- `ml` (number) Sets margin-left based on a scale from 0–6.
+- `mr` (number) Sets margin-right based on a scale from 0–6.
+- `p` (number) Sets padding based on a scale from 0–6.
+- `px` (number) Sets x-axis padding based on a scale from 0–6.
+- `py` (number) Sets y-axis padding based on a scale from 0–6.
+- `pt` (number) Sets padding-top based on a scale from 0–6.
+- `pb` (number) Sets padding-bottom based on a scale from 0–6.
+- `pl` (number) Sets padding-left based on a scale from 0–6.
+- `pr` (number) Sets padding-right based on a scale from 0–6.
+
+## Flex and Box components
+
+The Flex and Box components are created with the Reflex component and use the same set of props.
+They are intended to help with the readability of code and
+to provide some backwards compatiblity with previous versions
+of Reflexbox.
+The only difference between the two is that the Flex component has `flex` prop set to true to set `display: flex`.
+
 
 ## Configuration
 

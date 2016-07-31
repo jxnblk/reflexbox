@@ -16,15 +16,16 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: [
-          'babel'
-        ]
+        loader: 'babel'
+      },
+      {
+        test: /\.md$/,
+        exclude: /node_modules/,
+        loader: 'html!markdown'
       },
       {
         test: /\.json$/,
-        loaders: [
-          'json'
-        ]
+        loader: 'json'
       }
     ]
   },

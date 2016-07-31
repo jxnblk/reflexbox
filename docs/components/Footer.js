@@ -6,13 +6,12 @@ const Footer = () => (
   <footer>
     <Flex align='flex-end' py={3}>
       <Box auto p={3}>
-        <a href='//github.com/jxnblk/reflexbox'
-          className='bold text-decoration-none inline-block p2 rounded dark-blue bg-white'>
+        <a href='//github.com/jxnblk/reflexbox'>
           View on GitHub
         </a>
       </Box>
       <Box p={3}>
-        <a href='//jxnblk.com' className='h5 bold dark-blue text-decoration-none'>Made by Jxnblk</a>
+        <a href='//jxnblk.com'>Made by Jxnblk</a>
       </Box>
     </Flex>
   </footer>
