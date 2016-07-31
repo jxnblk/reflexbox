@@ -50,8 +50,7 @@ const Readme = () => {
       fontSize: 14,
       overflowX: 'scroll',
       padding: 16,
-      color: '#fff',
-      backgroundColor: colors.blue,
+      backgroundColor: colors.gray,
       borderRadius: 1
     },
 

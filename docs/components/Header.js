@@ -9,17 +9,17 @@ const H1 = Reflex('h1')
 
 const Header = ({ description, ...props }) => {
   return (
-    <header>
+    <header className='gray bg-blue'>
       <Flex wrap align='center' px={3} py={6}>
-        <H1 auto mr={2}>
-          <Flex align='baseline'>
-            <Box p={2} className='caps white bg-blue b3 border-blue'>Reflex</Box>
-            <Box p={2} className='caps b3'>
-              Box
-            </Box>
-          </Flex>
-        </H1>
         <Box auto py={3}>
+          <H1 auto mr={2} my={6}>
+            <Flex align='baseline'>
+              <Box p={2} className='caps blue bg-gray b3 border-gray'>Reflex</Box>
+              <Box p={2} className='caps b3'>
+                Box
+              </Box>
+            </Flex>
+          </H1>
           <Flex align='center'>
             <TweetButton mr={2} text={description} />
             <GithubButton />
