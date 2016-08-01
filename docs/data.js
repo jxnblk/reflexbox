@@ -148,7 +148,7 @@ const examples = [
 const data = {
   title: 'reflexbox',
   href: 'http://jxnblk.com/reflexbox',
-  description: 'React flexbox layout and grid system, built with stateless components and inline styles',
+  description: 'Responsive React flexbox grid system higher order component',
   links: [
     {
       href: 'https://npmjs.com/package/reflexbox',
