@@ -45,7 +45,7 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
-    "robox": "^1.0.0-beta.7"
+    "robox": "^1.0.0-beta.8"
   },
   "repository": {
     "type": "git",
