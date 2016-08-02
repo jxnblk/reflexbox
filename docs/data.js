@@ -144,7 +144,9 @@ const examples = [
     <Box p={3} col={6} sm={4} md={3} children='Box' />
   </Flex>,
   <div>
-    <Grid col={4} p={2}>Inline Block Grid</Grid>
+    <Grid col={4} p={2}>
+      <h3>Inline Block Grid</h3>
+    </Grid>
     <Grid col={4} p={2}>Grid</Grid>
     <Grid col={4} p={2}>Grid</Grid>
   </div>

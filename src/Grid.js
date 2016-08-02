@@ -2,13 +2,32 @@
 import React from 'react'
 import Reflex from './Reflex'
 
-// OR use Box component
 const Base = Reflex('div')
 
-const Grid = ({ className, ...props }) => {
+const Grid = ({
+  className,
+  align,
+  ...props
+}) => {
   const cx = 'Grid' + (className ? ' ' + className : '')
+  const sx = {
+    verticalAlign: align
+  }
 
-  return <Base inlineBlock {...props} className={cx} />
+  return <Base inlineBlock {...props} style={sx} className={cx} />
+}
+
+Grid.propTypes = {
+  align: React.PropTypes.oneOf([
+    'top',
+    'middle',
+    'bottom',
+    'baseline'
+  ])
+}
+
+Grid.defaultProps = {
+  align: 'top'
 }
 
 export default Grid
