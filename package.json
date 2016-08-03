@@ -1,6 +1,6 @@
 {
   "name": "reflexbox",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "React flexbox layout and grid system",
   "main": "dist/index.js",
   "scripts": {
