@@ -2,9 +2,5 @@ language: node_js
 node_js:
   - 6.2
 addons:
-  firefox: '39.0'
   code_climate:
     repo_token: 6db4c17a6f36c17e237fd94bf8d4e8aa6bcfa69133c0192980d9d13cbf29e00d
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start

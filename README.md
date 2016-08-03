@@ -70,7 +70,7 @@ class Component extends React.Component {
 
 ## API
 
-Reflexbox is composed of a higher order component and two React components.
+Reflexbox is composed of a higher order component and three React components.
 
 ## Reflex
 
@@ -118,6 +118,20 @@ to provide some backwards compatiblity with previous versions
 of Reflexbox.
 The only difference between the two is that the Flex component has `flex` prop set to true to set `display: flex`.
 
+## Grid component
+
+The Grid component is also based on the Reflex component, but sets display inline-block for use as a more widely supported page layout component. It also includes an `align` prop to set vertical alignment.
+
+```js
+<div>
+  <Grid col={6} px={2}>
+    Left column
+  </Grid>
+  <Grid col={6} px={2}>
+    Right column
+  </Grid>
+</div>
+```
 
 ## Configuration
 

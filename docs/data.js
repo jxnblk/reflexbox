@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Flex, Box } from '../src'
+import { Flex, Box, Grid } from '../src'
 
 Flex.displayName = 'Flex'
 Box.displayName = 'Box'
@@ -142,7 +142,14 @@ const examples = [
     <Box p={3} col={6} sm={4} md={3} children='Box' />
     <Box p={3} col={6} sm={4} md={3} children='Box' />
     <Box p={3} col={6} sm={4} md={3} children='Box' />
-  </Flex>
+  </Flex>,
+  <div>
+    <Grid col={4} p={2}>
+      <h3>Inline Block Grid</h3>
+    </Grid>
+    <Grid col={4} p={2}>Grid</Grid>
+    <Grid col={4} p={2}>Grid</Grid>
+  </div>
 ]
 
 const data = {
