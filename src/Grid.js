@@ -5,13 +5,15 @@ import Reflex from './Reflex'
 const Base = Reflex('div')
 
 const Grid = ({
-  className,
   align,
+  className,
+  style,
   ...props
 }) => {
   const cx = 'Grid' + (className ? ' ' + className : '')
   const sx = {
-    verticalAlign: align
+    verticalAlign: align,
+    ...style
   }
 
   return <Base inlineBlock {...props} style={sx} className={cx} />
