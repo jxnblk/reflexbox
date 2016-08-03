@@ -28,8 +28,28 @@ const Button = (props) => {
   return <button {...props} />
 }
 
-export default Reflex(MyButton)
+export default Reflex(Button)
 ```
+
+```js
+const App = () => {
+  return (
+    <div>
+      <Button
+        flex
+        p={2}
+        col={12}
+        align='center'
+        justify='space-between'>
+        <span>Flex</span>
+        <span>Button</span>
+      </Button>
+    </div>
+  )
+}
+```
+
+Usage with the Flex and Box components:
 
 ```js
 // Basic component example
