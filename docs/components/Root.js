@@ -5,6 +5,9 @@ import Readme from './Readme'
 import Examples from './Examples'
 import Footer from './Footer'
 
+// testing
+import connectMediaContext from 'react-media-context/dist/connectMediaContext'
+
 class Root extends React.Component {
   render () {
     const { examples } = this.props
@@ -20,5 +23,5 @@ class Root extends React.Component {
   }
 }
 
-export default Root
+export default connectMediaContext(Root)
 

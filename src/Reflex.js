@@ -31,6 +31,7 @@ const Reflex = (Comp) => {
     }
 
     render () {
+      const { media = [] } = this.context
       const { breakpoints } = this.context.reflexbox || config
       const { matches } = this.state
       const {
@@ -38,11 +39,19 @@ const Reflex = (Comp) => {
         ...props
       } = this.props
 
+      // Delete keys from react-media-context
+      delete props.xsmall
+      delete props.small
+      delete props.medium
+      delete props.large
+
       Object.keys(breakpoints).forEach((key) => {
         delete props[key]
       })
 
-      const currentCol = matches.reduce((a, b) => this.props[b] || a, col || null)
+      const currentCol =
+        media.reduce((a, b) => this.props[b] || a, null) ||
+        matches.reduce((a, b) => this.props[b] || a, col || null)
 
       // Map legacy props
       if (props.column) {
@@ -62,7 +71,9 @@ const Reflex = (Comp) => {
   ReflexWrap.contextTypes = {
     reflexbox: React.PropTypes.shape({
       breakpoints: React.PropTypes.object
-    })
+    }),
+    // Supoort for react-media-context
+    media: React.PropTypes.array
   }
 
   ReflexWrap.propTypes = {
