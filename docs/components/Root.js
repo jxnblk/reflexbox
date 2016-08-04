@@ -5,8 +5,7 @@ import Readme from './Readme'
 import Examples from './Examples'
 import Footer from './Footer'
 
-// testing
-import connectMediaContext from 'react-media-context/dist/connectMediaContext'
+import { connectMediaContext } from 'react-media-context'
 
 class Root extends React.Component {
   render () {

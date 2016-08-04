@@ -133,6 +133,11 @@ The Grid component is also based on the Reflex component, but sets display inlin
 </div>
 ```
 
+## Update on window resize changes
+
+Using the separate [react-media-context](https://github.com/jxnblk/react-media-context) higher-order component,
+Reflexbox can respond to window resize changes.
+
 ## Configuration
 
 Values for the breakpoints can be configured with
