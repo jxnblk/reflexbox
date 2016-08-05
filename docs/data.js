@@ -7,12 +7,10 @@ Box.displayName = 'Box'
 
 const examples = [
   <Flex wrap>
-    <Box children='Ctx'
-      col={12}
-      sm={6} />
-    <Box children='Ctx'
-      col={12}
-      sm={6} />
+    <Box children='Ctx' col={12} small={6} medium={2} />
+    <Box children='Ctx' col={12} small={6} medium={2} />
+    <Box children='Ctx' col={12} small={6} medium={2} />
+    <Box children='Ctx' col={12} small={6} medium={2} />
   </Flex>,
   <Flex>
     <Box children='Box' />
