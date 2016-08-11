@@ -42,10 +42,7 @@ test('applies styles', t => {
   t.is(typeof button.find('button').props().style.display, 'string')
 })
 
-test('has no matches', t => {
-  t.deepEqual(wrapper.state('matches'), [])
-})
-
+// Placeholder test for getWidth function
 test('renames `column` prop', t => {
   wrapper = mount(<Box column />)
   inner = wrapper.find('WrappedComponent')
@@ -66,23 +63,21 @@ test('renames `auto` prop', t => {
 
 test('sm breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /32/.test(query)
+    matches: /40/.test(query)
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
   t.deepEqual(inner.props(), { col: 3 })
 })
 
 test('md breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /48/.test(query)
+    matches: /52/.test(query)
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'md' ])
   t.deepEqual(inner.props(), { col: 2 })
 })
 
@@ -93,7 +88,6 @@ test('lg breakpoint', t => {
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'lg' ])
   t.deepEqual(inner.props(), { col: 1 })
 })
 
@@ -114,7 +108,6 @@ test('custom breakpoints', t => {
   })
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
   t.deepEqual(inner.props(), {
     col: 3
   })
