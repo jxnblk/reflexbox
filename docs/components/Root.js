@@ -22,5 +22,5 @@ class Root extends React.Component {
   }
 }
 
-export default connectMediaContext(Root)
+export default connectMediaContext()(Root)
 

@@ -133,10 +133,26 @@ The Grid component is also based on the Reflex component, but sets display inlin
 </div>
 ```
 
-## Update on window resize changes
+## Update on window resize
 
 Using the separate [react-media-context](https://github.com/jxnblk/react-media-context) higher-order component,
-Reflexbox can respond to window resize changes.
+Reflexbox can respond to window resize changes by listening to `window.matchMedia()`.
+
+```js
+// Example
+import React from 'react'
+import MediaContext from 'react-media-context'
+import { Flex, Box } from 'reflexbox'
+
+const App = () => (
+  <MediaContext>
+    <Flex wrap>
+      <Box col={12} sm={6}>Box</Box>
+      <Box col={12} sm={6}>Box</Box>
+    </Flex>
+  </MediaContext>
+)
+```
 
 ## Configuration
 
