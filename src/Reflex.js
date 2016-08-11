@@ -4,54 +4,41 @@ import Robox from 'robox'
 import getMatches from './get-matches'
 import config from './config'
 
+const keyMap = {
+  server: 'col',
+  xsmall: 'col',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg'
+}
+
+const getWidth = (props) => ({ media, matches }) => {
+  return media.reduce((a, b) => {
+    const key = keyMap[b] || b
+    return props[key] || a
+  }, null) || matches.reduce((a, b) => {
+    return props[b] || a
+  }, props.col || null)
+}
+
 const Reflex = (Comp) => {
   const Base = Robox(Comp)
 
   class ReflexWrap extends React.Component {
-    constructor () {
-      super()
-      this.state = {
-        matches: []
-      }
-      this.match = this.match.bind(this)
-    }
-
-    componentDidMount () {
-      this.match()
-    }
-
-    componentWillReceiveProps () {
-      this.match()
-    }
-
-    match () {
-      const { breakpoints } = this.context.reflexbox || {}
-      const matches = getMatches(breakpoints)
-      this.setState({ matches })
-    }
-
     render () {
-      const { media = [] } = this.context
-      const { breakpoints } = this.context.reflexbox || config
-      const { matches } = this.state
-      const {
-        col,
-        ...props
-      } = this.props
+      const { ...props } = this.props
 
-      // Delete keys from react-media-context
-      delete props.xsmall
-      delete props.small
-      delete props.medium
-      delete props.large
+      const { breakpoints } = this.context.reflexbox || config
+      const { media = [] } = this.context
+      const matches = getMatches(breakpoints)
 
       Object.keys(breakpoints).forEach((key) => {
         delete props[key]
       })
 
-      const currentCol =
-        media.reduce((a, b) => this.props[b] || a, null) ||
-        matches.reduce((a, b) => this.props[b] || a, col || null)
+      const width = getWidth(this.props)({
+        media, matches
+      })
 
       // Map legacy props
       if (props.column) {
@@ -64,7 +51,7 @@ const Reflex = (Comp) => {
         delete props.auto
       }
 
-      return <Base {...props} col={currentCol} />
+      return <Base {...props} col={width} />
     }
   }
 
