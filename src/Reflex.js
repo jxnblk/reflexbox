@@ -9,11 +9,10 @@ const getWidth = (props) => (matches = []) => {
   }, props.col || null)
 }
 
-const Reflex = opts => Comp => {
+const Reflex = (options = {
+  listen: true
+}) => Comp => {
   const Base = Robox(Comp)
-  const options = {
-    listen: true
-  }
 
   class ReflexWrap extends React.Component {
     constructor () {
