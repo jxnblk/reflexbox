@@ -2,7 +2,7 @@
 import React from 'react'
 import Reflex from './Reflex'
 
-const Base = Reflex('div')
+const Base = Reflex()('div')
 
 const Grid = ({
   align,

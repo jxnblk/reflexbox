@@ -5,7 +5,7 @@ import CarbonAd from './CarbonAd'
 import TweetButton from './TweetButton'
 import GithubButton from './GithubButton'
 
-const H1 = Reflex('h1')
+const H1 = Reflex()('h1')
 
 const Header = ({ description, ...props }) => {
   return (

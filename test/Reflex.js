@@ -11,10 +11,14 @@ let inner
 
 jsdom()
 
-window.matchMedia = () => ({ matches: false })
+window.matchMedia = () => ({
+  matches: false,
+  addListener: () => {},
+  removeListener: () => {}
+})
 
-const Box = Reflex('div')
-const Button = Reflex(p => <button {...p} />)
+const Box = Reflex()('div')
+const Button = Reflex()(p => <button {...p} />)
 
 test('renders', t => {
   t.notThrows(() => {
@@ -63,7 +67,9 @@ test('renames `auto` prop', t => {
 
 test('sm breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /40/.test(query)
+    matches: /40/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
@@ -73,7 +79,9 @@ test('sm breakpoint', t => {
 
 test('md breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /52/.test(query)
+    matches: /52/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
@@ -83,7 +91,9 @@ test('md breakpoint', t => {
 
 test('lg breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /64/.test(query)
+    matches: /64/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
@@ -93,7 +103,9 @@ test('lg breakpoint', t => {
 
 test('custom breakpoints', t => {
   window.matchMedia = query => ({
-    matches: /24/.test(query)
+    matches: /24/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
     context: {

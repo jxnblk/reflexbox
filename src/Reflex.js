@@ -1,44 +1,77 @@
 
 import React from 'react'
 import Robox from 'robox'
-import getMatches from './get-matches'
 import config from './config'
 
-const keyMap = {
-  server: 'col',
-  xsmall: 'col',
-  small: 'sm',
-  medium: 'md',
-  large: 'lg'
-}
-
-const getWidth = (props) => ({ media, matches }) => {
-  return media.reduce((a, b) => {
-    const key = keyMap[b] || b
-    return props[key] || a
-  }, null) || matches.reduce((a, b) => {
+const getWidth = (props) => (matches = []) => {
+  return matches.reduce((a, b) => {
     return props[b] || a
   }, props.col || null)
 }
 
-const Reflex = (Comp) => {
+const Reflex = opts => Comp => {
   const Base = Robox(Comp)
+  const options = {
+    listen: true
+  }
 
   class ReflexWrap extends React.Component {
+    constructor () {
+      super()
+      this.state = {
+        matches: [
+          'server'
+        ]
+      }
+
+      this.getBreakpoints = () => {
+        const { breakpoints } = this.context.reflexbox || config
+        return breakpoints
+      }
+
+      this.match = () => {
+        const breakpoints = this.getBreakpoints()
+        const matches = []
+
+        for (let key in breakpoints) {
+          const match = window.matchMedia(breakpoints[key]).matches
+          if (match) {
+            matches.push(key)
+          }
+        }
+
+        this.setState({ matches })
+      }
+    }
+
+    componentDidMount () {
+      const breakpoints = this.getBreakpoints()
+      this.match()
+
+      if (options.listen) {
+        for (let key in breakpoints) {
+          window.matchMedia(breakpoints[key]).addListener(this.match)
+        }
+      }
+    }
+
+    componentWillUnmount () {
+      const breakpoints = this.getBreakpoints()
+      for (let key in breakpoints) {
+        window.matchMedia(breakpoints[key]).removeListener(this.match)
+      }
+    }
+
     render () {
       const { ...props } = this.props
-
-      const { breakpoints } = this.context.reflexbox || config
-      const { media = [] } = this.context
-      const matches = getMatches(breakpoints)
+      const { matches } = this.state
+      const breakpoints = this.getBreakpoints()
 
       Object.keys(breakpoints).forEach((key) => {
         delete props[key]
       })
 
-      const width = getWidth(this.props)({
-        media, matches
-      })
+      const width = getWidth(this.props)(matches)
 
       // Map legacy props
       if (props.column) {
@@ -58,9 +91,7 @@ const Reflex = (Comp) => {
   ReflexWrap.contextTypes = {
     reflexbox: React.PropTypes.shape({
       breakpoints: React.PropTypes.object
-    }),
-    // Supoort for react-media-context
-    media: React.PropTypes.array
+    })
   }
 
   ReflexWrap.propTypes = {

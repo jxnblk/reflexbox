@@ -10,7 +10,11 @@ let inner
 
 jsdom()
 
-window.matchMedia = () => ({ matches: false })
+window.matchMedia = () => ({
+  matches: false,
+  addListener: () => {},
+  removeListener: () => {},
+})
 
 test('renders', t => {
   t.notThrows(() => {
