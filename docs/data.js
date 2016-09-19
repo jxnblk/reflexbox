@@ -6,6 +6,12 @@ Flex.displayName = 'Flex'
 Box.displayName = 'Box'
 
 const examples = [
+  <Flex wrap>
+    <Box col={12} sm={6} lg={3}>Box</Box>
+    <Box col={12} sm={6} lg={3}>Box</Box>
+    <Box col={12} sm={6} lg={3}>Box</Box>
+    <Box col={12} sm={6} lg={3}>Box</Box>
+  </Flex>,
   <Flex>
     <Box children='Box' />
     <Box children='Box' />

@@ -1,8 +1,8 @@
 
 import React from 'react'
-import Reflex from './Reflex'
+import withReflex from './withReflex'
 
-const Base = Reflex()('div')
+const Base = withReflex()('div')
 
 const Box = ({ className, ...props }) => {
   const cx = 'Box' + (className ? ' ' + className : '')
