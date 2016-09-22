@@ -61,7 +61,7 @@ class Component extends React.Component {
     return (
       <Flex p={2} align='center'>
         <Box px={2}>Box A</Box>
-        <Box px={2} auto>Box B</Box>
+        <Box px={2} flexAuto>Box B</Box>
       </Flex>
     )
   }
@@ -86,8 +86,8 @@ that can handle virtually any layout composition.
 - `align` (string) Sets `align-items`
 - `justify` (string) Sets `justify-content`
 - `wrap` (boolean) Sets `flex-wrap: wrap`
-- `column` (boolean) Sets `flex-direction: column`
-- `auto` (boolean) Sets `flex: 1 1 auto`
+- `flexColumn` (boolean) Sets `flex-direction: column`
+- `flexAuto` (boolean) Sets `flex: 1 1 auto`
 - `flex` (boolean) Sets `display: flex`
 - `order` (boolean) Sets `order`
 
