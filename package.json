@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "robox": "^1.0.0-beta.8",
-    "ruled": "^1.0.0"
+    "ruled": "^1.0.1"
   },
   "repository": {
     "type": "git",
