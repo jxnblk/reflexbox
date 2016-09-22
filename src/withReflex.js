@@ -47,14 +47,6 @@ const withReflex = ({
 
         this.setState({ matches })
       }
-
-      this.getDebug = () => {
-        const debug = this.props.debug || (
-          this.context.reflex
-            ? this.context.reflex.debug
-            : false
-        )
-      }
     }
 
     componentDidMount () {
@@ -79,7 +71,7 @@ const withReflex = ({
       const { debug, ...props } = this.props
       const { matches } = this.state
       const breakpoints = this.getBreakpoints()
-      const grid = this.getDebug()
+      const grid = debug || (this.context.reflex ? this.context.reflex.debug : false)
 
       Object.keys(breakpoints).forEach((key) => {
         delete props[key]
