@@ -13,7 +13,7 @@ jsdom()
 window.matchMedia = () => ({
   matches: false,
   addListener: () => {},
-  removeListener: () => {},
+  removeListener: () => {}
 })
 
 test('renders', t => {
