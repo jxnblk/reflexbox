@@ -1,6 +1,7 @@
 
 import React from 'react'
 import Robox from 'robox'
+import ruled from 'ruled'
 import config from './config'
 
 const getWidth = (props) => (matches = []) => {
@@ -8,6 +9,8 @@ const getWidth = (props) => (matches = []) => {
     return props[b] || a
   }, props.col || null)
 }
+
+const bgGrid = ruled()
 
 const withReflex = ({
   listen = true
@@ -24,7 +27,10 @@ const withReflex = ({
       }
 
       this.getBreakpoints = () => {
-        const { breakpoints } = this.context.reflexbox || config
+        const { breakpoints } = {
+          ...config,
+          ...this.context.reflexbox
+        }
         return breakpoints
       }
 
@@ -40,6 +46,14 @@ const withReflex = ({
         }
 
         this.setState({ matches })
+      }
+
+      this.getDebug = () => {
+        const debug = this.props.debug || (
+          this.context.reflex
+            ? this.context.reflex.debug
+            : false
+        )
       }
     }
 
@@ -62,15 +76,21 @@ const withReflex = ({
     }
 
     render () {
-      const { ...props } = this.props
+      const { debug, ...props } = this.props
       const { matches } = this.state
       const breakpoints = this.getBreakpoints()
+      const grid = this.getDebug()
 
       Object.keys(breakpoints).forEach((key) => {
         delete props[key]
       })
 
       const width = getWidth(this.props)(matches)
+
+      const sx = grid ? {
+        backgroundImage: bgGrid,
+        backgroundSize: '8px 8px'
+      } : null
 
       // Map legacy props
       if (props.column) {
@@ -83,13 +103,19 @@ const withReflex = ({
         delete props.auto
       }
 
-      return <Base {...props} col={width} />
+      return (
+        <Base
+          {...props}
+          col={width}
+          style={sx} />
+      )
     }
   }
 
   ReflexWrap.contextTypes = {
     reflexbox: React.PropTypes.shape({
-      breakpoints: React.PropTypes.object
+      breakpoints: React.PropTypes.object,
+      debug: React.PropTypes.bool
     })
   }
 
