@@ -9,9 +9,9 @@ const getWidth = (props) => (matches = []) => {
   }, props.col || null)
 }
 
-const withReflex = (options = {
-  listen: true
-}) => Comp => {
+const withReflex = ({
+  listen = true
+} = {}) => Comp => {
   const Base = Robox(Comp)
 
   class ReflexWrap extends React.Component {
@@ -47,7 +47,7 @@ const withReflex = (options = {
       const breakpoints = this.getBreakpoints()
       this.match()
 
-      if (options.listen) {
+      if (listen) {
         for (let key in breakpoints) {
           window.matchMedia(breakpoints[key]).addListener(this.match)
         }

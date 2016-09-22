@@ -3,7 +3,7 @@ import React from 'react'
 import test from 'ava'
 import { mount } from 'enzyme'
 import jsdom from 'jsdom-global'
-import { Reflex } from '../src'
+import { withReflex } from '../src'
 
 let wrapper
 let button
@@ -17,8 +17,8 @@ window.matchMedia = () => ({
   removeListener: () => {}
 })
 
-const Box = Reflex()('div')
-const Button = Reflex()(p => <button {...p} />)
+const Box = withReflex()('div')
+const Button = withReflex()(p => <button {...p} />)
 
 test('renders', t => {
   t.notThrows(() => {

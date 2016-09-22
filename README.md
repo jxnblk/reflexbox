@@ -144,22 +144,6 @@ const Box = withReflex({
 })(MyComponent)
 ```
 
-```js
-// Example
-import React from 'react'
-import MediaContext from 'react-media-context'
-import { Flex, Box } from 'reflexbox'
-
-const App = () => (
-  <MediaContext>
-    <Flex wrap>
-      <Box col={12} sm={6}>Box</Box>
-      <Box col={12} sm={6}>Box</Box>
-    </Flex>
-  </MediaContext>
-)
-```
-
 ## Configuration
 
 Values for the breakpoints can be configured with
