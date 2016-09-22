@@ -52,7 +52,8 @@ test('renames `column` prop', t => {
   inner = wrapper.find('WrappedComponent')
   t.deepEqual(inner.props(), {
     col: null,
-    flexColumn: true
+    flexColumn: true,
+    style: null
   })
 })
 
@@ -61,7 +62,8 @@ test('renames `auto` prop', t => {
   inner = wrapper.find('WrappedComponent')
   t.deepEqual(inner.props(), {
     col: null,
-    flexAuto: true
+    flexAuto: true,
+    style: null
   })
 })
 
@@ -74,7 +76,10 @@ test('sm breakpoint', t => {
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(inner.props(), { col: 3 })
+  t.deepEqual(inner.props(), {
+    col: 3,
+    style: null
+  })
 })
 
 test('md breakpoint', t => {
@@ -86,7 +91,10 @@ test('md breakpoint', t => {
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(inner.props(), { col: 2 })
+  t.deepEqual(inner.props(), {
+    col: 2,
+    style: null
+  })
 })
 
 test('lg breakpoint', t => {
@@ -98,7 +106,10 @@ test('lg breakpoint', t => {
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(inner.props(), { col: 1 })
+  t.deepEqual(inner.props(), {
+    col: 1,
+    style: null
+  })
 })
 
 test('custom breakpoints', t => {
@@ -121,7 +132,8 @@ test('custom breakpoints', t => {
   inner = wrapper.find('WrappedComponent')
 
   t.deepEqual(inner.props(), {
-    col: 3
+    col: 3,
+    style: null
   })
 })
 

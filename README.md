@@ -182,5 +182,19 @@ class App extends React.Component {
 }
 ```
 
+## Debug Mode
+
+To show an 8 ⨉ 8px background grid for layout debugging, add the following to the context object:
+
+```js
+getChildContext () {
+  return {
+    reflexbox: {
+      debug: true
+    }
+  }
+}
+```
+
 [MIT License](.github/LICENSE.md)
 
