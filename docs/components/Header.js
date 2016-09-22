@@ -1,11 +1,11 @@
 
 import React from 'react'
-import { Reflex, Flex, Box } from '../../src'
+import { withReflex, Flex, Box } from '../../src'
 import CarbonAd from './CarbonAd'
 import TweetButton from './TweetButton'
 import GithubButton from './GithubButton'
 
-const H1 = Reflex()('h1')
+const H1 = withReflex()('h1')
 
 const Header = ({ description, ...props }) => {
   return (
