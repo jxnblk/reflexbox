@@ -3,7 +3,7 @@ import React from 'react'
 import test from 'ava'
 import { mount } from 'enzyme'
 import jsdom from 'jsdom-global'
-import { Reflex } from '../src'
+import { withReflex } from '../src'
 
 let wrapper
 let button
@@ -11,10 +11,14 @@ let inner
 
 jsdom()
 
-window.matchMedia = () => ({ matches: false })
+window.matchMedia = () => ({
+  matches: false,
+  addListener: () => {},
+  removeListener: () => {}
+})
 
-const Box = Reflex('div')
-const Button = Reflex(p => <button {...p} />)
+const Box = withReflex()('div')
+const Button = withReflex()(p => <button {...p} />)
 
 test('renders', t => {
   t.notThrows(() => {
@@ -42,10 +46,7 @@ test('applies styles', t => {
   t.is(typeof button.find('button').props().style.display, 'string')
 })
 
-test('has no matches', t => {
-  t.deepEqual(wrapper.state('matches'), [])
-})
-
+// Placeholder test for getWidth function
 test('renames `column` prop', t => {
   wrapper = mount(<Box column />)
   inner = wrapper.find('WrappedComponent')
@@ -66,40 +67,45 @@ test('renames `auto` prop', t => {
 
 test('sm breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /32/.test(query)
+    matches: /40/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
   t.deepEqual(inner.props(), { col: 3 })
 })
 
 test('md breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /48/.test(query)
+    matches: /52/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'md' ])
   t.deepEqual(inner.props(), { col: 2 })
 })
 
 test('lg breakpoint', t => {
   window.matchMedia = query => ({
-    matches: /64/.test(query)
+    matches: /64/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'lg' ])
   t.deepEqual(inner.props(), { col: 1 })
 })
 
 test('custom breakpoints', t => {
   window.matchMedia = query => ({
-    matches: /24/.test(query)
+    matches: /24/.test(query),
+    addListener: () => {},
+    removeListener: () => {}
   })
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
     context: {
@@ -114,7 +120,6 @@ test('custom breakpoints', t => {
   })
   inner = wrapper.find('WrappedComponent')
 
-  t.deepEqual(wrapper.state('matches'), [ 'sm' ])
   t.deepEqual(inner.props(), {
     col: 3
   })

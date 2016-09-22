@@ -22,13 +22,13 @@ npm install reflexbox
 ```js
 // Higher order component example
 import React from 'react'
-import { Reflex } from 'reflexbox'
+import { withReflex } from 'reflexbox'
 
 const Button = (props) => {
   return <button {...props} />
 }
 
-export default Reflex(Button)
+export default withReflex()(Button)
 ```
 
 ```js
@@ -61,7 +61,7 @@ class Component extends React.Component {
     return (
       <Flex p={2} align='center'>
         <Box px={2}>Box A</Box>
-        <Box px={2} auto>Box B</Box>
+        <Box px={2} flexAuto>Box B</Box>
       </Flex>
     )
   }
@@ -72,7 +72,7 @@ class Component extends React.Component {
 
 Reflexbox is composed of a higher order component and three React components.
 
-## Reflex
+## withReflex
 
 Higher order component that accepts several layout style helper props
 that can handle virtually any layout composition.
@@ -86,12 +86,12 @@ that can handle virtually any layout composition.
 - `align` (string) Sets `align-items`
 - `justify` (string) Sets `justify-content`
 - `wrap` (boolean) Sets `flex-wrap: wrap`
-- `column` (boolean) Sets `flex-direction: column`
-- `auto` (boolean) Sets `flex: 1 1 auto`
+- `flexColumn` (boolean) Sets `flex-direction: column`
+- `flexAuto` (boolean) Sets `flex: 1 1 auto`
 - `flex` (boolean) Sets `display: flex`
 - `order` (boolean) Sets `order`
 
-Components wrapped with the Reflex higher order component accept several layout props from
+Components wrapped with the withReflex higher order component accept several layout props from
 the [Robox](https://github.com/jxnblk/robox) higher order component, including the following:
 
 - `gutter` (number) Sets negative left and right margin to compensate for child element padding.
@@ -112,7 +112,7 @@ the [Robox](https://github.com/jxnblk/robox) higher order component, including t
 
 ## Flex and Box components
 
-The Flex and Box components are created with the Reflex component and use the same set of props.
+The Flex and Box components are created with the withReflex component and use the same set of props.
 They are intended to help with the readability of code and
 to provide some backwards compatiblity with previous versions
 of Reflexbox.
@@ -120,7 +120,7 @@ The only difference between the two is that the Flex component has `flex` prop s
 
 ## Grid component
 
-The Grid component is also based on the Reflex component, but sets display inline-block for use as a more widely supported page layout component. It also includes an `align` prop to set vertical alignment.
+The Grid component is also based on the withReflex component, but sets display inline-block for use as a more widely supported page layout component. It also includes an `align` prop to set vertical alignment.
 
 ```js
 <div>
@@ -131,6 +131,17 @@ The Grid component is also based on the Reflex component, but sets display inlin
     Right column
   </Grid>
 </div>
+```
+
+## Update on window resize
+
+By default, Reflexbox listens to `window.matchMedia` for the configured breakpoints.
+To disable this, pass an options object to the `withReflex` higher-order component.
+
+```js
+const Box = withReflex({
+  listen: false
+})(MyComponent)
 ```
 
 ## Configuration

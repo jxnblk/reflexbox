@@ -10,11 +10,15 @@ let inner
 
 jsdom()
 
-window.matchMedia = () => ({ matches: false })
+window.matchMedia = () => ({
+  matches: false,
+  addListener: () => {},
+  removeListener: () => {}
+})
 
 test('renders', t => {
+  wrapper = mount(<Flex className='hello' p={2} />)
   t.notThrows(() => {
-    wrapper = mount(<Flex className='hello' p={2} />)
     inner = wrapper.find('ReflexWrap')
   })
 })

@@ -8,6 +8,7 @@
     "start": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
     "gh-pages": "gh-pages -d docs",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
+    "fix": "standard --fix",
     "test": "standard && ava -v"
   },
   "author": "Brent Jackson",
