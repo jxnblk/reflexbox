@@ -46,6 +46,13 @@ test('applies styles', t => {
   t.is(typeof button.find('button').props().style.display, 'string')
 })
 
+test('passes style prop', t => {
+  wrapper = mount(<Box style={{ color: 'tomato' }} />)
+  inner = wrapper.find('ReflexWrap')
+  const { style } = wrapper.find('div').props()
+  t.is(style.color, 'tomato')
+})
+
 // Placeholder test for getWidth function
 test('renames `column` prop', t => {
   wrapper = mount(<Box column />)

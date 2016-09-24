@@ -68,7 +68,11 @@ const withReflex = ({
     }
 
     render () {
-      const { debug, ...props } = this.props
+      const {
+        debug,
+        style,
+        ...props
+      } = this.props
       const { matches } = this.state
       const breakpoints = this.getBreakpoints()
       const grid = debug || (this.context.reflex ? this.context.reflex.debug : false)
@@ -81,8 +85,9 @@ const withReflex = ({
 
       const sx = grid ? {
         backgroundImage: bgGrid,
-        backgroundSize: '8px 8px'
-      } : null
+        backgroundSize: '8px 8px',
+        ...style
+      } : (style || null)
 
       // Map legacy props
       if (props.column) {
