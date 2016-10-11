@@ -35,6 +35,10 @@ const withReflex = ({
       }
 
       this.match = () => {
+        if (this._unmounted) {
+          return
+        }
+
         const breakpoints = this.getBreakpoints()
         const matches = []
 
@@ -61,6 +65,8 @@ const withReflex = ({
     }
 
     componentWillUnmount () {
+      this._unmounted = true
+
       const breakpoints = this.getBreakpoints()
       for (let key in breakpoints) {
         window.matchMedia(breakpoints[key]).removeListener(this.match)
@@ -157,4 +163,3 @@ const withReflex = ({
 }
 
 export default withReflex
-
