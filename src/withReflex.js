@@ -14,7 +14,7 @@ const bgGrid = ruled()
 
 const QUERIES = Object.create(null)
 
-function getMatchMedia(query) {
+function getMatchMedia (query) {
   if (!(query in QUERIES)) {
     QUERIES[query] = window.matchMedia(query)
   }
