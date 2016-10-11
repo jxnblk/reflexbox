@@ -11,8 +11,10 @@ let inner
 
 jsdom()
 
-window.matchMedia = () => ({
-  matches: false,
+let MATCHES = null
+
+window.matchMedia = query => ({
+  get matches () { return MATCHES ? MATCHES.test(query) : false },
   addListener: () => {},
   removeListener: () => {}
 })
@@ -75,11 +77,7 @@ test('renames `auto` prop', t => {
 })
 
 test('sm breakpoint', t => {
-  window.matchMedia = query => ({
-    matches: /40/.test(query),
-    addListener: () => {},
-    removeListener: () => {}
-  })
+  MATCHES = /40/
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
@@ -90,11 +88,7 @@ test('sm breakpoint', t => {
 })
 
 test('md breakpoint', t => {
-  window.matchMedia = query => ({
-    matches: /52/.test(query),
-    addListener: () => {},
-    removeListener: () => {}
-  })
+  MATCHES = /52/
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
@@ -105,11 +99,7 @@ test('md breakpoint', t => {
 })
 
 test('lg breakpoint', t => {
-  window.matchMedia = query => ({
-    matches: /64/.test(query),
-    addListener: () => {},
-    removeListener: () => {}
-  })
+  MATCHES = /64/
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />)
   inner = wrapper.find('WrappedComponent')
 
@@ -120,11 +110,7 @@ test('lg breakpoint', t => {
 })
 
 test('custom breakpoints', t => {
-  window.matchMedia = query => ({
-    matches: /24/.test(query),
-    addListener: () => {},
-    removeListener: () => {}
-  })
+  MATCHES = /24/
   wrapper = mount(<Box col={6} sm={3} md={2} lg={1} />, {
     context: {
       reflexbox: {
@@ -158,4 +144,3 @@ test('accepts ref attribute', t => {
   wrapper = mount(<Root />)
   t.truthy(wrapper.ref('box'))
 })
-
