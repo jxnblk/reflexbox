@@ -12,6 +12,16 @@ const getWidth = (props) => (matches = []) => {
 
 const bgGrid = ruled()
 
+const QUERIES = Object.create(null)
+
+function getMatchMedia (query) {
+  if (!(query in QUERIES)) {
+    QUERIES[query] = window.matchMedia(query)
+  }
+
+  return QUERIES[query]
+}
+
 const withReflex = ({
   listen = true
 } = {}) => Comp => {
@@ -39,7 +49,7 @@ const withReflex = ({
         const matches = []
 
         for (let key in breakpoints) {
-          const match = window.matchMedia(breakpoints[key]).matches
+          const match = getMatchMedia(breakpoints[key]).matches
           if (match) {
             matches.push(key)
           }
@@ -55,7 +65,7 @@ const withReflex = ({
 
       if (listen) {
         for (let key in breakpoints) {
-          window.matchMedia(breakpoints[key]).addListener(this.match)
+          getMatchMedia(breakpoints[key]).addListener(this.match)
         }
       }
     }
@@ -63,7 +73,7 @@ const withReflex = ({
     componentWillUnmount () {
       const breakpoints = this.getBreakpoints()
       for (let key in breakpoints) {
-        window.matchMedia(breakpoints[key]).removeListener(this.match)
+        getMatchMedia(breakpoints[key]).removeListener(this.match)
       }
     }
 
@@ -157,4 +167,3 @@ const withReflex = ({
 }
 
 export default withReflex
-
