@@ -1,4 +1,5 @@
 
+import PropTypes from 'prop-types'
 import React from 'react'
 import toJsx from 'react-element-to-jsx-string'
 import { Box } from '../..'
@@ -11,7 +12,7 @@ const Example = ({ example, ...props }) => (
 )
 
 Example.propTypes = {
-  example: React.PropTypes.node
+  example: PropTypes.node
 }
 
 export default Example

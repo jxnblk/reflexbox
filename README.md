@@ -152,9 +152,12 @@ Values for the breakpoints can be configured with
 To configure reflexbox, add `childContextTypes` and `getChildContext` to a container component.
 
 ```js
+import PropTypes from 'prop-types'
+import React from 'react'
+
 class App extends React.Component {
   static childContextTypes = {
-    reflexbox: React.PropTypes.object
+    reflexbox: PropTypes.object
   }
 
   getChildContext () {
