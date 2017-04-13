@@ -1,4 +1,5 @@
 
+import PropTypes from 'prop-types'
 import React from 'react'
 import Robox from 'robox'
 import ruled from 'ruled'
@@ -126,39 +127,39 @@ const withReflex = ({
   }
 
   ReflexWrap.contextTypes = {
-    reflexbox: React.PropTypes.shape({
-      breakpoints: React.PropTypes.object,
-      debug: React.PropTypes.bool
+    reflexbox: PropTypes.shape({
+      breakpoints: PropTypes.object,
+      debug: PropTypes.bool
     })
   }
 
   ReflexWrap.propTypes = {
-    flex: React.PropTypes.bool,
-    wrap: React.PropTypes.bool,
-    flexColumn: React.PropTypes.bool,
-    column: React.PropTypes.bool,
-    align: React.PropTypes.oneOf([
+    flex: PropTypes.bool,
+    wrap: PropTypes.bool,
+    flexColumn: PropTypes.bool,
+    column: PropTypes.bool,
+    align: PropTypes.oneOf([
       'stretch',
       'center',
       'baseline',
       'flex-start',
       'flex-end'
     ]),
-    justify: React.PropTypes.oneOf([
+    justify: PropTypes.oneOf([
       'center',
       'space-around',
       'space-between',
       'flex-start',
       'flex-end'
     ]),
-    flexAuto: React.PropTypes.bool,
-    auto: React.PropTypes.bool,
-    flexNone: React.PropTypes.bool,
-    order: React.PropTypes.number,
-    col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    sm: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    md: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    lg: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    flexAuto: PropTypes.bool,
+    auto: PropTypes.bool,
+    flexNone: PropTypes.bool,
+    order: PropTypes.number,
+    col: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    sm: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    md: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    lg: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
     is: (props, propName, componentName) => {
       if (props[propName]) {
         return new Error(
