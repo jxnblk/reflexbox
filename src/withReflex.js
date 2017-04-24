@@ -155,10 +155,10 @@ const withReflex = ({
     auto: React.PropTypes.bool,
     flexNone: React.PropTypes.bool,
     order: React.PropTypes.number,
-    col: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    sm: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    md: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-    lg: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+    col: React.PropTypes.number,
+    sm: React.PropTypes.number,
+    md: React.PropTypes.number,
+    lg: React.PropTypes.number,
     is: (props, propName, componentName) => {
       if (props[propName]) {
         return new Error(
