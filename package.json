@@ -30,6 +30,7 @@
     "browser-env": "^2.0.31",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-x-ray": "^1.0.0-1",
     "relab": "^1.0.0-12",
     "standard": "^10.0.2",
     "webpack": "^2.6.1",

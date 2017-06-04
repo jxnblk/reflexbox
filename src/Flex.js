@@ -1,5 +1,8 @@
-import reflex from './reflex'
+import { createElement } from 'react'
+import Box from './Box'
 
-const Flex = reflex('div')
+const Flex = props => (
+  createElement(Box, { ...props, flex: true })
+)
 
 export default Flex

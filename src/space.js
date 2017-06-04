@@ -1,6 +1,16 @@
+import {
+  objArr,
+  arrObj,
+  separate,
+  toArr,
+  flatten,
+  num
+} from './util'
+
 // parse space props
 const parse = _props => {
-  const [ attr, styles ] = objArr(_props).reduce(sep(isStyle), [])
+  const [ attr, styles ] = objArr(_props)
+    .reduce(separate(isStyle), [])
   const props = arrObj(attr)
 
   const rules = styles
@@ -14,26 +24,18 @@ const parse = _props => {
 
 const REG = /^[wmp][trblxy]?$/
 const isStyle = ([ key, val ]) => REG.test(key)
-const objArr = obj => Object.keys(obj).map(key => [ key, obj[key] ])
-const arrObj = arr => arr.reduce((a, [ key, val ]) => Object.assign(a, { [key]: val }), {})
 
-const sep = test => ([ x = [], y = []], b) =>
-  test(b)
-  ? [ x, [ ...y, b ] ]
-  : [ [ ...x, b ], y ]
+const width = n => !num(n) || n > 1 ? n : (n * 100) + '%'
 
-const toArr = n => Array.isArray(n) ? n : [ n ]
-
-const num = n => typeof n === 'number' && !isNaN(n)
 // todo: make dynamic
 const scale = [ 0, 8, 16, 32, 64 ]
-const width = n => !num(n) || n > 1 ? n : (n * 100) + '%'
 const space = arr => n => {
   if (!num(n)) return n
   const i = Math.abs(n)
   const neg = n < 0 ? -1 : 1
   return (arr[i] || i) * neg + 'px'
 }
+
 const createRules = ([ key, val ]) => toArr(val)
   .map((v, i) => {
     const parse = key === 'width' ? width : space(scale)
@@ -46,7 +48,6 @@ const expand = ([ key, val ]) => {
   const dirs = directions[b] || ['']
   return dirs.map(dir => [ prop + dir, val ])
 }
-const flatten = (a, b) => [ ...a, ...b ]
 
 const group = (a, b) => {
   b.forEach((dec, i) => {

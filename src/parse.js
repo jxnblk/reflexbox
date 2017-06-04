@@ -1,5 +1,6 @@
 import sheet from './sheet'
 import space from './space'
+import flex from './flex-props'
 import css from './css'
 
 const parse = config => _props => {
@@ -7,11 +8,16 @@ const parse = config => _props => {
   const cn = '_reflex' + id
   const sl = '.' + cn
 
-  const [ next, spacing ] = space(_props)
-  const cssRules = css(config)(sl, spacing)
+  const [ a, styles ] = space(_props)
+  const [ next, flexRules ] = flex(a)
+
+  const rules = css(config)(sl, styles)
+  const rulesB = css(config)(sl, flexRules)
+
+  sheet.insert(rules)
+  sheet.insert(rulesB)
 
   next.className = cn
-  sheet.insert(cssRules)
 
   return next
 }
