@@ -1,5 +1,5 @@
-import reflex from './_reflex'
+import reflex from './reflex'
 
-const Box = reflex()('div')
+const Box = reflex('div')
 
 export default Box

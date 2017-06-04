@@ -1,13 +1,5 @@
-import reflex from './_reflex'
+import reflex from './reflex'
 
-const rules = [
-  [ 'display', 'flex' ]
-]
-
-const css = {
-  display: 'flex'
-}
-
-const Flex = reflex(css)('div')
+const Flex = reflex('div')
 
 export default Flex

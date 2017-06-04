@@ -8,9 +8,7 @@ export const space = [
   0, 8, 16, 32, 64
 ]
 
-const config = {
+export default {
   breakpoints,
   space
 }
-
-export default config
