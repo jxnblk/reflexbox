@@ -1,17 +1,11 @@
 import sheet from './sheet'
-import {
-  toArr,
-  num
-} from './util'
-
-const REG = /^([wmp][trblxy]?|flex|wrap|column|align|justify)$/
-const cache = {}
 
 const css = config => props => {
   const next = {}
   const classNames = []
 
   const breaks = [ null, ...config.breakpoints ]
+  const sx = stylers(config)
 
   for (let key in props) {
     const val = props[key]
@@ -19,53 +13,52 @@ const css = config => props => {
       next[key] = val
       continue
     }
-    const id = '_Rfx' + sheet.cssRules.length.toString(36)
-    const k = key.charAt(0)
-    const style = stylers[key] || stylers[k]
-    const rules = toArr(val).map((v, i) => {
-      const bp = breaks[i]
-      const decs = style(key, v)
-      const cn = id + '_' + (bp || '')
-      const body = `.${cn}{${decs}}`
-      const rule = media(bp, body)
-      const _key = (bp || '') + decs
-
-      if (cache[_key]) {
-        classNames.push(cache[_key])
-        return null
-      } else {
-        classNames.push(cn)
-        cache[_key] = cn
-        return rule
-      }
-    }).filter(r => r !== null)
-    sheet.insert(rules)
+    const cx = createRule(breaks, sx)(key, val)
+    cx.forEach(cn => classNames.push(cn))
   }
 
-  return [ next, classNames.join(' ') ]
+  next.className = join(next.className, ...classNames)
+
+  return next
 }
 
-/* todo
-const createRules = (breaks, style) => (v, i) => {
-      const bp = breaks[i]
-      const decs = style(key, v)
-      const cn = id + '_' + (bp || '')
-      const body = `.${cn}{${decs}}`
-      const rule = media(bp, body)
+const REG = /^([wmp][trblxy]?|flex|wrap|column|align|justify)$/
+const cache = {}
 
-      const _key = (bp || '') + decs
-      if (cache[_key]) {
-        classNames.push(cache[_key])
-        return null
-      } else {
-        classNames.push(cn)
-        cache[_key] = cn
-        return rule
-      }
+const createRule = (breaks, sx) => (key, val) => {
+  const classNames = []
+  const id = '_Rfx' + sheet.cssRules.length.toString(36)
+  const k = key.charAt(0)
+  const style = sx[key] || sx[k]
+
+  const rules = toArr(val).map((v, i) => {
+    const bp = breaks[i]
+    const decs = style(key, v)
+    const cn = id + '_' + (bp || '')
+    const body = `.${cn}{${decs}}`
+    const rule = media(bp, body)
+
+    if (cache[cn]) {
+      classNames.push(cache[cn])
+      return null
+    } else {
+      classNames.push(cn)
+      cache[cn] = cn
+      return rule
+    }
+  }).filter(r => r !== null)
+
+  sheet.insert(rules)
+
+  return classNames
 }
 
-const createClassNames = rules => {}
-*/
+const toArr = n => Array.isArray(n) ? n : [ n ]
+const num = n => typeof n === 'number' && !isNaN(n)
+
+const join = (...args) => args
+  .filter(a => !!a)
+  .join(' ')
 
 const dec = args => args.join(':')
 const rule = args => args.join(';')
@@ -73,7 +66,7 @@ const media = (bp, body) => bp ? `@media screen and (min-width:${bp}em){${body}}
 
 const width = (key, n) => dec([ 'width', !num(n) || n > 1 ? n : (n * 100) + '%' ])
 
-const space = (key, n) => {
+const space = scale => (key, n) => {
   const [ a, b ] = key.split('')
   const prop = a === 'm' ? 'margin' : 'padding'
   const dirs = directions[b] || ['']
@@ -82,7 +75,6 @@ const space = (key, n) => {
   return rule(dirs.map(d => dec([ prop + d, val ])))
 }
 
-const scale = [ 0, 8, 16, 32, 64 ]
 const directions = {
   t: [ '-top' ],
   r: [ '-right' ],
@@ -99,16 +91,16 @@ const align = (key, n) => dec([ 'align-items', n ])
 const justify = (key, n) => dec([ 'justify-content', n ])
 const order = (key, n) => dec([ 'order', n ])
 
-const stylers = {
+const stylers = config => ({
   w: width,
-  m: space,
-  p: space,
+  m: space(config.space),
+  p: space(config.space),
   flex,
   wrap,
   column,
   align,
   justify,
   order
-}
+})
 
 export default css

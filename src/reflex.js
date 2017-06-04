@@ -1,12 +1,21 @@
 import React from 'react'
-import parse from './parse'
-import config from './config'
+import PropTypes from 'prop-types'
+import css from './css'
+import defaultConfig from './config'
 
 const reflex = Component => {
-  const Reflex = (_props, context) => {
-    const props = parse(config)(_props)
+  const Reflex = (props, context) => {
+    const config = Object.assign({}, defaultConfig, context.reflexbox)
+    const next = css(config)(props)
 
-    return React.createElement(Component, props)
+    return React.createElement(Component, next)
+  }
+
+  Reflex.contextTypes = {
+    reflexbox: PropTypes.shape({
+      breakpoints: PropTypes.array,
+      space: PropTypes.array,
+    })
   }
 
   return Reflex

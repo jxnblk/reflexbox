@@ -78,5 +78,8 @@
       "it"
     ]
   },
-  "homepage": "https://github.com/jxnblk/reflexbox#readme"
+  "homepage": "https://github.com/jxnblk/reflexbox#readme",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
