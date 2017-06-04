@@ -1,4 +1,3 @@
-
 import React from 'react'
 import withReflex from './withReflex'
 
@@ -33,4 +32,3 @@ Grid.defaultProps = {
 }
 
 export default Grid
-

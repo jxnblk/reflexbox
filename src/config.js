@@ -1,13 +1,16 @@
+export const breakpoints = [
+  40,
+  52,
+  64
+]
 
-export const breakpoints = {
-  sm: '(min-width: 40em)',
-  md: '(min-width: 52em)',
-  lg: '(min-width: 64em)'
-}
+export const space = [
+  0, 8, 16, 32, 64
+]
 
 const config = {
-  breakpoints
+  breakpoints,
+  space
 }
 
 export default config
-
