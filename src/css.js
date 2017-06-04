@@ -32,6 +32,8 @@ const createRule = (breaks, sx) => (key, val) => {
   const style = sx[key] || sx[k]
 
   const rules = toArr(val).map((v, i) => {
+    // if (v === false) return null
+
     const bp = breaks[i]
     const decs = style(key, v)
     const cn = id + '_' + (bp || '')
@@ -84,9 +86,10 @@ const directions = {
   y: [ '-top', '-bottom' ],
 }
 
-const flex = (key, n) => dec([ 'display', 'flex' ])
-const wrap = (key, n) => dec([ 'flex-wrap', 'wrap' ])
-const column = (key, n) => dec([ 'flex-direction', 'column' ])
+const flex = (key, n) => dec([ 'display', n ? 'flex' : 'block' ])
+const wrap = (key, n) => dec([ 'flex-wrap', n ? 'wrap' : 'nowrap' ])
+const auto = (key, n) => dec([ 'flex', '1 1 auto' ])
+const column = (key, n) => dec([ 'flex-direction', n ? 'column' : 'row' ])
 const align = (key, n) => dec([ 'align-items', n ])
 const justify = (key, n) => dec([ 'justify-content', n ])
 const order = (key, n) => dec([ 'order', n ])
@@ -97,6 +100,7 @@ const stylers = config => ({
   p: space(config.space),
   flex,
   wrap,
+  auto,
   column,
   align,
   justify,

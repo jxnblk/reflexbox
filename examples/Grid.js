@@ -16,7 +16,7 @@ module.exports = () => (
       <Box p={2} w={[ 1, 1/2, 1/3, 1/4 ]}>Box</Box>
       <Box p={2} w={[ 1, 1/2, 1/3, 1/4 ]}>Box</Box>
     </Flex>
-    <Flex align='center'>
+    <Flex align={[ 'flex-start', 'center', 'flex-end' ]}>
       <Box p={2} w={1/2}>
         <h1>Box</h1>
       </Box>
