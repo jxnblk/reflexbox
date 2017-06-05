@@ -1,4 +1,6 @@
 export { default as config } from './config'
 export { default as reflex } from './reflex'
+export { default as sheet } from './sheet'
+export { default as css } from './css'
 export { default as Flex } from './Flex'
 export { default as Box } from './Box'

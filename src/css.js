@@ -22,7 +22,7 @@ const css = config => props => {
   return next
 }
 
-const REG = /^([wmp][trblxy]?|flex|wrap|column|align|justify)$/
+const REG = /^([wmp][trblxy]?|flex|wrap|column|auto|align|justify)$/
 const cache = {}
 
 const createRule = (breaks, sx) => (key, val) => {
@@ -32,8 +32,6 @@ const createRule = (breaks, sx) => (key, val) => {
   const style = sx[key] || sx[k]
 
   const rules = toArr(val).map((v, i) => {
-    // if (v === false) return null
-
     const bp = breaks[i]
     const decs = style(key, v)
     const cn = id + '_' + (bp || '')

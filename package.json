@@ -1,16 +1,14 @@
 {
   "name": "reflexbox",
   "version": "3.0.0-0",
-  "description": "React flexbox layout and grid system",
+  "description": "Responsive React Flexbox Grid System",
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress --colors --config docs/webpack.config.js",
-    "_start": "webpack-dev-server --progress --colors --config docs/webpack.config.js",
+    "build": "NODE_ENV=production webpack -p",
+    "start": "webpack-dev-server",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "fix": "standard --fix",
-    "standard": "standard",
     "test": "ava",
-    "start": "relab examples/Grid.js -oP 8000"
+    "lab": "relab examples/Grid.js -oP 8000"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -19,6 +17,7 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "axs": "^2.0.0-0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^6.1.2",
@@ -28,11 +27,12 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "browser-env": "^2.0.31",
+    "funcup": "^1.0.0-0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-live": "^1.5.3",
     "react-x-ray": "^1.0.0-1",
     "relab": "^1.0.0-12",
-    "standard": "^10.0.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },
@@ -62,21 +62,6 @@
       "babel-register"
     ],
     "babel": "inherit"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "docs/dev.js"
-    ],
-    "globals": [
-      "before",
-      "beforeEach",
-      "after",
-      "afterEach",
-      "context",
-      "describe",
-      "it"
-    ]
   },
   "homepage": "https://github.com/jxnblk/reflexbox#readme",
   "dependencies": {

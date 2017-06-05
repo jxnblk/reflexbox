@@ -135,6 +135,10 @@ class App extends React.Component {
 }
 ```
 
+### Caveats
+
+- This currently only works client-side
+
 ---
 
 ### Related
