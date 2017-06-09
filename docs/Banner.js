@@ -16,7 +16,6 @@ import {
 } from 'react-live'
 import { setCode } from './updaters'
 
-
 class ExampleBanner extends React.Component {
   update = code => {
     this.props.update(setCode(code))
