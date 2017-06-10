@@ -55,7 +55,7 @@ class ExampleBanner extends React.Component {
         color: textColor,
         backgroundColor: color,
         transitionProperty: 'background-color',
-        transitionDuration: '1s',
+        transitionDuration: '.5s',
         transitionTimingFunction: 'ease-out',
         overflow: 'hidden'
       },

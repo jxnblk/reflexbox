@@ -2,6 +2,7 @@
   justify='center'
   wrap
   w={1}
+  style={{ height: '100%' }}
   mt={2}
   px={3}
   py={4}>

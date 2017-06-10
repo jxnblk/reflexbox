@@ -6,8 +6,7 @@ const Border = props => (
     {...props}
     style={{
       ...props.style,
-      borderWidth: 4,
-      borderStyle: 'solid'
+      boxShadow: 'inset 0 0 0 3px'
     }}
   />
 )
