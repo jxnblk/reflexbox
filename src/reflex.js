@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import css from './css'
 import defaultConfig from './config'
+import contextTypes from './context-types'
 
 const reflex = Component => {
   const Reflex = (props, context) => {
@@ -11,12 +11,7 @@ const reflex = Component => {
     return React.createElement(Component, next)
   }
 
-  Reflex.contextTypes = {
-    reflexbox: PropTypes.shape({
-      breakpoints: PropTypes.array,
-      space: PropTypes.array,
-    })
-  }
+  Reflex.contextTypes = contextTypes
 
   return Reflex
 }

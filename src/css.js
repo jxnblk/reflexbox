@@ -1,5 +1,8 @@
 import sheet from './sheet'
 
+const REG = /^([wmp][trblxy]?|flex|wrap|column|auto|align|justify|order)$/
+const cache = {}
+
 const css = config => props => {
   const next = {}
   const classNames = []
@@ -22,8 +25,14 @@ const css = config => props => {
   return next
 }
 
-const REG = /^([wmp][trblxy]?|flex|wrap|column|auto|align|justify)$/
-const cache = {}
+css.reset = () => {
+  Object.keys(cache).forEach(key => {
+    delete cache[key]
+  })
+  while (sheet.cssRules.length) {
+    sheet.deleteRule(0)
+  }
+}
 
 const createRule = (breaks, sx) => (key, val) => {
   const classNames = []
@@ -66,14 +75,15 @@ const dec = args => args.join(':')
 const rule = args => args.join(';')
 const media = (bp, body) => bp ? `@media screen and (min-width:${bp}em){${body}}` : body
 
-const width = (key, n) => dec([ 'width', !num(n) || n > 1 ? n : (n * 100) + '%' ])
+const width = (key, n) => dec([ 'width', !num(n) || n > 1 ? px(n) : (n * 100) + '%' ])
+const px = n => num(n) ? n + 'px' : n
 
 const space = scale => (key, n) => {
   const [ a, b ] = key.split('')
   const prop = a === 'm' ? 'margin' : 'padding'
   const dirs = directions[b] || ['']
   const neg = n < 0 ? -1 : 1
-  const val = !num(n) ? n : (scale[n] || n) * neg + 'px'
+  const val = !num(n) ? n : px((scale[Math.abs(n)] || Math.abs(n)) * neg)
   return rule(dirs.map(d => dec([ prop + d, val ])))
 }
 
