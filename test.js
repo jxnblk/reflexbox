@@ -1,7 +1,13 @@
 require('browser-env')()
 const test = require('ava')
-const css = require('./src/css').default
-const config = require('./src/config').default
+const React = require('react')
+const render = require('react-test-renderer').create
+const {
+  css,
+  config,
+  Box,
+  Flex
+} = require('./src')
 
 const props = {
   children: 'Hello',
@@ -36,3 +42,9 @@ test('css adds a className prop', t => {
   t.is(typeof a.className, 'string')
 })
 
+test('snapshot', t => {
+  const box = render(<Box />).toJSON()
+  const flex = render(<Flex />).toJSON()
+  t.snapshot(box)
+  t.snapshot(flex)
+})

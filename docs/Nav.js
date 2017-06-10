@@ -65,7 +65,7 @@ const Nav = props => {
           />
           <button
             onClick={e => props.update(dec)}
-            children='Previouw'
+            children='Previous'
           />
           <button
             onClick={e => props.update(inc)}

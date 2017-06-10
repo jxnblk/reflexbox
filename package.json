@@ -8,13 +8,10 @@
     "start": "webpack-dev-server",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
     "test": "ava",
-    "lab": "relab examples/Grid.js -oP 8000"
+    "lab": "relab docs/App.js -oP 8000"
   },
   "author": "Brent Jackson",
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
-  },
   "devDependencies": {
     "ava": "^0.19.1",
     "axs": "^2.0.0-0",
@@ -28,9 +25,11 @@
     "babel-register": "^6.24.1",
     "browser-env": "^2.0.31",
     "funcup": "^1.0.0-0",
+    "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-live": "^1.5.3",
+    "react-test-renderer": "^15.5.4",
     "react-x-ray": "^1.0.0-1",
     "relab": "^1.0.0-12",
     "webpack": "^2.6.1",
@@ -45,7 +44,8 @@
     "react-component",
     "flexbox",
     "layout",
-    "grid"
+    "grid",
+    "css-in-js"
   ],
   "bugs": {
     "url": "https://github.com/jxnblk/reflexbox/issues"

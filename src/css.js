@@ -38,12 +38,14 @@ const createRule = (breaks, sx) => (key, val) => {
     const body = `.${cn}{${decs}}`
     const rule = media(bp, body)
 
-    if (cache[cn]) {
-      classNames.push(cache[cn])
+    const _key = decs + (bp || '')
+
+    if (cache[_key]) {
+      classNames.push(cache[_key])
       return null
     } else {
       classNames.push(cn)
-      cache[cn] = cn
+      cache[_key] = cn
       return rule
     }
   }).filter(r => r !== null)
