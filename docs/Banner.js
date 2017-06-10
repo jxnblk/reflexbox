@@ -84,9 +84,11 @@ class ExampleBanner extends React.Component {
       },
       error: {
         position: 'absolute',
-        top: 0,
+        zIndex: 2,
+        top: '50%',
         right: 0,
         left: 0,
+        transform: 'TranslateY(-50%)',
         fontFamily: 'SF Mono, Menlo, monospace',
         fontSize: 12,
         margin: 0,
