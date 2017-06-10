@@ -3,6 +3,8 @@
 
 Responsive React Flexbox Grid System
 
+http://jxnblk.com/reflexbox
+
 [![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg?branch=master)](https://travis-ci.org/jxnblk/reflexbox)
 [![npm version](https://badge.fury.io/js/reflexbox.svg)](https://badge.fury.io/js/reflexbox)
 
