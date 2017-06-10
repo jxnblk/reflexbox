@@ -1,8 +1,6 @@
-
 import React from 'react'
-import ReactDOM from 'react-dom'
-import data from './data'
-import Root from './components/Root'
+import { render } from 'react-dom'
+import App from './App'
 
-ReactDOM.render(<Root {...data} />, document.getElementById('app'))
-
+console.log('hello')
+render(<App />, app)

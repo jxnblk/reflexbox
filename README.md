@@ -1,17 +1,20 @@
 
 # Reflexbox
 
-Responsive React flexbox grid system higher order component
+Responsive React Flexbox Grid System
+
+http://jxnblk.com/reflexbox
 
 [![Build Status](https://travis-ci.org/jxnblk/reflexbox.svg?branch=master)](https://travis-ci.org/jxnblk/reflexbox)
-[![Code Climate](https://codeclimate.com/github/jxnblk/reflexbox/badges/gpa.svg)](https://codeclimate.com/github/jxnblk/reflexbox)
 [![npm version](https://badge.fury.io/js/reflexbox.svg)](https://badge.fury.io/js/reflexbox)
 
+
 ## Features
-- Uses inline-styles - no CSS dependencies or leaky global styles
+
 - Simple API for quickly controlling layout
-- Add layout capabilities to **any** component
 - Helps promote composability and separation of concerns
+- CSS-in-JS built in - no external dependencies
+- Only generates the CSS needed to render
 
 ## Getting Started
 
@@ -19,40 +22,7 @@ Responsive React flexbox grid system higher order component
 npm install reflexbox
 ```
 
-```js
-// Higher order component example
-import React from 'react'
-import { withReflex } from 'reflexbox'
-
-const Button = (props) => {
-  return <button {...props} />
-}
-
-export default withReflex()(Button)
-```
-
-```js
-const App = () => {
-  return (
-    <div>
-      <Button
-        flex
-        p={2}
-        col={12}
-        align='center'
-        justify='space-between'>
-        <span>Flex</span>
-        <span>Button</span>
-      </Button>
-    </div>
-  )
-}
-```
-
-Usage with the Flex and Box components:
-
-```js
-// Basic component example
+```jsx
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 
@@ -60,151 +30,203 @@ class Component extends React.Component {
   render() {
     return (
       <Flex p={2} align='center'>
-        <Box px={2}>Box A</Box>
-        <Box px={2} flexAuto>Box B</Box>
+        <Box px={2} w={1/2}>Box A</Box>
+        <Box px={2} w={1/2}>Box B</Box>
       </Flex>
     )
   }
 }
+```
+
+## Usage
+
+```jsx
+// Fractional width
+<Box w={1/2} />
+
+// Pixel width
+<Box w={128} />
+
+// Responsive widths
+<Box w={[ 1, 1/2, 1/4 ]} />
+
+// Padding
+<Box p={2} />
+
+// Responsive padding
+<Box p={[ 1, 2, 3 ]} />
+
+// Margin
+<Box m={2} />
+
+// Responsive margin
+<Box m={[ 1, 2, 3 ]} />
+
+// top, right, bottom, left
+<Box
+  mt={1}
+  mr={2}
+  mb={3}
+  ml={2}
+/>
+
+// x-axis
+<Box mx={-2} />
+
+// y-axis
+<Box my={3} />
+
+// align-items: center
+<Flex align='center' />
+
+// justify-content: space-between
+<Flex justify='space-between' />
+
+// Flex wrap
+<Flex wrap />
+
+// Flex direction column
+<Flex column />
+
+// Order
+<Box order={2} />
+
+// flex: 1 1 auto
+<Box auto />
 ```
 
 ## API
 
-Reflexbox is composed of a higher order component and three React components.
+### `<Flex />`
 
-## withReflex
+Component primitive with `display: flex`
 
-Higher order component that accepts several layout style helper props
-that can handle virtually any layout composition.
+### `<Box />`
+
+Primitive for controlling width, margin, padding and more.
 
 ### Props
 
-- `col` (number 0–12) Sets width based on a 12 column grid.
-- `sm` (number 0-12) Sets width from the `sm` breakpoint and up.
-- `md` (number 0-12) Sets width from the `md` breakpoint and up.
-- `lg` (number 0-12) Sets width from the `lg` breakpoint and up.
-- `align` (string) Sets `align-items`
-- `justify` (string) Sets `justify-content`
-- `wrap` (boolean) Sets `flex-wrap: wrap`
-- `flexColumn` (boolean) Sets `flex-direction: column`
-- `flexAuto` (boolean) Sets `flex: 1 1 auto`
-- `flex` (boolean) Sets `display: flex`
-- `order` (boolean) Sets `order`
+Both `<Flex />` and `<Box />` share the same props.
 
-Components wrapped with the withReflex higher order component accept several layout props from
-the [Robox](https://github.com/jxnblk/robox) higher order component, including the following:
+- `w` (number|string) sets width, where numbers 0-1 are percentage values, larger numbers are pixel values, and strings are raw CSS values with units.
+- `flex` (boolean) sets `display: flex`
+- `wrap` (boolean) sets `flex-wrap: wrap`
+- `column` (boolean) sets `flex-direction: column`
+- `auto` (boolean) sets `flex: 1 1 auto`
+- `order` (number) sets `order`
+- `align` (string) sets `align-items`
+- `justify` (string) sets `justify-content`
 
-- `gutter` (number) Sets negative left and right margin to compensate for child element padding.
-- `m` (number) Sets margin based on a scale from 0–6.
-- `mx` (number) Sets x-axis margin based on a scale from 0–6.
-- `my` (number) Sets y-axis margin based on a scale from 0–6.
-- `mt` (number) Sets margin-top based on a scale from 0–6.
-- `mb` (number) Sets margin-bottom based on a scale from 0–6.
-- `ml` (number) Sets margin-left based on a scale from 0–6.
-- `mr` (number) Sets margin-right based on a scale from 0–6.
-- `p` (number) Sets padding based on a scale from 0–6.
-- `px` (number) Sets x-axis padding based on a scale from 0–6.
-- `py` (number) Sets y-axis padding based on a scale from 0–6.
-- `pt` (number) Sets padding-top based on a scale from 0–6.
-- `pb` (number) Sets padding-bottom based on a scale from 0–6.
-- `pl` (number) Sets padding-left based on a scale from 0–6.
-- `pr` (number) Sets padding-right based on a scale from 0–6.
+#### Margin and Padding
 
-## Flex and Box components
+Margin and padding props accept numbers `0-4` for values from the spacing scale `[ 0, 8, 16, 32, 64 ]`.
+Numbers greater than 4 will be used as pixel values.
+Negative values can be used for negative margins.
+Strings can be passed for other CSS values, e.g. `mx='auto'`
 
-The Flex and Box components are created with the withReflex component and use the same set of props.
-They are intended to help with the readability of code and
-to provide some backwards compatiblity with previous versions
-of Reflexbox.
-The only difference between the two is that the Flex component has `flex` prop set to true to set `display: flex`.
+- `m`  (number|string) margin based on a scale from 0–4.
+- `mx` (number|string) x-axis margin based on a scale from 0–4.
+- `my` (number|string) y-axis margin based on a scale from 0–4.
+- `mt` (number|string) margin-top based on a scale from 0–4.
+- `mb` (number|string) margin-bottom based on a scale from 0–4.
+- `ml` (number|string) margin-left based on a scale from 0–4.
+- `mr` (number|string) margin-right based on a scale from 0–4.
+- `p`  (number|string) padding based on a scale from 0–4.
+- `px` (number|string) x-axis padding based on a scale from 0–4.
+- `py` (number|string) y-axis padding based on a scale from 0–4.
+- `pt` (number|string) padding-top based on a scale from 0–4.
+- `pb` (number|string) padding-bottom based on a scale from 0–4.
+- `pl` (number|string) padding-left based on a scale from 0–4.
+- `pr` (number|string) padding-right based on a scale from 0–4.
 
-## Grid component
+### Responsive Array Prop Values
 
-The Grid component is also based on the withReflex component, but sets display inline-block for use as a more widely supported page layout component. It also includes an `align` prop to set vertical alignment.
+All props accept arrays as values for mobile-first responsive styles.
 
-```js
-<div>
-  <Grid col={6} px={2}>
-    Left column
-  </Grid>
-  <Grid col={6} px={2}>
-    Right column
-  </Grid>
-</div>
+```jsx
+// Set widths for different breakpoints, starting from smallest to largest
+// This example will be 100% width below the smallest breakpoint,
+// then 50% and 25% for the next two breakpoints respectively
+<Box w={[ 1, 1/2, 1/4 ]} />
 ```
 
-## Update on window resize
+Null values can be passed to the array to skip a breakpoint.
 
-By default, Reflexbox listens to `window.matchMedia` for the configured breakpoints.
-To disable this, pass an options object to the `withReflex` higher-order component.
-
-```js
-const Box = withReflex({
-  listen: false
-})(MyComponent)
+```jsx
+<Box w={[ 1, null, 1/2 ]} />
 ```
+
 
 ## Configuration
 
-Values for the breakpoints can be configured with
+Values for the breakpoints and space scale can be configured with
 [React Context](https://facebook.github.io/react/docs/context.html).
 
-To configure reflexbox, add `childContextTypes` and `getChildContext` to a container component.
+Context can be set manually or with the `<ReflexProvider />` component.
 
-```js
+
+```jsx
+import React from 'react'
+import { ReflexProvider, Flex, Box } from 'reflexbox'
+
+const space = [ 0, 6, 12, 18, 24 ]
+const breakpoints = [ 32, 48, 64 ]
+
 class App extends React.Component {
-  static childContextTypes = {
-    reflexbox: React.PropTypes.object
-  }
-
-  getChildContext () {
-    return {
-      reflexbox: {
-        breakpoints: {
-          sm: '(min-width: 30em)',
-          md: '(min-width: 48em)',
-          lg: '(min-width: 60em)'
-        }
-      }
-    }
-  }
-
   render () {
     return (
-      <Flex gutter={2}>
-        <Box sm={6} md={3}>Box</Box>
-        <Box sm={6} md={3}>Box</Box>
-        <Box sm={6} md={3}>Box</Box>
-        <Box sm={6} md={3}>Box</Box>
-      </Flex>
+      <ReflexProvider
+        space={space}
+        breakpoints={breakpoints}>
+        <Flex mx={-2}>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+        </Flex>
+      </ReflexProvider>
     )
   }
 }
 ```
 
-## Debug Mode
+## Higher Order Component
 
-To show an 8 ⨉ 8px background grid for layout debugging, add the following to the context object:
+The core Reflexbox higher-order component can be used on any element that accepts `className` as a prop.
 
-```js
-getChildContext () {
-  return {
-    reflexbox: {
-      debug: true
-    }
-  }
-}
+```jsx
+import React from 'react'
+import { reflex } from 'reflexbox'
+import MyInput from './MyInput'
+
+const FlexInput = reflex(MyInput)
+
+const App = () => (
+  <div>
+    <FlexInput
+      w={1/2}
+      mb={2}
+      defaultValue='Flex Input'
+    />
+  </div>
+)
 ```
+
+### Caveats
+
+This currently *DOES NOT* work in Node.js server-side applications.
+If you need server-side support, see version `^2.2.0` or one of the related libraries below.
 
 ---
 
 ### Related
 
+- [Axs](http://jxnblk.com/axs)
+- [Grid Styled](http://jxnblk.com/grid-styled)
+- [Gx](http://jxnblk.com/gx)
 - [Rebass](http://jxnblk.com/rebass)
 - [Reline](http://jxnblk.com/reline)
-- [Robox](http://jxnblk.com/robox)
-- [understyle](http://jxnblk.com/understyle)
-- [Gx](http://jxnblk.com/gx)
 
 [MIT License](.github/LICENSE.md)
 

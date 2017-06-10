@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react context 1`] = `
+<div
+  className="_Rfx0_ _Rfx1_ _Rfx1_32"
+/>
+`;
+
+exports[`snapshot 1`] = `
+<div
+  className=""
+/>
+`;
+
+exports[`snapshot 2`] = `
+<div
+  className="_Rfx0_"
+/>
+`;
