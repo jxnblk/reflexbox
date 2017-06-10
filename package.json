@@ -7,8 +7,7 @@
     "build": "NODE_ENV=production webpack -p",
     "start": "webpack-dev-server",
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "test": "ava",
-    "lab": "relab docs/App.js -oP 8000"
+    "test": "ava"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -31,7 +30,6 @@
     "react-live": "^1.5.3",
     "react-test-renderer": "^15.5.4",
     "react-x-ray": "^1.0.0-1",
-    "relab": "^1.0.0-12",
     "reline": "^1.0.0-beta.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
