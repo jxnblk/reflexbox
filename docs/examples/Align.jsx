@@ -7,10 +7,10 @@
   }}>
   <Fill color={color}>
     <Box p={4}>
-      <Axs.Text f={0}>Align</Axs.Text>
+      <Text f={0}>Align</Text>
     </Box>
   </Fill>
   <Box p={2}>
-    <Axs.Text f={6}>Center</Axs.Text>
+    <Text f={6}>Center</Text>
   </Box>
 </Flex>

@@ -5,7 +5,6 @@ import { dark } from './colors'
 const Fill = props => (
   <Box
     {...props}
-    className='slide'
     style={{
       ...props.style,
       color: props.color,

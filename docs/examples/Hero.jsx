@@ -6,12 +6,15 @@
   }}>
   <Box>
     <Border
+      mt={4}
       style={{
         textTransform: 'uppercase',
         letterSpacing: '.3em',
       }}>
       <Flex>
-        <Fill p={2} color={color}>
+        <Fill p={2}
+          className='slide'
+          color={color}>
           <h1 style={{ margin: 0 }}>Reflex</h1>
         </Fill>
         <Box p={2}>
@@ -19,27 +22,24 @@
         </Box>
       </Flex>
     </Border>
-    <Axs.Text
-      my3
-      bold
-      f={3}
-      children='Responsive React Flexbox Grid System'
-    />
-    <Flex align='center'>
-      <Axs.Button
-        is='a'
-        mr2
+    <Box my={2}>
+      <Text f={3}
+        children='Responsive React Flexbox Grid System'
+      />
+    </Box>
+    <Flex mb={4} align='center'>
+      <Btn
         href='https://github.com/jxnblk/reflexbox'
         children='GitHub'
-        css={{
+        style={{
           color: '#fff',
           backgroundColor: 'rgba(0, 0, 0, .75)',
+          borderRadius: 6,
           mixBlendMode: 'multiply'
         }}
       />
-      <Axs.Pre
-        children='npm i reflexbox'
-      />
+      <Box ml='auto' />
+      <Pre children='npm i reflexbox' />
     </Flex>
   </Box>
 </Flex>

@@ -5,9 +5,9 @@
     height: '100%',
   }}>
   <Box p={2}>
-    <Axs.Text f={3}>Margin</Axs.Text>
+    <Text f={3}>Margin</Text>
   </Box>
   <Border p={3} ml='auto' color={color}>
-    <Axs.Text f={1}>Auto</Axs.Text>
+    <Text f={1}>Auto</Text>
   </Border>
 </Flex>

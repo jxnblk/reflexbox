@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'funcup'
 import { Flex, Box } from 'reflexbox'
-import { Text } from 'axs'
 import { Arrow } from 'reline'
 import {
   inc,
@@ -28,24 +27,11 @@ const Nav = props => {
 
   return (
     <nav style={sx.root}>
-      <Flex py={1} align='center'>
-        <Box px={2}>
-          <Text
-            bold
-            f={6}
-            css={{
-              textTransform: 'uppercase',
-              letterSpacing: '.2em'
-            }}>
-            Reflexbox
-          </Text>
-        </Box>
-        <Box px={2}>
-          <Btn
-            href='https://github.com/jxnblk/reflexbox'
-            children='GitHub'
-          />
-        </Box>
+      <Flex px={[ 0, 1, 2 ]} py={1} align='center'>
+        <Btn
+          href='https://github.com/jxnblk/reflexbox'
+          children='GitHub'
+        />
         <Box ml='auto' />
         <Button
           onClick={e => props.update(toggleXRay)}

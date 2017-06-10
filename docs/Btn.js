@@ -4,7 +4,6 @@ const Btn = props => (
   <a
     {...props}
     style={{
-      ...props.style,
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -17,6 +16,7 @@ const Btn = props => (
       padding: 12,
       color: 'inherit',
       backgroundColor: 'transparent',
+      ...props.style,
     }}
   />
 )
