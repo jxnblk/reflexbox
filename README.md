@@ -22,7 +22,7 @@ http://jxnblk.com/reflexbox
 npm install reflexbox
 ```
 
-```js
+```jsx
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 
@@ -36,6 +36,60 @@ class Component extends React.Component {
     )
   }
 }
+```
+
+## Usage
+
+```jsx
+// Fractional width
+<Box w={1/2} />
+
+// Pixel width
+<Box w={128} />
+
+// Responsive widths
+<Box w={[ 1, 1/2, 1/4 ]} />
+
+// Padding
+<Box p={2} />
+
+// Responsive padding
+<Box p={[ 1, 2, 3 ]} />
+
+// top, right, bottom, left
+<Box
+  mt={1}
+  mr={2}
+  mb={3}
+  ml={2}
+/>
+
+// x-axis
+<Box mx={-2} />
+
+// Margin
+<Box m={2} />
+
+// Responsive margin
+<Box m={[ 1, 2, 3 ]} />
+
+// align-items: center
+<Flex align='center' />
+
+// justify-content: space-between
+<Flex justify='space-between' />
+
+// Flex wrap
+<Flex wrap />
+
+// Flex direction column
+<Flex column />
+
+// Order
+<Box order={2} />
+
+// flex: 1 1 auto
+<Box auto />
 ```
 
 ## API
@@ -87,7 +141,7 @@ Strings can be passed for other CSS values, e.g. `mx='auto'`
 
 All props accept arrays as values for mobile-first responsive styles.
 
-```js
+```jsx
 // Set widths for different breakpoints, starting from smallest to largest
 // This example will be 100% width below the smallest breakpoint,
 // then 50% and 25% for the next two breakpoints respectively
@@ -96,7 +150,7 @@ All props accept arrays as values for mobile-first responsive styles.
 
 Null values can be passed to the array to skip a breakpoint.
 
-```js
+```jsx
 <Box w={[ 1, null, 1/2 ]} />
 ```
 

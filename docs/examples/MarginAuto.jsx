@@ -1,9 +1,4 @@
-<Flex
-  align='center'
-  p={3}
-  style={{
-    height: '100%',
-  }}>
+<Flex align='center' w={1} p={3}>
   <Box p={2}>
     <Text f={3}>Margin</Text>
   </Box>

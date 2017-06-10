@@ -1,9 +1,4 @@
-<Flex
-  p={[ 3, null, 4 ]}
-  align='center'
-  style={{
-    height: '100%',
-  }}>
+<Flex p={[ 3, null, 4 ]} align='center'>
   <Box>
     <Border
       mt={4}

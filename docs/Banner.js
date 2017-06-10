@@ -63,6 +63,8 @@ class ExampleBanner extends React.Component {
         height: '50vh'
       },
       preview: {
+        display: 'flex',
+        alignItems: 'center',
         height: '80vh',
         paddingTop: 64,
         paddingBottom: 64,

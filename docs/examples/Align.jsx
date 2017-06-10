@@ -1,6 +1,7 @@
 <Flex
   align='center'
   justify='space-around'
+  w={1}
   p={3}
   style={{
     height: '100%',

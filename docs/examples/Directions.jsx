@@ -1,10 +1,4 @@
-<Flex
-  align='center'
-  justify='space-around'
-  p={3}
-  style={{
-    height: '100%',
-  }}>
+<Flex align='center' justify='space-around' w={1} p={3}>
   <Border pt={4}>pt</Border>
   <Border pr={4}>pr</Border>
   <Border pb={4}>pb</Border>

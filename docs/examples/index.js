@@ -6,9 +6,12 @@ import MarginAuto from './MarginAuto.jsx'
 import Directions from './Directions.jsx'
 import Wrap from './Wrap.jsx'
 import Column from './Column.jsx'
+import Grid from './Grid.jsx'
+import Offset from './Offset.jsx'
 
 export default [
   Hero,
+  Grid,
   FlexAuto,
   Padding,
   Align,
@@ -16,4 +19,5 @@ export default [
   Directions,
   Wrap,
   Column,
+  Offset,
 ]
