@@ -50,29 +50,36 @@ Primitive for controlling width, margin, padding and more.
 
 Both `<Flex />` and `<Box />` share the same props.
 
-- `w` (number) Sets width - either a fraction pixel value
-- `flex` (boolean) Sets `display: flex`
-- `wrap` (boolean) Sets `flex-wrap: wrap`
-- `column` (boolean) Sets `flex-direction: column`
-- `auto` (boolean) Sets `flex: 1 1 auto`
-- `order` (boolean) Sets `order`
-- `align` (string) Sets `align-items`
-- `justify` (string) Sets `justify-content`
+- `w` (number|string) sets width, where numbers 0-1 are percentage values, larger numbers are pixel values, and strings are raw CSS values with units.
+- `flex` (boolean) sets `display: flex`
+- `wrap` (boolean) sets `flex-wrap: wrap`
+- `column` (boolean) sets `flex-direction: column`
+- `auto` (boolean) sets `flex: 1 1 auto`
+- `order` (number) sets `order`
+- `align` (string) sets `align-items`
+- `justify` (string) sets `justify-content`
 
-- `m`  (number) Sets margin based on a scale from 0–4.
-- `mx` (number) Sets x-axis margin based on a scale from 0–4.
-- `my` (number) Sets y-axis margin based on a scale from 0–4.
-- `mt` (number) Sets margin-top based on a scale from 0–4.
-- `mb` (number) Sets margin-bottom based on a scale from 0–4.
-- `ml` (number) Sets margin-left based on a scale from 0–4.
-- `mr` (number) Sets margin-right based on a scale from 0–4.
-- `p`  (number) Sets padding based on a scale from 0–4.
-- `px` (number) Sets x-axis padding based on a scale from 0–4.
-- `py` (number) Sets y-axis padding based on a scale from 0–4.
-- `pt` (number) Sets padding-top based on a scale from 0–4.
-- `pb` (number) Sets padding-bottom based on a scale from 0–4.
-- `pl` (number) Sets padding-left based on a scale from 0–4.
-- `pr` (number) Sets padding-right based on a scale from 0–4.
+#### Margin and Padding
+
+Margin and padding props accept numbers `0-4` for values from the spacing scale `[ 0, 8, 16, 32, 64 ]`.
+Numbers greater than 4 will be used as pixel values.
+Negative values can be used for negative margins.
+Strings can be passed for other CSS values, e.g. `mx='auto'`
+
+- `m`  (number|string) margin based on a scale from 0–4.
+- `mx` (number|string) x-axis margin based on a scale from 0–4.
+- `my` (number|string) y-axis margin based on a scale from 0–4.
+- `mt` (number|string) margin-top based on a scale from 0–4.
+- `mb` (number|string) margin-bottom based on a scale from 0–4.
+- `ml` (number|string) margin-left based on a scale from 0–4.
+- `mr` (number|string) margin-right based on a scale from 0–4.
+- `p`  (number|string) padding based on a scale from 0–4.
+- `px` (number|string) x-axis padding based on a scale from 0–4.
+- `py` (number|string) y-axis padding based on a scale from 0–4.
+- `pt` (number|string) padding-top based on a scale from 0–4.
+- `pb` (number|string) padding-bottom based on a scale from 0–4.
+- `pl` (number|string) padding-left based on a scale from 0–4.
+- `pr` (number|string) padding-right based on a scale from 0–4.
 
 ### Responsive Array Prop Values
 
@@ -137,15 +144,16 @@ class App extends React.Component {
 
 ### Caveats
 
-- This currently only works client-side
+This currently *DOES NOT* work in Node.js server-side applications.
+If you need server-side support, see version `^2.2.0` or one of the related libraries below.
 
 ---
 
 ### Related
 
 - [Axs](http://jxnblk.com/axs)
-- [Gx](http://jxnblk.com/gx)
 - [Grid Styled](http://jxnblk.com/grid-styled)
+- [Gx](http://jxnblk.com/gx)
 - [Rebass](http://jxnblk.com/rebass)
 - [Reline](http://jxnblk.com/reline)
 
