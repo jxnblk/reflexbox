@@ -56,6 +56,12 @@ class Component extends React.Component {
 // Responsive padding
 <Box p={[ 1, 2, 3 ]} />
 
+// Margin
+<Box m={2} />
+
+// Responsive margin
+<Box m={[ 1, 2, 3 ]} />
+
 // top, right, bottom, left
 <Box
   mt={1}
@@ -67,11 +73,8 @@ class Component extends React.Component {
 // x-axis
 <Box mx={-2} />
 
-// Margin
-<Box m={2} />
-
-// Responsive margin
-<Box m={[ 1, 2, 3 ]} />
+// y-axis
+<Box my={3} />
 
 // align-items: center
 <Flex align='center' />
