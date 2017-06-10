@@ -104,42 +104,54 @@ Null values can be passed to the array to skip a breakpoint.
 Values for the breakpoints and space scale can be configured with
 [React Context](https://facebook.github.io/react/docs/context.html).
 
-To configure reflexbox, add `childContextTypes` and `getChildContext` to a container component.
+Context can be set manually or with the `<ReflexProvider />` component.
+
 
 ```jsx
 import React from 'react'
-import PropTypes from 'prop-types'
+import { ReflexProvider, Flex, Box } from 'reflexbox'
+
+const space = [ 0, 6, 12, 18, 24 ]
+const breakpoints = [ 32, 48, 64 ]
 
 class App extends React.Component {
-  static childContextTypes = {
-    reflexbox: PropTypes.object
-  }
-
-  getChildContext () {
-    return {
-      reflexbox: {
-        // breakpoints are converted to min-width em-based media queries
-        breakpoints: [
-          32, 48, 64
-        ],
-        space: [
-          0, 6, 12, 18, 24, 30
-        ]
-      }
-    }
-  }
-
   render () {
     return (
-      <Flex mx={-2}>
-        <Box w={1/4} px={2}>Box</Box>
-        <Box w={1/4} px={2}>Box</Box>
-        <Box w={1/4} px={2}>Box</Box>
-        <Box w={1/4} px={2}>Box</Box>
-      </Flex>
+      <ReflexProvider
+        space={space}
+        breakpoints={breakpoints}>
+        <Flex mx={-2}>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+          <Box w={1/4} px={2}>Box</Box>
+        </Flex>
+      </ReflexProvider>
     )
   }
 }
+```
+
+## Higher Order Component
+
+The core Reflexbox higher-order component can be used on any element that accepts `className` as a prop.
+
+```jsx
+import React from 'react'
+import { reflex } from 'reflexbox'
+import MyInput from './MyInput'
+
+const FlexInput = reflex(MyInput)
+
+const App = () => (
+  <div>
+    <FlexInput
+      w={1/2}
+      mb={2}
+      defaultValue='Flex Input'
+    />
+  </div>
+)
 ```
 
 ### Caveats
