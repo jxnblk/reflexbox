@@ -24,6 +24,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "browser-env": "^2.0.31",
+    "chroma": "0.0.1",
     "funcup": "^1.0.0-0",
     "raw-loader": "^0.5.1",
     "react": "^15.5.4",
@@ -32,6 +33,7 @@
     "react-test-renderer": "^15.5.4",
     "react-x-ray": "^1.0.0-1",
     "relab": "^1.0.0-12",
+    "reline": "^1.0.0-beta.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },

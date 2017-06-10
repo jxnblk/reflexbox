@@ -14,6 +14,9 @@ import {
   LiveError,
   LivePreview
 } from 'react-live'
+import { dark } from './colors'
+import Fill from './Fill'
+import Border from './Border'
 import { setCode } from './updaters'
 
 class ExampleBanner extends React.Component {
@@ -31,6 +34,8 @@ class ExampleBanner extends React.Component {
     const scope = {
       Flex,
       Box,
+      Border,
+      Fill,
       color,
       Axs,
     }
@@ -44,7 +49,12 @@ class ExampleBanner extends React.Component {
       },
       top: {
         height: '70vh',
-        backgroundColor: '#444'
+        fontWeight: 'bold',
+        color: dark(color) ? '#fff' : '#000',
+        backgroundColor: color,
+        transitionProperty: 'background-color',
+        transitionDuration: '1s',
+        transitionTimingFunction: 'ease-out'
       },
       bottom: {
         height: '50vh'
@@ -74,7 +84,7 @@ class ExampleBanner extends React.Component {
         fontSize: 12,
         margin: 0,
         padding: 16,
-        color: '#eee',
+        color: '#fff',
         backgroundColor: '#f00'
       },
     }
@@ -83,7 +93,7 @@ class ExampleBanner extends React.Component {
       <Box style={sx.root}>
         <LiveProvider
           scope={scope}
-          code={example.code}
+          code={example}
           mountStylesheet={false}>
           <LiveError style={sx.error} />
           <Flex column style={sx.inner}>
@@ -92,7 +102,9 @@ class ExampleBanner extends React.Component {
                 color={color}
                 backgroundColor='#eee'
                 disabled={!xray}>
-                <LivePreview style={sx.preview} />
+                <LivePreview
+                  style={sx.preview}
+                />
               </XRay>
             </Box>
             <Box auto style={sx.bottom}>
