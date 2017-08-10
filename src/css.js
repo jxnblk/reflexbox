@@ -16,6 +16,7 @@ const css = config => props => {
       next[key] = val
       continue
     }
+    if (val === false || val == null) continue
     const cx = createRule(breaks, sx)(key, val)
     cx.forEach(cn => classNames.push(cn))
   }

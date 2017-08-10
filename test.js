@@ -171,6 +171,21 @@ test('css parses flexbox styles', t => {
   t.is(g.style['justify-content'], 'space-between')
 })
 
+test('css handles falsy styles', t => {
+  cx({
+    flex: false,
+    wrap: false,
+    column: false,
+    auto: false,
+    p: 0,
+    align: undefined,
+    justify: undefined
+  })
+  const [ a ] = sheet.cssRules
+  t.is(sheet.cssRules.length, 1)
+  t.is(a.style['padding'], '0px')
+})
+
 test('snapshot', t => {
   const box = render(<Box />).toJSON()
   const flex = render(<Flex />).toJSON()
