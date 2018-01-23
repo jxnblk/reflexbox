@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 dist/*
 docs/dev.js
+package-lock.json
+yarn.lock
