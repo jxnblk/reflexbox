@@ -1,6 +1,6 @@
 {
   "name": "reflexbox",
-  "version": "3.0.0-0",
+  "version": "3.0.0",
   "description": "Responsive React Flexbox Grid System",
   "main": "dist/index.js",
   "scripts": {
